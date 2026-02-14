@@ -3,16 +3,42 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
+
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
 // Form validation messages.
 //------------------------------------------------------------------------------
 .errorExplanation {
-  background-color: seashell;
-  border: 2px solid salmon;
+  background-color: $nord6;
+  border: 2px solid $nord11;
   font-size: 12px;
   padding: 8px;
   margin: 8px 13px 0px 13px;
   h2 {
-    background: salmon;
+    background: $nord11;
     color: white;
     font: {
       size: 12px;
@@ -30,32 +56,32 @@
 .fieldWithErrors {
   input, select {
     border: {
-      bottom: 1px solid lightpink;
-      right: 1px solid lightpink; };
-    background: pink; } }
+      bottom: 1px solid $nord12;
+      right: 1px solid $nord12; };
+    background: $nord12; } }
 
 // Flash messages.
 //------------------------------------------------------------------------------
 p, div {
   &.flash_warning, &.flash_error {
-    background: lightpink;
-    color: maroon;
+    background: $nord12;
+    color: $nord0;
     margin: 0px;
     padding: 5px 0px 5px 16px; }
   &.flash_notice, &.flash_message {
-    background: #ddff99;
-    color: darkgreen;
+    background: $nord6;
+    color: $nord14;
     margin: 0px;
     padding: 5px 0px 5px 16px; }
   &.flash_exception {
-    background: #ddff99;
-    border: 5px limegreen solid;
+    background: $nord6;
+    border: 5px $nord14 solid;
     font-size: 1.1em;
     margin: 50px auto;
     padding: 50px;
     width: 450px;
-    -moz-box-shadow: 5px 5px 15px #999999, -5px 0px 15px #999999;
-    -webkit-box-shadow: 5px 5px 15px #999999, -5px 0px 15px #999999; } }
+    -moz-box-shadow: 5px 5px 15px $nord3, -5px 0px 15px $nord3;
+    -webkit-box-shadow: 5px 5px 15px $nord3, -5px 0px 15px $nord3; } }
 
 // Autocomplete.
 //------------------------------------------------------------------------------
@@ -63,9 +89,9 @@ div {
   &.auto_complete {
     background: white;
     border: {
-      left: 1px solid silver;
-      right: 1px solid silver;
-      bottom: 1px solid silver; };
+      left: 1px solid $nord4;
+      right: 1px solid $nord4;
+      bottom: 1px solid $nord4; };
     margin: 0px;
     padding: 0px;
     position: absolute;
@@ -75,19 +101,19 @@ div {
       margin: 0px;
       padding: 0px;
       li {
-        color: #3f3f3f;
+        color: $nord3;
         cursor: pointer;
         display: block;
         list-style-type: none;
         margin: 0px;
         padding: 2px;
         .highlight {
-          background: lightyellow; }
+          background: $nord13; }
         &.selected {
-          background: royalblue;
+          background: $nord10;
           color: white;
           .highlight {
-            background: royalblue; } } } } } }
+            background: $nord10; } } } } } }
 
 // Pagination.
 //------------------------------------------------------------------------------
@@ -102,24 +128,24 @@ div {
     float: left;
     margin: 0px 2px 0px 0px; }
   span.disabled {
-    color: #999999;
-    border: 1px solid #dddddd; }
+    color: $nord3;
+    border: 1px solid $nord4; }
   span.current {
     font-weight: bold;
-    background: #2e6ab1;
+    background: $nord10;
     color: white;
-    border: 1px solid #2e6ab1; }
+    border: 1px solid $nord10; }
   a {
     text-decoration: none;
-    color: #105cb6;
-    border: 1px solid #9aafe5;
+    color: $nord9;
+    border: 1px solid $nord8;
     &.hover, &.focus {
-      color: navy;
-      background: lightyellow;
-      border-color: navy; } }
+      color: $nord0;
+      background: $nord13;
+      border-color: $nord0; } }
   em {
-    color: #3f3f3f;
-    border: 1px solid #bbbbbb;
+    color: $nord3;
+    border: 1px solid $nord4;
     font-style: normal;
     font-weight: bold; } }
 
@@ -128,6 +154,6 @@ div {
   clear: both;
 
   span.per_page_label {
-    color: #6A6A6A;
+    color: $nord3;
   }
 }

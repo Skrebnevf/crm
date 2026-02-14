@@ -7,9 +7,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
 .lists {
   i.fa { font-size: 130% }
-  a:hover { background:none; color:#0033cc }
+  a:hover { background:none; color:$nord10 }
   .list_icon { opacity: 0.5; }
   img.input_info { vertical-align: middle; }
   .list_save {

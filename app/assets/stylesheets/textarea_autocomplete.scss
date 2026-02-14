@@ -3,6 +3,32 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
+
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
 .areacomplete-dropdown {
   ul.auto-list {
     display: none;
@@ -27,7 +53,7 @@
   }
 
   ul.auto-list > li:hover, ul.auto-list > li[data-selected=true] {
-    background: #3875D7;
+    background: $nord9;
     color: white;
     em{
       background: inherit;
@@ -41,7 +67,7 @@
   }
 
   em{
-    background: #FEFFDE;
+    background: $nord6;
     font-style: normal;
   }
 }

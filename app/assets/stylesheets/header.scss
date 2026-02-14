@@ -3,18 +3,44 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
-$color_header: skyblue;
-$color_header_background: #1e4262;
-$color_logo: greenyellow;
+
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
+$color_header: $nord8;
+$color_header_background: $nord1;
+$color_logo: $nord14;
 $color_tab: white;
-$color_tab_background: #466bb1;
-$color_active_tab: black;
-$color_active_tab_background: #E5E5E5;
-$color_hover_tab: navy;
-$color_hover_tab_background: #97baff;
+$color_tab_background: $nord10;
+$color_active_tab: $nord0;
+$color_active_tab_background: $nord6;
+$color_hover_tab: $nord0;
+$color_hover_tab_background: $nord9;
 $size_tab_height: 26px;
 $size_tab_width: 80px;
-$color_footer: grey;
+$color_footer: $nord3;
 
 // Header, tabs, and footer.
 //------------------------------------------------------------------------------

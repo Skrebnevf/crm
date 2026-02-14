@@ -6,25 +6,50 @@
 
 // 2. Include any default variable overrides here
 
-$bg_color1: #05668D;
-$bg_color2: #028090;
-$bg_color3: #00A896;
-$bg_color4: #02C39A;
-$bg_color5: #2A9D8F;
-$bg_color6: #B4A6AB;
-$bg_color7: #946E83;
-$bg_color8: #615055;
-$bg_color9: #FFDD4A;
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
+$bg_color1: $nord10;
+$bg_color2: $nord9;
+$bg_color3: $nord8;
+$bg_color4: $nord7;
+$bg_color5: $nord14;
+$bg_color6: $nord15;
+$bg_color7: $nord11;
+$bg_color8: $nord12;
+$bg_color9: $nord13;
 
 $theme-colors: (
-  "primary":    #05668D,
-  "secondary":  #028090,
-  "success":    #00A896,
-  "info":       #02C39A,
-  "warning":    #2A9D8F,
-  "danger":     #B4A683,
-  "light":      #615055,
-  "dark":       #FFDD4A
+  "primary":    $nord10,
+  "secondary":  $nord9,
+  "success":    $nord14,
+  "info":       $nord8,
+  "warning":    $nord13,
+  "danger":     $nord11,
+  "light":      $nord4,
+  "dark":       $nord1
 );
 
 $btn-padding-y:               0.375;

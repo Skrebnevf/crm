@@ -3,8 +3,33 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
-$color_title: #342d7e;
-$color_subtitle: darkslateblue;
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
+$color_title: $nord10;
+$color_subtitle: $nord9;
 $sidebar_width: 210px;
 
 // Common page elements.
@@ -251,15 +276,15 @@ $sidebar_width: 210px;
 $dark_strip_text: #111;
 $light_strip_text: #EEE;
 
-$bg_color1: #05668D;
-$bg_color2: #028090;
-$bg_color3: #00A896;
-$bg_color4: #02C39A;
-$bg_color5: #2A9D8F;
-$bg_color6: #B4A6AB;
-$bg_color7: #946E83;
-$bg_color8: #615055;
-$bg_color9: #FFDD4A;
+$bg_color1: $nord10;
+$bg_color2: $nord9;
+$bg_color3: $nord8;
+$bg_color4: $nord7;
+$bg_color5: $nord14;
+$bg_color6: $nord15;
+$bg_color7: $nord11;
+$bg_color8: $nord12;
+$bg_color9: $nord13;
 
 
 .task .call  { background: $bg_color1; color: $light_strip_text; }

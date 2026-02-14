@@ -709,8 +709,8 @@ en-US:
 
   # Views -> Admin
   #----------------------------------------------------------------------------
-  back_to_crm: Back to Fat Free CRM
-  crm_admin_page: Fat Free CRM Administration
+  back_to_crm: Back to Danir CRM
+  crm_admin_page: Danir CMR Administrator
 
   # Views -> Admin -> Groups
   #----------------------------------------------------------------------------

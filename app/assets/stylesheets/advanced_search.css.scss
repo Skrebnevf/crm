@@ -3,6 +3,32 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
+
+// Nord Theme Palette
+// Polar Night (dark tones)
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+
+// Snow Storm (light tones)
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+
+// Frost (blue tones)
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+
+// Aurora (accent colors)
+$nord11: #BF616A;  // Red
+$nord12: #D08770;  // Orange
+$nord13: #EBCB8B;  // Yellow
+$nord14: #A3BE8C;  // Green
+$nord15: #B48EAD;  // Purple
+
 #search {
 
   margin-top: 15px;
@@ -12,24 +38,24 @@
 
     li {
       a:link, a:visited {
-        background-color: #ddd;
-        color: #222;
+        background-color: $nord4;
+        color: $nord0;
         font-weight: normal;
         font-size: 0.9em;
       }
       a:hover {
-        background-color: #ccc;
+        background-color: $nord5;
       }
       a.active {
-        background-color: #eee;
-        color: black;
+        background-color: $nord6;
+        color: $nord0;
       }
     }
   }
 
   .search_form {
     border: none;
-    background-color: #eee;
+    background-color: $nord6;
     padding: 10px;
   }
 
@@ -39,8 +65,8 @@
     margin-right: 30px;
   }
   .options a {
-    border-bottom: 1px dotted darkCyan;
-    color: darkCyan;
+    border-bottom: 1px dotted $nord9;
+    color: $nord9;
     text-decoration: none;
   }
 
@@ -81,7 +107,7 @@
 
 }
 
-.defaultTextActive { color: #a1a1a1; }
+.defaultTextActive { color: $nord3; }
 
 .remove_fields {
   margin-right: 4px;
