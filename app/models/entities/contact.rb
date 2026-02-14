@@ -27,8 +27,8 @@
 #  fax             :string(32)
 #  blog            :string(128)
 #  linkedin        :string(128)
-#  facebook        :string(128)
-#  twitter         :string(128)
+#  whatsapp        :string(128)
+#  telegram        :string(128)
 #  born_on         :date
 #  do_not_call     :boolean         default(FALSE), not null
 #  deleted_at      :datetime
@@ -108,8 +108,8 @@ class Contact < ActiveRecord::Base
   validates_length_of :fax, maximum: 32
   validates_length_of :blog, maximum: 128
   validates_length_of :linkedin, maximum: 128
-  validates_length_of :facebook, maximum: 128
-  validates_length_of :twitter, maximum: 128
+  validates_length_of :whatsapp, maximum: 128
+  validates_length_of :telegram, maximum: 128
 
   # Default values provided through class methods.
   #----------------------------------------------------------------------------
@@ -175,7 +175,7 @@ class Contact < ActiveRecord::Base
       assigned_to: params[:account][:assigned_to],
       access:      params[:access]
     }
-    %w[first_name last_name title source email alt_email phone mobile blog linkedin facebook twitter do_not_call background_info].each do |name|
+    %w[first_name last_name title source email alt_email phone mobile blog linkedin whatsapp telegram do_not_call background_info].each do |name|
       attributes[name] = model.send(name.intern)
     end
 

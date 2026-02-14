@@ -269,12 +269,12 @@ module ApplicationHelper
   def web_presence_icons(person)
     sites = []
     icon_for_site = {
-      facebook: "facebook",
+      whatsapp: "whatsapp",
       linkedin: "linkedin",
-      twitter: "twitter",
+      telegram: "telegram",
       blog: "external-link"
     }
-    %i[blog linkedin facebook twitter].each do |site|
+    %i[blog linkedin whatsapp telegram].each do |site|
       url = person.send(site)
       next if url.blank?
 

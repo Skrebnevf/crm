@@ -27,8 +27,8 @@
 #  mobile          :string(32)
 #  blog            :string(128)
 #  linkedin        :string(128)
-#  facebook        :string(128)
-#  twitter         :string(128)
+#  whatsapp        :string(128)
+#  telegram        :string(128)
 #  rating          :integer         default(0), not null
 #  do_not_call     :boolean         default(FALSE), not null
 #  deleted_at      :datetime
@@ -75,6 +75,7 @@ class Lead < ActiveRecord::Base
 
   validates_presence_of :first_name, message: :missing_first_name, if: -> { Setting.require_first_names }
   validates_presence_of :last_name,  message: :missing_last_name,  if: -> { Setting.require_last_names  }
+  validates :company, :email, :phone, :country_of_origin, :payments_terms, :difficulty, presence: true
   validate :users_for_shared_access
   validates :status, inclusion: { in: proc { Setting.unroll(:lead_status).map { |s| s.last.to_s } } }, allow_blank: true
 

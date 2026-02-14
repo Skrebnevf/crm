@@ -8,13 +8,12 @@ en-US:
   all: All
   at: at
   here: here
-  no_button: 'No'
+  no_button: "No"
   not_implemented: Not implemented yet.
   or: or
   select_none: -- None --
   select_blank: -- Select --
-  yes_button: 'Yes'
-
+  yes_button: "Yes"
 
   # Settings.
   #----------------------------------------------------------------------------
@@ -34,12 +33,13 @@ en-US:
   admin_tab_plugins: Plugins
   admin_tab_research_tools: Research Tools
   ai_prompts: Describe your business
-  ai_prompts_description: Describe your business, the products or services you offer,
+  ai_prompts_description:
+    Describe your business, the products or services you offer,
     and your target audience. This will help us tailor the CRM to your needs, and act as system prompts for anywhere AI is used.
   about_my_business: About my business
   about_my_business_placeholder: ie Example Pty Ltd is a mid sized company that specializes in providing high-quality software solutions to small and medium-sized businesses. We focus on the healthcare industry, and sell our flagship product, Fizz Buzz Ultimate Pro.
   how_i_plan_to_use_ffcrm: How I plan to use Fat Free CRM
-  how_i_plan_to_use_ffcrm_placeholder: ie A small sales team of 5 people will use Fat Free CRM.  We will use Mailchimp, Google Ads, Zapier, and Slack. We want to filter and categorise leads by specific areas they are interested in within healthcare. 
+  how_i_plan_to_use_ffcrm_placeholder: ie A small sales team of 5 people will use Fat Free CRM.  We will use Mailchimp, Google Ads, Zapier, and Slack. We want to filter and categorise leads by specific areas they are interested in within healthcare.
   affiliate: Affiliate
   competitor: Competitor
   customer: Customer
@@ -126,7 +126,8 @@ en-US:
             name:
               missing_campaign_name: ^Please specify campaign name.
             ends_on:
-              dates_not_in_sequence: ^Please make sure the campaign end date is after
+              dates_not_in_sequence:
+                ^Please make sure the campaign end date is after
                 the start date.
             access:
               share_campaign: ^Please specify users with whom to share the campaign.
@@ -196,18 +197,21 @@ en-US:
 
   # Controllers.
   #----------------------------------------------------------------------------
-  msg_account_created: Your account has been created and is awaiting approval by the
+  msg_account_created:
+    Your account has been created and is awaiting approval by the
     system administrator.
   msg_account_not_approved: Your account has not been approved yet.
-  msg_asset_deleted: ! '%{value} has been deleted.'
+  msg_asset_deleted: ! "%{value} has been deleted."
   msg_asset_not_available: This %{value} is no longer available.
   msg_not_authorized: You are not authorized to take this action.
   msg_assets_not_available: The %{value} are not available.
-  msg_asset_rejected: ! '%{value} has been rejected.'
+  msg_asset_rejected: ! "%{value} has been rejected."
   msg_bad_image_file: ^Could't upload or resize the image file you specified.
-  msg_cant_create_related: Can't create the %{asset} since the %{related} is no longer
+  msg_cant_create_related:
+    Can't create the %{asset} since the %{related} is no longer
     available.
-  msg_cant_delete_user: ^Couldn't delete the user since %{value} has related assets
+  msg_cant_delete_user:
+    ^Couldn't delete the user since %{value} has related assets
     present.
   msg_cant_do: Can't %{action} the %{asset} since it's no longer available.
   msg_email_not_found: No user was found with that email address.
@@ -221,7 +225,8 @@ en-US:
   msg_password_changed: Your password has been changed.
   msg_password_not_changed: Your password has not been changed.
   msg_password_updated: Password was successfully updated.
-  msg_pwd_instructions_sent: Instructions to reset your password have been sent to
+  msg_pwd_instructions_sent:
+    Instructions to reset your password have been sent to
     you. Please check your email.
   msg_require_admin: You must be Administrator to access this page.
   msg_successful_signup: Successful signup, welcome to Fat Free CRM!
@@ -231,7 +236,8 @@ en-US:
   # Options.
   #----------------------------------------------------------------------------
   option_amount*probability: weighted amount
-  activity_options: Show %{models} %{action_type} performed by %{user} in the past
+  activity_options:
+    Show %{models} %{action_type} performed by %{user} in the past
     %{period}.
   all_users: all users
   option_after: after
@@ -258,9 +264,10 @@ en-US:
   option_updated_at: date updated
   show_per_page: Show %{number} %{models} per page using %{fmt} format.
   sort_by: Sort by %{field}
-  sort_by_displaying: Sort %{models} by %{field} displaying first name %{position}
+  sort_by_displaying:
+    Sort %{models} by %{field} displaying first name %{position}
     last name.
-  entities_per_page: ! '%{entity} per page:'
+  entities_per_page: ! "%{entity} per page:"
   contacts_index_long: Long format
   contacts_index_brief: Brief format
   contacts_index_full: Full format
@@ -351,8 +358,8 @@ en-US:
   shipping_address: Shipping address
   total_accounts: Total Accounts
   website: Website
-  account_with_title_department: ! '%{title}, %{department} at %{account}'
-  account_with_title: ! '%{title} at %{account}'
+  account_with_title_department: ! "%{title}, %{department} at %{account}"
+  account_with_title: ! "%{title} at %{account}"
 
   # Views -> Campaigns.
   #----------------------------------------------------------------------------
@@ -371,7 +378,7 @@ en-US:
   campaigns_small: campaigns
   conversion: Conversion
   conversion_label: Conversion (%)
-  conversion_number: ! '%{value} conversion'
+  conversion_number: ! "%{value} conversion"
   target_conversion: Target conversion
   create_campaign: Create Campaign
   end_date: End date
@@ -380,13 +387,14 @@ en-US:
   no_start_date: no start date specified
   number_of_leads: Number of leads
   objectives: Objectives
-  objectives_help: Please specify target number of leads, expected leads-to-opportunities
+  objectives_help:
+    Please specify target number of leads, expected leads-to-opportunities
     conversion ratio, target revenue, and campaign budget. These numbers will let
     you track actual campaign performance.
   objectives_small: campaign objectives
   revenue: Revenue
   revenue_label: Revenue (%{currency})
-  revenue_number: ! '%{value} in revenue'
+  revenue_number: ! "%{value} in revenue"
   save_campaign: Save Campaign
   start_date: Start date
   started_ago: started %{value} ago
@@ -411,31 +419,34 @@ en-US:
   contact_summary: Contact Summary
   create_contact: Create Contact
   department: Department
-  department_small: ! '%{value} department'
+  department_small: ! "%{value} department"
   do_not_call: Do not call
   extra_info: Extra Information
   extra_info_small: extra contact
-  facebook: Facebook
+  whatsapp: WhatsApp
   linked_in: LinkedIn
   myself: Myself
-  permissions_intro_private: By default only you will have access to the %{value}.
+  permissions_intro_private:
+    By default only you will have access to the %{value}.
     You can change permissions later.
-  permissions_intro_public: By default all users will have access to the %{value}.
+  permissions_intro_public:
+    By default all users will have access to the %{value}.
     You can change permissions later.
-  permissions_intro_shared: By default only the selected users will have access to
+  permissions_intro_shared:
+    By default only the selected users will have access to
     the %{value}. You can change permissions later.
   referred_by: Referred by
   referred_by_small: referred by
   save_contact: Save Contact
-  twitter: Twitter
+  telegram: Telegram
   unassigned: Unassigned
   web_presence: Web Presence
   web_presence_small: web presence
-  works_at: ! '%{job_title} at %{company}'
+  works_at: ! "%{job_title} at %{company}"
   general_info: General Information
   show_general_info_small: Show general information for this contact.
   show_extra_info_small: Show extra information for this contact.
-  tag_details: ! '%{tag} Details'
+  tag_details: ! "%{tag} Details"
   show_tag_info_small: Show %{tag} information for this contact.
   shared_with_everyone: Shared with everyone
   title: Title
@@ -445,22 +456,28 @@ en-US:
   #----------------------------------------------------------------------------
   convert: Convert
   convert_lead: Convert Lead
-  convert_lead_permissions_intro: Contact permissions will be copied from the lead
+  convert_lead_permissions_intro:
+    Contact permissions will be copied from the lead
     being converted. You can change contact permissions later.
-  convert_lead_text: By converting the lead %{value} will become a contact associated
+  convert_lead_text:
+    By converting the lead %{value} will become a contact associated
     with the existing or newly created account. Lead status will be automatically
     set to converted.
   create_lead: Create Lead
-  create_opp_for_contact: You can optionally create an opportunity for the %{value}
+  create_opp_for_contact:
+    You can optionally create an opportunity for the %{value}
     contact by specifying the name, current stage, estimated closing date, sale probability,
     amount of the deal, and the discount offered.
   lead: Lead
   lead_info_small: lead contact
-  lead_permissions_intro_private: By default permissions will be copied from the campaign
+  lead_permissions_intro_private:
+    By default permissions will be copied from the campaign
     or set to private. You can change lead permissions later.
-  lead_permissions_intro_public: By default permissions will be copied from the campaign
+  lead_permissions_intro_public:
+    By default permissions will be copied from the campaign
     or set to public. You can change lead permissions later.
-  lead_permissions_intro_shared: By default permissions will be copied from the campaign
+  lead_permissions_intro_shared:
+    By default permissions will be copied from the campaign
     or shared with the specified users. You can change lead permissions later.
   lead_small: lead
   lead_status_small: lead status
@@ -479,6 +496,9 @@ en-US:
   total_leads: Total Leads
   show_status_info_small: Show status information for this lead.
   show_contact_info_small: Show contact information for this lead.
+  difficulty: Difficulty
+  payments_terms: Payment Terms
+  country_of_origin: Country of Origin
 
   # Views -> Opportunities.
   #----------------------------------------------------------------------------
@@ -505,8 +525,9 @@ en-US:
   opportunity_small: opportunity
   opportunity_stages: Opportunity Stages
   opportunity_summary: Opportunity At a Glance
-  opportunity_summary_text: ! '%{amount} with %{discount} discount and %{probability}
-    probability'
+  opportunity_summary_text:
+    ! "%{amount} with %{discount} discount and %{probability}
+    probability"
   past_due: past due, was expected to close %{value} ago
   probability: Probability
   probability_number: and %{value} probability
@@ -538,7 +559,7 @@ en-US:
   no_tasks_completed: completed
   pending_tab: Pending
   pending_tasks: Pending Tasks
-  related: ! 're:'
+  related: ! "re:"
   save_task: Save Task
   task_assigned: The task has been assigned to %{value}
   task_assigned_to: and assigned to %{value}
@@ -594,7 +615,7 @@ en-US:
   update_past_participle: Updates
   destroy_past_participle: Deletions
   all_events_past_participle: Activities
-  action_create_comment: ! '- &quot;%{comment}&quot;'
+  action_create_comment: ! "- &quot;%{comment}&quot;"
   my_tasks: My Tasks
   no_task_records: You have no tasks.
   my_opportunities: My Opportunities
@@ -625,7 +646,7 @@ en-US:
   delete: Delete
   discard: Discard
   edit: Edit
-  items_total: ! '%{count} total.'
+  items_total: ! "%{count} total."
   less: Less...
   me: me
   more: More...
@@ -642,7 +663,7 @@ en-US:
   select_task: Select Task
   select_opportunity: Select Opportunity
   search_assets: Search %{value}
-  time_ago: ! '%{value} ago'
+  time_ago: ! "%{value} ago"
   background_info: Background
   address: Address
   street1: Street 1
@@ -667,7 +688,8 @@ en-US:
   about_ffc_version: Fat Free CRM version
   about_home_page: Home page
   about_project_page: Project page
-  about_thank_you: Thank you for using Fat Free CRM! We appreciate your business and
+  about_thank_you:
+    Thank you for using Fat Free CRM! We appreciate your business and
     hope you enjoy using the software.
   about_twitter: Twitter commit updates
   about_user_group: Discussion group for users
@@ -702,7 +724,8 @@ en-US:
   # Views -> Passwords.
   #----------------------------------------------------------------------------
   confirm_password_intro: Please type your new password and then confirm it.
-  password_intro: Please specify your email address, and the instructions to reset
+  password_intro:
+    Please specify your email address, and the instructions to reset
     your password will be sent to you.
   reset_password: Reset Password
   update_password_and_login: Update Password and Login
@@ -723,7 +746,8 @@ en-US:
 
   # Views -> Admin -> Users
   #----------------------------------------------------------------------------
-  confirm_group_delete: Are you sure you wish to delete this group? There are %{count}
+  confirm_group_delete:
+    Are you sure you wish to delete this group? There are %{count}
     items that still reference it.
   approve: Approve
   create_user: Create User
@@ -751,12 +775,12 @@ en-US:
   #----------------------------------------------------------------------------
   versions: History
   version:
-    create: ! '%{item} created by %{by}'
-    update: ! '%{item} modified by %{by}'
-    destroy: ! '%{item} destroyed by %{by}'
-    set_html: ! '%{attr} set to %{to}'
-    unset_html: ! '%{attr} unset'
-    change_html: ! '%{attr} changed from %{from} to %{to}'
+    create: ! "%{item} created by %{by}"
+    update: ! "%{item} modified by %{by}"
+    destroy: ! "%{item} destroyed by %{by}"
+    set_html: ! "%{attr} set to %{to}"
+    unset_html: ! "%{attr} unset"
+    change_html: ! "%{attr} changed from %{from} to %{to}"
     anonymous: anonymous
   account_contact_id: Account id
   account_contact_name: Account name
@@ -783,8 +807,9 @@ en-US:
   # Comment Inbox
   #----------------------------------------------------------------------------
   comment_notification:
-    intro: ! '%{user_full_name} commented on %{entity_type}: %{entity_name}'
-    reply_instructions: Reply to this email directly to add a new comment, or view
+    intro: ! "%{user_full_name} commented on %{entity_type}: %{entity_name}"
+    reply_instructions:
+      Reply to this email directly to add a new comment, or view
       the %{entity} online
 
   # Lists
@@ -794,7 +819,8 @@ en-US:
   list: List
   no_saved_lists: No saved lists
   make_current_view_list: Make current view a list
-  list_name_info: If you use the name of an existing list, you will overwrite that
+  list_name_info:
+    If you use the name of an existing list, you will overwrite that
     list with your current settings
 
   # Pluralizations.
@@ -802,41 +828,41 @@ en-US:
   pluralize:
     comment:
       one: 1 comment
-      other: ! '%{count} comments'
+      other: ! "%{count} comments"
     contact:
       one: 1 contact
-      other: ! '%{count} contacts'
+      other: ! "%{count} contacts"
     opportunity:
       one: 1 opportunity
-      other: ! '%{count} opportunities'
+      other: ! "%{count} opportunities"
     lead:
       one: 1 lead
-      other: ! '%{count} leads'
+      other: ! "%{count} leads"
     day:
       one: 1 day
-      other: ! '%{count} days'
+      other: ! "%{count} days"
     login:
       one: 1 login
-      other: ! '%{count} logins'
+      other: ! "%{count} logins"
 
   # Custom date/time formats.
   #----------------------------------------------------------------------------
   date:
     formats:
-      mmddyyyy: ! '%m/%d/%Y'
-      mmdd: ! '%b %e'
-      mmddyy: ! '%b %e, %Y'
+      mmddyyyy: ! "%m/%d/%Y"
+      mmdd: ! "%b %e"
+      mmddyy: ! "%b %e, %Y"
   time:
     formats:
-      mmddhhss: ! '%b %e at %l:%M%p'
-      mmddyyyy_hhmm: ! '%e %b %Y at %l:%M%p'
+      mmddhhss: ! "%b %e at %l:%M%p"
+      mmddyyyy_hhmm: ! "%e %b %Y at %l:%M%p"
 
   # will_paginate translations copied for 'en-US'
   #----------------------------------------------------------------------------
   will_paginate:
-    previous_label: ! '&#8592; Previous'
+    previous_label: ! "&#8592; Previous"
     next_label: Next &#8594;
-    page_gap: ! '&hellip;'
+    page_gap: ! "&hellip;"
     page_entries_info:
       single_page:
         zero: No %{plural} found
@@ -856,23 +882,23 @@ en-US:
   save_field_group: Save field group
   field_group_empty: There are no fields in this group.
   select_or_create_tags: Select some tags, or create a new tag by pressing 'enter'.
-  restrict_by_tag: ! 'Restrict by Tag:'
+  restrict_by_tag: ! "Restrict by Tag:"
   restrict_by_tag_info: (Only show fields for %{assets} that are tagged with the following)
   field_group_tag_restriction: This field group applies to %{assets} tagged with "%{tag}"
   field_group_unrestricted: This field group applies to all %{assets}
-  field_group_confirm_delete: If a field group is deleted, any fields will be moved
+  field_group_confirm_delete:
+    If a field group is deleted, any fields will be moved
     to the default field group.
   msg_cant_delete_field_group: Field Group could not be deleted.
-  admin_fields_info: ! 'Custom fields are displayed in groups.
+  admin_fields_info: ! "Custom fields are displayed in groups.
     Create a new field group, or add fields to one of the groups below.
     You can drag and drop fields to change their display order or move them between
-    field groups.'
+    field groups."
   # Views -> Admin -> Tags
   #----------------------------------------------------------------------------
-  admin_fields_info2: ! 'It is strongly recommended you restart your server after
-    adding or removing any custom field.
-
-'
+  admin_fields_info2:
+    ! "It is strongly recommended you restart your server after
+    adding or removing any custom field."
   tags: Tags
   tag_small: tag
   tagged: Tagged
@@ -884,7 +910,8 @@ en-US:
   ai_prompt_link_tooltip: "OpenAI Chat with prompt"
   # Views -> Admin -> Plugins
   #----------------------------------------------------------------------------
-  tag_with_taggings_confirm_delete: If this tag is deleted, it will be removed from
+  tag_with_taggings_confirm_delete:
+    If this tag is deleted, it will be removed from
     %{value} records.
   msg_cant_delete_tag: Couldn't delete '%{value}' since it has associated Field Groups.
   views:
@@ -897,16 +924,16 @@ en-US:
   # Simple Form translations
   #----------------------------------------------------------------------------
   simple_form:
-    yes: 'Yes'
-    no: 'No'
+    yes: "Yes"
+    no: "No"
     required:
       text: required
-      mark: ! '*'
+      mark: ! "*"
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: ! 'Some errors were found, please take a look:'
+      default_message: ! "Some errors were found, please take a look:"
 
   # Form field types
   #----------------------------------------------------------------------------

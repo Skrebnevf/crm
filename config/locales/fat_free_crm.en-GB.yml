@@ -7,12 +7,12 @@ en-GB:
   all: All
   at: at
   here: here
-  no_button: 'No'
+  no_button: "No"
   not_implemented: Not implemented yet.
   or: or
-  select_none: '-- None --'
-  select_blank: '-- Select --'
-  yes_button: 'Yes'
+  select_none: "-- None --"
+  select_blank: "-- Select --"
+  yes_button: "Yes"
   # Settings.
   #----------------------------------------------------------------------------
   tab_dashboard: Dashboard
@@ -113,58 +113,58 @@ en-GB:
         account:
           attributes:
             name:
-              missing_account_name: '^Please specify account name.'
+              missing_account_name: "^Please specify account name."
             access:
-              share_account: '^Please specify users with whom to share the account.'
+              share_account: "^Please specify users with whom to share the account."
         campaign:
           attributes:
             name:
-              missing_campaign_name: '^Please specify campaign name.'
+              missing_campaign_name: "^Please specify campaign name."
             ends_on:
-              dates_not_in_sequence: '^Please make sure the campaign end date is after the start date.'
+              dates_not_in_sequence: "^Please make sure the campaign end date is after the start date."
             access:
-              share_campaign: '^Please specify users with whom to share the campaign.'
+              share_campaign: "^Please specify users with whom to share the campaign."
         contact:
           attributes:
             first_name:
-              missing_first_name: '^Please specify first name.'
+              missing_first_name: "^Please specify first name."
             last_name:
-              missing_last_name: '^Please specify last name.'
+              missing_last_name: "^Please specify last name."
             access:
-              share_contact: '^Please specify users with whom to share the contact.'
+              share_contact: "^Please specify users with whom to share the contact."
         lead:
           attributes:
             first_name:
-              missing_first_name: '^Please specify first name.'
+              missing_first_name: "^Please specify first name."
             last_name:
-              missing_last_name: '^Please specify last name.'
+              missing_last_name: "^Please specify last name."
             access:
-              share_lead: '^Please specify users with whom to share the lead.'
+              share_lead: "^Please specify users with whom to share the lead."
         opportunity:
           attributes:
             name:
-              missing_opportunity_name: '^Please specify opportunity name.'
+              missing_opportunity_name: "^Please specify opportunity name."
             access:
-              share_opportunity: '^Please specify users with whom to share the opportunity.'
+              share_opportunity: "^Please specify users with whom to share the opportunity."
         task:
           attributes:
             name:
-              missing_task_name: '^Please specify task name.'
+              missing_task_name: "^Please specify task name."
             calendar:
-              invalid_date: '^Please specify valid date.'
+              invalid_date: "^Please specify valid date."
         user:
           attributes:
             username:
-              missing_username: '^Please specify username.'
-              username_taken: '^This username is already taken.'
+              missing_username: "^Please specify username."
+              username_taken: "^This username is already taken."
             email:
-              missing_email: '^Please specify email address.'
-              email_in_use: '^There is another user with the same email.'
+              missing_email: "^Please specify email address."
+              email_in_use: "^There is another user with the same email."
         custom_field:
-          required: '^%{field} is required.'
-          minlength: '^%{field} is too short.'
-          maxlength: '^%{field} is too long.'
-          endbeforestart: '^%{field} cannot end before it begins.'
+          required: "^%{field} is required."
+          minlength: "^%{field} is too short."
+          maxlength: "^%{field} is too long."
+          endbeforestart: "^%{field} cannot end before it begins."
     attribute_options:
       opportunity:
         stage:
@@ -190,19 +190,19 @@ en-GB:
   #----------------------------------------------------------------------------
   msg_account_created: Your account has been created and is awaiting approval by the system administrator.
   msg_account_not_approved: Your account has not been approved yet.
-  msg_asset_deleted: ! '%{value} has been deleted.'
+  msg_asset_deleted: ! "%{value} has been deleted."
   msg_asset_not_available: This %{value} is no longer available.
   msg_not_authorized: You are not authorized to take this action.
   msg_assets_not_available: The %{value} are not available.
-  msg_asset_rejected: ! '%{value} has been rejected.'
-  msg_bad_image_file: '^Could''t upload or resize the image file you specified.'
+  msg_asset_rejected: ! "%{value} has been rejected."
+  msg_bad_image_file: "^Could't upload or resize the image file you specified."
   msg_cant_create_related: Can't create the %{asset} since the %{related} is no longer available.
-  msg_cant_delete_user: '^Couldn''t delete the user since %{value} has related assets present.'
+  msg_cant_delete_user: "^Couldn't delete the user since %{value} has related assets present."
   msg_cant_do: Can't %{action} the %{asset} since it's no longer available.
   msg_email_not_found: No user was found with that email address.
   msg_enter_new_password: Please enter your new password.
   msg_goodbye: You have been logged out. Thank you for using Fat Free CRM!
-  msg_invalid_password: '^Please specify valid current password'
+  msg_invalid_password: "^Please specify valid current password"
   msg_invalig_login: Invalid username or password.
   msg_last_login: Your last login was on %{value}.
   msg_login_needed: You must be logged in to access this page.
@@ -245,7 +245,7 @@ en-GB:
   show_per_page: Show %{number} %{models} per page using %{fmt} format.
   sort_by: Sort by %{field}
   sort_by_displaying: Sort %{models} by %{field} displaying first name %{position} last name.
-  entities_per_page: ! '%{entity} per page:'
+  entities_per_page: ! "%{entity} per page:"
   contacts_index_long: Long format
   contacts_index_brief: Brief format
   contacts_index_full: Full format
@@ -333,8 +333,8 @@ en-GB:
   shipping_address: Shipping address
   total_accounts: Total Accounts
   website: Website
-  account_with_title_department: ! '%{title}, %{department} at %{account}'
-  account_with_title: ! '%{title} at %{account}'
+  account_with_title_department: ! "%{title}, %{department} at %{account}"
+  account_with_title: ! "%{title} at %{account}"
   # Views -> Campaigns.
   #----------------------------------------------------------------------------
   actual: Actual
@@ -352,7 +352,7 @@ en-GB:
   campaigns_small: campaigns
   conversion: Conversion
   conversion_label: Conversion (%)
-  conversion_number: ! '%{value} conversion'
+  conversion_number: ! "%{value} conversion"
   target_conversion: Target conversion
   create_campaign: Create Campaign
   end_date: End date
@@ -365,7 +365,7 @@ en-GB:
   objectives_small: campaign objectives
   revenue: Revenue
   revenue_label: Revenue (%{currency})
-  revenue_number: ! '%{value} in revenue'
+  revenue_number: ! "%{value} in revenue"
   save_campaign: Save Campaign
   start_date: Start date
   started_ago: started %{value} ago
@@ -389,11 +389,11 @@ en-GB:
   contact_summary: Contact Summary
   create_contact: Create Contact
   department: Department
-  department_small: ! '%{value} department'
+  department_small: ! "%{value} department"
   do_not_call: Do not call
   extra_info: Extra Information
   extra_info_small: extra contact
-  facebook: Facebook
+  whatsapp: WhatsApp
   linked_in: LinkedIn
   myself: Myself
   permissions_intro_private: By default only you will have access to the %{value}. You can change permissions later.
@@ -402,15 +402,15 @@ en-GB:
   referred_by: Referred by
   referred_by_small: referred by
   save_contact: Save Contact
-  twitter: Twitter
+  telegram: Telegram
   unassigned: Unassigned
   web_presence: Web Presence
   web_presence_small: web presence
-  works_at: ! '%{job_title} at %{company}'
+  works_at: ! "%{job_title} at %{company}"
   general_info: General Information
   show_general_info_small: Show general information for this contact.
   show_extra_info_small: Show extra information for this contact.
-  tag_details: ! '%{tag} Details'
+  tag_details: ! "%{tag} Details"
   show_tag_info_small: Show %{tag} information for this contact.
   shared_with_everyone: Shared with everyone
   title: Title
@@ -470,7 +470,7 @@ en-GB:
   opportunity_small: opportunity
   opportunity_stages: Opportunity Stages
   opportunity_summary: Opportunity At a Glance
-  opportunity_summary_text: ! '%{amount} with %{discount} discount and %{probability} probability'
+  opportunity_summary_text: ! "%{amount} with %{discount} discount and %{probability} probability"
   past_due: past due, was expected to close %{value} ago
   probability: Probability
   probability_number: and %{value} probability
@@ -501,7 +501,7 @@ en-GB:
   no_tasks_completed: completed
   pending_tab: Pending
   pending_tasks: Pending Tasks
-  related: ! 're:'
+  related: ! "re:"
   save_task: Save Task
   task_assigned: The task has been assigned to %{value}
   task_assigned_to: and assigned to %{value}
@@ -555,7 +555,7 @@ en-GB:
   update_past_participle: Updates
   destroy_past_participle: Deletions
   all_events_past_participle: Activities
-  action_create_comment: ! '- &quot;%{comment}&quot;'
+  action_create_comment: ! "- &quot;%{comment}&quot;"
   my_tasks: My Tasks
   no_task_records: You have no tasks.
   my_opportunities: My Opportunities
@@ -585,7 +585,7 @@ en-GB:
   delete: Delete
   discard: Discard
   edit: Edit
-  items_total: ! '%{count} total.'
+  items_total: ! "%{count} total."
   less: Less...
   me: me
   more: More...
@@ -602,7 +602,7 @@ en-GB:
   select_task: Select Task
   select_opportunity: Select Opportunity
   search_assets: Search %{value}
-  time_ago: ! '%{value} ago'
+  time_ago: ! "%{value} ago"
   background_info: Background
   address: Address
   street1: Street 1
@@ -699,12 +699,12 @@ en-GB:
   #----------------------------------------------------------------------------
   versions: History
   version:
-    create: ! '%{item} created by %{by}'
-    update: ! '%{item} modified by %{by}'
-    destroy: ! '%{item} destroyed by %{by}'
-    set_html: ! '%{attr} set to %{to}'
-    unset_html: ! '%{attr} unset'
-    change_html: ! '%{attr} changed from %{from} to %{to}'
+    create: ! "%{item} created by %{by}"
+    update: ! "%{item} modified by %{by}"
+    destroy: ! "%{item} destroyed by %{by}"
+    set_html: ! "%{attr} set to %{to}"
+    unset_html: ! "%{attr} unset"
+    change_html: ! "%{attr} changed from %{from} to %{to}"
     anonymous: anonymous
   account_contact_id: Account id
   account_contact_name: Account name
@@ -728,7 +728,7 @@ en-GB:
   # Comment Inbox
   #----------------------------------------------------------------------------
   comment_notification:
-    intro: ! '%{user_full_name} commented on %{entity_type}: %{entity_name}'
+    intro: ! "%{user_full_name} commented on %{entity_type}: %{entity_name}"
     reply_instructions: Reply to this email directly to add a new comment, or view the %{entity} online
   # Lists
   #----------------------------------------------------------------------------
@@ -743,39 +743,39 @@ en-GB:
   pluralize:
     comment:
       one: 1 comment
-      other: ! '%{count} comments'
+      other: ! "%{count} comments"
     contact:
       one: 1 contact
-      other: ! '%{count} contacts'
+      other: ! "%{count} contacts"
     opportunity:
       one: 1 opportunity
-      other: ! '%{count} opportunities'
+      other: ! "%{count} opportunities"
     lead:
       one: 1 lead
-      other: ! '%{count} leads'
+      other: ! "%{count} leads"
     day:
       one: 1 day
-      other: ! '%{count} days'
+      other: ! "%{count} days"
     login:
       one: 1 login
-      other: ! '%{count} logins'
+      other: ! "%{count} logins"
   # Custom date/time formats.
   #----------------------------------------------------------------------------
   date:
     formats:
-      mmddyyyy: ! '%Y-%m-%d'
-      mmdd: ! '%e %b'
-      mmddyy: ! '%e %b, %Y'
+      mmddyyyy: ! "%Y-%m-%d"
+      mmdd: ! "%e %b"
+      mmddyy: ! "%e %b, %Y"
   time:
     formats:
-      mmddhhss: ! '%e %b at %l:%M%p'
-      mmddyyyy_hhmm: ! '%e %b %Y at %l:%M%p'
+      mmddhhss: ! "%e %b at %l:%M%p"
+      mmddyyyy_hhmm: ! "%e %b %Y at %l:%M%p"
   # will_paginate translations copied for 'en-US'
   #----------------------------------------------------------------------------
   will_paginate:
-    previous_label: ! '&#8592; Previous'
-    next_label: 'Next &#8594;'
-    page_gap: ! '&hellip;'
+    previous_label: ! "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: ! "&hellip;"
     page_entries_info:
       single_page:
         one: Displaying 1 %{name}
@@ -793,16 +793,16 @@ en-GB:
   save_field_group: Save field group
   field_group_empty: There are no fields in this group.
   select_or_create_tags: Select some tags, or create a new tag by pressing 'enter'.
-  restrict_by_tag: ! 'Restrict by Tag:'
+  restrict_by_tag: ! "Restrict by Tag:"
   restrict_by_tag_info: (Only show fields for %{assets} that are tagged with the following)
   field_group_tag_restriction: This field group applies to %{assets} tagged with "%{tag}"
   field_group_unrestricted: This field group applies to all %{assets}
   field_group_confirm_delete: If a field group is deleted, any fields will be moved to the default field group.
   msg_cant_delete_field_group: Field Group could not be deleted.
-  admin_fields_info: ! 'Custom fields are displayed in groups. Create a new field group, or add fields to one of the groups below. You can drag and drop fields to change their display order or move them between field groups.'
+  admin_fields_info: ! "Custom fields are displayed in groups. Create a new field group, or add fields to one of the groups below. You can drag and drop fields to change their display order or move them between field groups."
   # Views -> Admin -> Tags
   #----------------------------------------------------------------------------
-  admin_fields_info2: ! 'It is strongly recommended you restart your server after adding or removing any custom field. '
+  admin_fields_info2: ! "It is strongly recommended you restart your server after adding or removing any custom field. "
   tags: Tags
   tag_small: tag
   tagged: Tagged
@@ -825,16 +825,16 @@ en-GB:
   # Simple Form translations
   #----------------------------------------------------------------------------
   simple_form:
-    yes: 'Yes'
-    no: 'No'
+    yes: "Yes"
+    no: "No"
     required:
       text: required
-      mark: ! '*'
+      mark: ! "*"
     # You can uncomment the line below if you need to overwrite the whole required html.
     # When using html, text and mark won't be used.
     # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: ! 'Some errors were found, please take a look:'
+      default_message: ! "Some errors were found, please take a look:"
   # Form field types
   #----------------------------------------------------------------------------
   field_types:

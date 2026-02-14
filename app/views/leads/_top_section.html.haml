@@ -3,6 +3,14 @@
   .section
     %table
       %tr
+        %td
+          .label.top.req #{t :company}:
+          = f.autocomplete_field :company, autocomplete_account_name_leads_path, required: true
+        %td= spacer
+        %td
+          .label.top.req #{t :country_of_origin}:
+          = f.country_select :country_of_origin, { priority_countries: priority_countries, include_blank: true }, { required: true, data: { placeholder: t(:select_a_country) }, class: 'select2' }
+      %tr
         %td{ class: (@lead.errors['first_name'].present? ? 'fieldWithErrors' : nil)}
           .label.top{ class: "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
           = f.text_field :first_name, autofocus: true, required: (Setting.require_first_names ? "required" : nil)
@@ -12,13 +20,20 @@
           = f.text_field :last_name, required: (Setting.require_last_names ? "required" : nil)
       %tr
         %td
-          .label #{t :email}:
-          = f.text_field :email
+          .label.req #{t :email}:
+          = f.text_field :email, required: true
         %td= spacer
         %td
-          .label #{t :phone}:
-          = phone_field_with_pattern(f, :phone)
-
+          .label.req #{t :phone}:
+          = phone_field_with_pattern(f, :phone, required: true)
+      %tr
+        %td
+          .label.req #{t :payments_terms}:
+          = f.select :payments_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }, { required: true }
+        %td= spacer
+        %td
+          .label.req #{t :difficulty}:
+          = f.select :difficulty, ["I'm Too Young to Die/Child's Play", "Hurt Me Plenty", "Ultra-Violence", "Nightmare"], { include_blank: "-- Select --" }, { required: true }
       - if Setting.background_info && Setting.background_info.include?(:lead)
         %tr
           %td(colspan="3")
