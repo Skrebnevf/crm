@@ -1,0 +1,10 @@
+.title_tools#menu
+  = link_to_inline(:edit_request_for_quatation, edit_request_for_quatation_path(@request_for_quatation), text: t(:edit)) + " | "
+  = link_to_function(t(:delete) + '?', confirm_delete(@request_for_quatation))
+.title_tools#buttons
+  = view_buttons
+.title#title
+  = h(@request_for_quatation.client)
+  = image_tag("loading.gif", size: :thumb, id: "loading", style: "display: none;")
+
+%div#edit_request_for_quatation{ hidden }

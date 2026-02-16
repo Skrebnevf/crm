@@ -1,0 +1,23 @@
+%li.highlight[request_for_quatation]
+  .strip{class: request_for_quatation.accepted ? 'converted' : 'other'}= request_for_quatation.accepted ? t(:accepted) : t(:other)
+
+  %ul.tools
+    - if can?(:update, request_for_quatation)
+      %li= link_to_edit(request_for_quatation)
+
+  .indent
+    = link_to_if can?(:read, request_for_quatation), request_for_quatation.client, request_for_quatation
+    %tt
+      = request_for_quatation.request_type
+      - if request_for_quatation.what.present?
+        &ndash;
+        = request_for_quatation.what
+      - if request_for_quatation.price_netto.present?
+        &ndash;
+        = number_to_currency(request_for_quatation.price_netto)
+
+    - if request_for_quatation.created_at
+      %dt{style: "padding: 2px 0px 0px 0px"}
+        = t(:added_ago, value: time_ago_in_words(request_for_quatation.created_at))
+
+    = hook(:request_for_quatation_bottom, self, request_for_quatation: request_for_quatation)

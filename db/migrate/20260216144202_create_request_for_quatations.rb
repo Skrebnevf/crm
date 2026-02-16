@@ -1,7 +1,7 @@
 class CreateRequestForQuatations < ActiveRecord::Migration[7.1]
   def change
     create_table :request_for_quatations do |t|
-      t.string :user_id
+      t.integer :user_id
       t.string :client
       t.string :from
       t.string :to

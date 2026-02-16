@@ -1,0 +1,13 @@
+- if (template = template_for_current_view)
+  = render(template, request_for_quatation: @request_for_quatation)
+- else
+  -# default view
+  = styles_for :task
+
+  = render 'request_for_quatations/title_bar', request_for_quatation: @request_for_quatation
+  = render 'request_for_quatations/sidebar_show', request_for_quatation: @request_for_quatation
+  = render "comments/new", commentable: @request_for_quatation
+  = render partial: "shared/timeline", collection: @timeline
+
+  = hook(:show_request_for_quatation_bottom, self, {entity: @request_for_quatation}) do
+    = render partial: "versions/versions", locals: {object: @request_for_quatation}

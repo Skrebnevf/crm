@@ -6,7 +6,12 @@
 # See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
-  resources :request_for_quatations
+  resources :request_for_quatations do
+    collection do
+      get :redraw
+      post :filter
+    end
+  end
   resources :signed_jobs
   resources :lists
 

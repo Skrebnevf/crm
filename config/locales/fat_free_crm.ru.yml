@@ -24,6 +24,7 @@ ru:
   tab_accounts: Контрагенты
   tab_contacts: Контакты
   tab_opportunities: Возможности
+  tab_request_for_quatations: Запросы котировок
   tab_team: Команда
   admin_tab_groups: Группы
   admin_tab_users: Пользователи
@@ -854,6 +855,12 @@ ru:
       few: ! "%{count} потенциальных клиентов"
       many: ! "%{count} потенциальных клиентов"
       other: ! "%{count} потенциальных клиентов"
+    request_for_quatation:
+      zero: 0 запросов котировок
+      one: 1 запрос котировки
+      few: ! "%{count} запроса котировки"
+      many: ! "%{count} запросов котировок"
+      other: ! "%{count} запросов котировок"
     day:
       zero: 0 дней
       one: ! "%{count} день"
@@ -990,3 +997,26 @@ ru:
     from_to: От %{from} к %{to}
     from_only: От %{from}
     to_only: До %{to}
+
+  # Request for Quatations
+  #----------------------------------------------------------------------------
+  create_request_for_quatation: Создать запрос котировки
+  request_for_quatation: Запрос котировки
+  request_for_quatations: Запросы котировок
+  client: Клиент
+  request_type: Тип запроса
+  readiness_date: Дата готовности
+  what: Что
+  price_netto: Цена нетто
+  payment_terms: Условия оплаты
+  transit_time: Время в пути
+  preadvise: Предуведомление
+  free_time: Свободное время
+  demmurage_rate: Ставка демереджа
+  valid_till: Действителен до
+  accepted: Принято
+  denied: Отклонено
+  reason: Причина
+  rfq_from: Откуда
+  rfq_to: Куда
+  create_request_for_quatation_small: создать новый запрос котировки

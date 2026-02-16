@@ -1,0 +1,13 @@
+.remote
+  = simple_form_for(@request_for_quatation, html: one_submit_only, remote: true) do |f|
+    = link_to_close edit_request_for_quatation_path(@request_for_quatation)
+    = f.hidden_field :user_id
+
+    = f.error_messages object_name: t('request_for_quatation')
+
+    = render "request_for_quatations/top_section", f: f, edit: true
+
+    .buttonbar
+      = f.submit t(:save_request_for_quatation), class: 'btn btn-primary'
+      #{t :or}
+      = link_to_cancel edit_request_for_quatation_path(@request_for_quatation)

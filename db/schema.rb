@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_14_124235) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_16_144202) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -311,6 +311,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_14_124235) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
+    t.string "cf_test"
     t.string "payments_terms"
     t.string "difficulty"
     t.string "country_of_origin"
@@ -369,6 +370,29 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_14_124235) do
     t.index ["user_id", "name"], name: "index_preferences_on_user_id_and_name"
   end
 
+  create_table "request_for_quatations", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "client"
+    t.string "from"
+    t.string "to"
+    t.string "readiness_date"
+    t.string "what"
+    t.string "request_type"
+    t.string "comment"
+    t.integer "price_netto"
+    t.string "payment_terms"
+    t.string "transit_time"
+    t.string "preadvise"
+    t.string "free_time"
+    t.string "demmurage_rate"
+    t.string "valid_till"
+    t.boolean "accepted"
+    t.boolean "denied"
+    t.string "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "research_tools", force: :cascade do |t|
     t.string "name"
     t.string "url_template"
@@ -392,6 +416,22 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_14_124235) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.index ["name"], name: "index_settings_on_name"
+  end
+
+  create_table "signed_jobs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "status"
+    t.string "additional_expenses"
+    t.string "incoming_invoice"
+    t.string "incoming_additional_invoice"
+    t.string "outcoming_invoice"
+    t.string "CMR"
+    t.string "file"
+    t.string "assign_to_manager"
+    t.string "assign_to_prosecutor"
+    t.string "end_of_time_project"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|

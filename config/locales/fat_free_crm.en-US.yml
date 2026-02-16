@@ -24,6 +24,7 @@ en-US:
   tab_accounts: Accounts
   tab_contacts: Contacts
   tab_opportunities: Opportunities
+  tab_request_for_quatations: Request for Quatations
   tab_team: Team
   admin_tab_groups: Groups
   admin_tab_users: Users
@@ -791,6 +792,26 @@ en-US:
   # Export.
   #----------------------------------------------------------------------------
   to_xls: Export to Excel
+  create_request_for_quatation: Create Request for Quatation
+  request_for_quatation: Request for Quatation
+  request_for_quatations: Request for Quatations
+  create_request_for_quatation_small: create a new request for quatation
+  client: Client
+  request_type: Request Type
+  readiness_date: Readiness Date
+  what: What
+  price_netto: Price Netto
+  payment_terms: Payment Terms
+  transit_time: Transit Time
+  preadvise: Preadvise
+  free_time: Free Time
+  demmurage_rate: Demurage Rate
+  valid_till: Valid Till
+  accepted: Accepted
+  denied: Denied
+  reason: Reason
+  rfq_from: From
+  rfq_to: To
   to_csv: Export to comma-delimited file format (including deleted records)
   to_rss: RSS feed
   to_atom: Atom feed

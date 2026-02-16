@@ -1,0 +1,24 @@
+.panel#summary
+  .caption= t :request_for_quatation_summary
+  %li
+    %dt= @request_for_quatation.request_type
+    %tt #{t :request_type}
+  %li
+    %dt= @request_for_quatation.readiness_date
+    %tt #{t :readiness_date}
+  %li
+    %dt= @request_for_quatation.from
+    %tt #{t :from}
+  %li
+    %dt= @request_for_quatation.to
+    %tt #{t :to}
+  %li
+    %dt= number_to_currency(@request_for_quatation.price_netto)
+    %tt #{t :price_netto}
+
+  = render "fields/sidebar_show", asset: @request_for_quatation
+
+  .caption= t :other
+  %li
+    %dt= @request_for_quatation.user.try(:full_name)
+    %tt #{t :created_by}

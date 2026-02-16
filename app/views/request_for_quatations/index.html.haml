@@ -1,0 +1,18 @@
+= styles_for :request_for_quatation
+
+= render 'entities/title_bar'
+
+.remote#create_request_for_quatation{ hidden }
+
+= render 'search'
+
+.remote#options{ hidden }
+
+.list#request_for_quatations
+  - if @request_for_quatations.any?
+    = render @request_for_quatations
+  - else
+    = render "shared/empty"
+
+#paginate= render "shared/paginate_with_per_page"
+#export= render "shared/export"

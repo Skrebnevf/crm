@@ -1,0 +1,8 @@
+- if @request_for_quatation.valid?
+  $('#create_request_for_quatation').effect("blind", { direction: "vertical" }, 500)
+  $('#request_for_quatations').prepend('#{ j render(partial: "request_for_quatation", collection: [ @request_for_quatation ]) }');
+  $('#request_for_quatation_#{ @request_for_quatation.id }').effect("highlight", { color: '#FFFF80' }, 3000);
+  crm.flick('empty', 'remove');
+- else
+  $('#create_request_for_quatation').html('#{ j render(partial: "new") }');
+  $('#create_request_for_quatation').effect("shake", { distance: 5 }, 250);
