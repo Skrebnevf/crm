@@ -8,28 +8,28 @@
           = f.autocomplete_field :company, autocomplete_account_name_leads_path, required: true
         %td= spacer
         %td
-          .label.top.req #{t :country_of_origin}:
-          = f.country_select :country_of_origin, { priority_countries: priority_countries, include_blank: true }, { required: true, data: { placeholder: t(:select_a_country) }, class: 'select2' }
+          .label.top #{t :country_of_origin}:
+          = f.country_select :country_of_origin, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
       %tr
         %td{ class: (@lead.errors['first_name'].present? ? 'fieldWithErrors' : nil)}
-          .label.top{ class: "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
-          = f.text_field :first_name, autofocus: true, required: (Setting.require_first_names ? "required" : nil)
+          .label.top #{t :first_name}:
+          = f.text_field :first_name, autofocus: true
         %td= spacer
         %td{ class: (@lead.errors['last_name'].present? ? 'fieldWithErrors' : nil)}
-          .label.top{ class: "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
-          = f.text_field :last_name, required: (Setting.require_last_names ? "required" : nil)
+          .label.top #{t :last_name}:
+          = f.text_field :last_name
       %tr
         %td
-          .label.req #{t :email}:
-          = f.text_field :email, required: true
+          .label #{t :email}:
+          = f.text_field :email
         %td= spacer
         %td
-          .label.req #{t :phone}:
-          = phone_field_with_pattern(f, :phone, required: true)
+          .label #{t :phone}:
+          = phone_field_with_pattern(f, :phone)
       %tr
         %td
-          .label.req #{t :payments_terms}:
-          = f.select :payments_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }, { required: true }
+          .label #{t :payments_terms}:
+          = f.select :payments_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }
         %td= spacer
         %td
           .label.req #{t :difficulty}:
