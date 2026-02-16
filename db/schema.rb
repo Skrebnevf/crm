@@ -311,7 +311,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_14_124235) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
-    t.string "cf_test"
     t.string "payments_terms"
     t.string "difficulty"
     t.string "country_of_origin"

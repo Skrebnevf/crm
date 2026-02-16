@@ -1,0 +1,2 @@
+class RequestForQuatation < ApplicationRecord
+end

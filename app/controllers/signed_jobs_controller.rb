@@ -1,0 +1,2 @@
+class SignedJobsController < ApplicationController
+end

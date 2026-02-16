@@ -1,0 +1,2 @@
+class SignedJob < ApplicationRecord
+end

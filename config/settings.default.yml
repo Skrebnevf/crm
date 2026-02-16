@@ -233,6 +233,11 @@
   :icon: :fa-money
   :url:
     :controller: opportunities
+- :active: true
+  :text: :tab_request
+  :icon: :fa-money
+  :url:
+      :controller: request_for_quatations 
 - :active: false
   :text: :tab_team
   :icon: :fa-globe

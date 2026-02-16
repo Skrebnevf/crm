@@ -1,0 +1,2 @@
+module RequestForQuatationsHelper
+end

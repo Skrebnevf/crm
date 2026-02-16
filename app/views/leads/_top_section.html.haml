@@ -5,7 +5,7 @@
       %tr
         %td
           .label.top.req #{t :company}:
-          = f.autocomplete_field :company, autocomplete_account_name_leads_path, required: true
+          = f.autocomplete_field :company, autocomplete_account_name_leads_path, required: true, autofocus: true
         %td= spacer
         %td
           .label.top #{t :country_of_origin}:
@@ -13,7 +13,7 @@
       %tr
         %td{ class: (@lead.errors['first_name'].present? ? 'fieldWithErrors' : nil)}
           .label.top #{t :first_name}:
-          = f.text_field :first_name, autofocus: true
+          = f.text_field :first_name
         %td= spacer
         %td{ class: (@lead.errors['last_name'].present? ? 'fieldWithErrors' : nil)}
           .label.top #{t :last_name}:
