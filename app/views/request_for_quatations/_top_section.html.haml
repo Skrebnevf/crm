@@ -1,70 +1,34 @@
+- collapsed = false
+= subtitle :request_for_quatation_info, collapsed, t(:info)
+
 .section
-  %table
-    %tr
-      %td
-        .label.top.req #{t :client}:
-        = f.text_field :client, autofocus: true
-      %td= spacer
-      %td
-        .label.top #{t :request_type}:
-        = f.select :request_type, ["Import", "Export", "Domestic", "Cross Trade"], { include_blank: "-- Select --" }
-    %tr
-      %td
-        .label #{t :rfq_from}:
-        = f.text_field :from
-      %td= spacer
-      %td
-        .label #{t :rfq_to}:
-        = f.text_field :to
-    %tr
-      %td
-        .label #{t :readiness_date}:
-        = f.date_field :readiness_date
-      %td= spacer
-      %td
-        .label #{t :what}:
-        = f.text_field :what
-    %tr
-      %td
-        .label #{t :price_netto}:
-        = f.text_field :price_netto
-      %td= spacer
-      %td
-        .label #{t :payment_terms}:
-        = f.text_field :payment_terms
-    %tr
-      %td
-        .label #{t :transit_time}:
-        = f.text_field :transit_time
-      %td= spacer
-      %td
-        .label #{t :preadvise}:
-        = f.text_field :preadvise
-    %tr
-      %td
-        .label #{t :free_time}:
-        = f.text_field :free_time
-      %td= spacer
-      %td
-        .label #{t :demmurage_rate}:
-        = f.text_field :demmurage_rate
-    %tr
-      %td
-        .label #{t :valid_till}:
-        = f.date_field :valid_till
-      %td= spacer
-      %td
-        .label #{t :comment}:
-        = f.text_area :comment, rows: 2
-    %tr
-      %td
-        .label #{t :accepted}:
-        = f.check_box :accepted
-      %td= spacer
-      %td
-        .label #{t :denied}:
-        = f.check_box :denied
-    %tr
-      %td(colspan="3")
-        .label #{t :reason}:
-        = f.text_field :reason, style: "width:100%"
+  #request_for_quatation_info{ hidden_if(collapsed) }
+    %table
+      %tr
+        %td
+          .label.top.req #{t :client}:
+          = f.text_field :client, autofocus: true
+        %td= spacer
+        %td
+          .label.top #{t :request_type}:
+          = f.select :request_type, ["Budget", "Bidding", "Spot", "Firm job"], { include_blank: "-- Select --" }
+      %tr
+        %td
+          .label #{t :rfq_from}:
+          = f.text_field :from
+        %td= spacer
+        %td
+          .label #{t :rfq_to}:
+          = f.text_field :to
+      %tr
+        %td
+          .label #{t :readiness_date}:
+          = f.date_field :readiness_date
+        %td= spacer
+        %td
+          .label #{t :what}:
+          = f.select :what, ["LTL", "LCL", "FTL", "OOG", "AIR", "SEA", "CONTAINER", "PROJECT"], {include_blank: "-- Select --"}
+      %tr
+        %td(colspan="3")
+          .label #{t :comment}:
+          = f.text_area :comment, rows: 2

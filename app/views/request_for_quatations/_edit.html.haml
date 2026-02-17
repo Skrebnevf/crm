@@ -6,6 +6,7 @@
     = f.error_messages object_name: t('request_for_quatation')
 
     = render "request_for_quatations/top_section", f: f, edit: true
+    = render "request_for_quatations/bottom_section", f: f, edit: true
 
     .buttonbar
       = f.submit t(:save_request_for_quatation), class: 'btn btn-primary'
