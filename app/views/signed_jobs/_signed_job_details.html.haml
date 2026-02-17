@@ -1,53 +1,99 @@
-= styles_for :signed_job
+- collapsed = false
+- edit_mode = local_assigns.fetch(:edit, false)
+= subtitle :signed_job_info, collapsed, t(:signed_job_info)
 
-= render 'show_title_bar'
-
-.remote#options{ hidden }
-
-%table
-  %tbody
-    - if @signed_job.doc_id.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:doc_id)
-          %span{style: "font-weight: bold"}= @signed_job.doc_id
-
-    - if @signed_job.request_for_quatation
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:request_for_quatation)
-          = link_to t(:view), request_for_quatation_path(@signed_job.request_for_quatation)
-
-    - if @signed_job.request_for_quatation&.client.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:client)
-          %span{style: "font-weight: bold"}= @signed_job.request_for_quatation.client
-
-    - if @signed_job.status.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:status)
-          %span{style: "font-weight: bold"}= @signed_job.status
-
-    - if @signed_job.assign_to_manager.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:manager)
-          %span{style: "font-weight: bold"}= User.find_by_id(@signed_job.assign_to_manager).try(:full_name)
-
-    - if @signed_job.assign_to_procurement.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:procurement)
-          %span{style: "font-weight: bold"}= User.find_by_id(@signed_job.assign_to_procurement).try(:full_name)
-
-    - if @signed_job.end_of_time_project.present?
-      %tr
-        %td{colspan: 2, style: "border-bottom: 0px"}
-          = t(:end_of_time_project)
-          %span{style: "font-weight: bold"}= @signed_job.end_of_time_project
-
-    %tr
-      %td{colspan: 2, style: "border-bottom: 0px"}
-        = t(:added_ago, value: time_ago_in_words(@signed_job.created_at))
+.section
+  #signed_job_info{ hidden_if(collapsed) }
+    - if edit_mode
+      - f = local_assigns[:f]
+      %table
+        %tr
+          %td
+            .label.top #{t :doc_id}:
+            = f.text_field :doc_id, readonly: true
+          %td= spacer
+          %td
+            .label.top #{t :status}:
+            = f.text_field :status
+        %tr
+          %td
+            .label #{t :additional_expenses}:
+            = f.text_field :additional_expenses
+          %td= spacer
+          %td
+            .label #{t :incoming_invoice}:
+            = f.text_field :incoming_invoice
+        %tr
+          %td
+            .label #{t :incoming_additional_invoice}:
+            = f.text_field :incoming_additional_invoice
+          %td= spacer
+          %td
+            .label #{t :outcoming_invoice}:
+            = f.text_field :outcoming_invoice
+        %tr
+          %td
+            .label #{t :CMR}:
+            = f.text_field :CMR
+          %td= spacer
+          %td
+            .label #{t :file}:
+            = f.text_field :file
+        %tr
+          %td
+            .label #{t :end_of_time_project}:
+            = f.text_field :end_of_time_project
+          %td= spacer
+          %td
+            .label #{t :created_at}:
+            = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
+    - else
+      %table
+        %tr
+          %td
+            .label.top #{t :doc_id}:
+            = text_field_tag :doc_id, @signed_job.doc_id, readonly: true
+          %td= spacer
+          %td
+            .label.top #{t :status}:
+            = text_field_tag :status, @signed_job.status, readonly: true
+        %tr
+          %td
+            .label #{t :additional_expenses}:
+            = text_field_tag :additional_expenses, @signed_job.additional_expenses, readonly: true
+          %td= spacer
+          %td
+            .label #{t :incoming_invoice}:
+            = text_field_tag :incoming_invoice, @signed_job.incoming_invoice, readonly: true
+        %tr
+          %td
+            .label #{t :incoming_additional_invoice}:
+            = text_field_tag :incoming_additional_invoice, @signed_job.incoming_additional_invoice, readonly: true
+          %td= spacer
+          %td
+            .label #{t :outcoming_invoice}:
+            = text_field_tag :outcoming_invoice, @signed_job.outcoming_invoice, readonly: true
+        %tr
+          %td
+            .label #{t :CMR}:
+            = text_field_tag :CMR, @signed_job.CMR, readonly: true
+          %td= spacer
+          %td
+            .label #{t :file}:
+            = text_field_tag :file, @signed_job.file, readonly: true
+        %tr
+          %td
+            .label #{t :manager}:
+            = text_field_tag :assign_to_manager, User.find_by_id(@signed_job.assign_to_manager).try(:full_name), readonly: true
+          %td= spacer
+          %td
+            .label #{t :procurement}:
+            = text_field_tag :assign_to_procurement, User.find_by_id(@signed_job.assign_to_procurement).try(:full_name), readonly: true
+        %tr
+          %td
+            .label #{t :end_of_time_project}:
+            = text_field_tag :end_of_time_project, @signed_job.end_of_time_project, readonly: true
+          %td= spacer
+          %td
+            .label #{t :created_at}:
+            = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true

@@ -1027,3 +1027,18 @@ ru:
   rfq_from: Откуда
   rfq_to: Куда
   create_request_for_quatation_small: создать новый запрос котировки
+
+  # Signed Jobs
+  #----------------------------------------------------------------------------
+  create_signed_job: Создать подписанное задание
+  save_signed_job: Сохранить подписанное задание
+  signed_job: Подписанное задание
+  signed_jobs: Подписанные задания
+  doc_id: ID документа
+  additional_expenses: Дополнительные расходы
+  incoming_invoice: Входящий счет
+  incoming_additional_invoice: Дополнительный входящий счет
+  outcoming_invoice: Исходящий счет
+  CMR: CMR
+  end_of_time_project: Завершение проекта
+  signed_job_info: Информация о подписанном задании

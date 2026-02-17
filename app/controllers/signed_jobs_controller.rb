@@ -3,7 +3,7 @@
 class SignedJobsController < ApplicationController
   before_action :set_current_tab, only: %i[index show edit]
   before_action :load_signed_jobs, only: %i[index]
-  before_action :load_signed_job, only: %i[show edit]
+  before_action :load_signed_job, only: %i[show edit update]
 
   # GET /signed_jobs
   def index
@@ -44,6 +44,13 @@ class SignedJobsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /signed_jobs/1
+  def update
+    respond_with(@signed_job) do |_format|
+      @signed_job.update(signed_job_params)
+    end
+  end
+
   private
 
   def get_signed_jobs(options = {})
@@ -75,5 +82,20 @@ class SignedJobsController < ApplicationController
 
   def per_page_param
     params[:per_page]&.to_i&.clamp(1, 200)
+  end
+
+  def signed_job_params
+    return {} unless params[:signed_job]
+
+    params.require(:signed_job).permit(
+      :status,
+      :additional_expenses,
+      :incoming_invoice,
+      :incoming_additional_invoice,
+      :outcoming_invoice,
+      :CMR,
+      :file,
+      :end_of_time_project
+    )
   end
 end
