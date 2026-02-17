@@ -1,0 +1,14 @@
+= styles_for :signed_job
+
+= render 'show_title_bar'
+
+.remote#options{ hidden }
+
+= render 'signed_job_details'
+
+- if @signed_job.request_for_quatation
+  = render 'request_for_quatation_details'
+
+%br
+
+= link_to(t(:signed_jobs), signed_jobs_path, remote: true)

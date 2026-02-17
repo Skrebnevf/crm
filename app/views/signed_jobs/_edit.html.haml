@@ -1,0 +1,7 @@
+.remote
+  = link_to_close edit_signed_job_path(@signed_job)
+
+  = render 'signed_job_details'
+
+  - if @signed_job.request_for_quatation
+    = render 'request_for_quatation_details'

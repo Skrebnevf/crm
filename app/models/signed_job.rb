@@ -2,7 +2,12 @@
 
 class SignedJob < ActiveRecord::Base
   belongs_to :request_for_quatation, optional: true
+  belongs_to :user, optional: true
   before_create :generate_uuid, :generate_doc_id
+
+  def self.per_page
+    20
+  end
 
   def generate_uuid
     self.uuid = SecureRandom.uuid if uuid.blank?

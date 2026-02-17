@@ -12,7 +12,12 @@ Rails.application.routes.draw do
       post :filter
     end
   end
-  resources :signed_jobs
+  resources :signed_jobs do
+    collection do
+      get :redraw
+      post :filter
+    end
+  end
   resources :lists
 
   root to: 'home#index'

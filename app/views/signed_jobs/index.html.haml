@@ -1,0 +1,12 @@
+= styles_for :signed_job
+
+= render 'title_bar'
+
+.list#signed_jobs
+  - if @signed_jobs.any?
+    = render @signed_jobs
+  - else
+    = render "shared/empty"
+
+#paginate= render "shared/paginate_with_per_page"
+#export= render "shared/export"

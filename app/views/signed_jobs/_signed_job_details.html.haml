@@ -1,0 +1,53 @@
+= styles_for :signed_job
+
+= render 'show_title_bar'
+
+.remote#options{ hidden }
+
+%table
+  %tbody
+    - if @signed_job.doc_id.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:doc_id)
+          %span{style: "font-weight: bold"}= @signed_job.doc_id
+
+    - if @signed_job.request_for_quatation
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:request_for_quatation)
+          = link_to t(:view), request_for_quatation_path(@signed_job.request_for_quatation)
+
+    - if @signed_job.request_for_quatation&.client.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:client)
+          %span{style: "font-weight: bold"}= @signed_job.request_for_quatation.client
+
+    - if @signed_job.status.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:status)
+          %span{style: "font-weight: bold"}= @signed_job.status
+
+    - if @signed_job.assign_to_manager.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:manager)
+          %span{style: "font-weight: bold"}= User.find_by_id(@signed_job.assign_to_manager).try(:full_name)
+
+    - if @signed_job.assign_to_procurement.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:procurement)
+          %span{style: "font-weight: bold"}= User.find_by_id(@signed_job.assign_to_procurement).try(:full_name)
+
+    - if @signed_job.end_of_time_project.present?
+      %tr
+        %td{colspan: 2, style: "border-bottom: 0px"}
+          = t(:end_of_time_project)
+          %span{style: "font-weight: bold"}= @signed_job.end_of_time_project
+
+    %tr
+      %td{colspan: 2, style: "border-bottom: 0px"}
+        = t(:added_ago, value: time_ago_in_words(@signed_job.created_at))

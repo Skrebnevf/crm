@@ -1,0 +1,5 @@
+.title_tools#buttons
+  = view_buttons
+.title#title
+  = @signed_job.doc_id || @signed_job.id
+  = image_tag("loading.gif", size: :thumb, id: "loading", style: "display: none;")

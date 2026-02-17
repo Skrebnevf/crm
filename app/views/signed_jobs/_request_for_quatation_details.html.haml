@@ -1,0 +1,115 @@
+- if @signed_job.request_for_quatation
+  - rfq = @signed_job.request_for_quatation
+
+  - collapsed = false
+  = subtitle :request_for_quatation_info, collapsed, 'Sales'
+
+  .section
+    #request_for_quatation_info{ hidden_if(collapsed) }
+      %table
+        %tr
+          %td
+            .label.top #{t :client}:
+            = rfq.client
+        %tr
+          %td
+            .label #{t :request_type}:
+            = rfq.request_type
+        %tr
+          %td
+            .label #{t :rfq_from}:
+            = ISO3166::Country[rfq.from]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[rfq.from]&.common_name || rfq.from
+        %tr
+          %td
+            .label #{t :rfq_to}:
+            = ISO3166::Country[rfq.to]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[rfq.to]&.common_name || rfq.to
+        %tr
+          %td
+            .label #{t :readiness_date}:
+            = rfq.readiness_date
+        %tr
+          %td
+            .label #{t :what}:
+            = rfq.what
+        - if rfq.comment.present?
+          %tr
+            %td
+              .label #{t :comment}:
+              = rfq.comment
+        - if rfq.assign_to_procurement.present?
+          %tr
+            %td
+              .label #{t :assign_to_procurement}:
+              = User.find_by_id(rfq.assign_to_procurement).try(:full_name)
+
+  - collapsed = false
+  = subtitle :request_for_quatation_details, collapsed, t(:details)
+
+  .section
+    #request_for_quatation_details{ hidden_if(collapsed) }
+      %table
+        %tr
+          %td
+            .label.top #{t :price_netto}:
+            = number_to_currency(rfq.price_netto)
+        %tr
+          %td
+            .label #{t :payment_terms}:
+            = rfq.payment_terms
+        %tr
+          %td
+            .label #{t :transit_time}:
+            = rfq.transit_time
+        - if rfq.preadvise.present?
+          %tr
+            %td
+              .label #{t :preadvise}:
+              = rfq.preadvise
+        - if rfq.free_time.present?
+          %tr
+            %td
+              .label #{t :free_time}:
+              = rfq.free_time
+        - if rfq.demmurage_rate.present?
+          %tr
+            %td
+              .label #{t :demmurage_rate}:
+              = rfq.demmurage_rate
+        - if rfq.valid_till.present?
+          %tr
+            %td
+              .label #{t :valid_till}:
+              = rfq.valid_till
+        - if rfq.assign_to_sales.present?
+          %tr
+            %td
+              .label #{t :assign_to_sales}:
+              = User.find_by_id(rfq.assign_to_sales).try(:full_name)
+        %tr
+          %td
+            .label #{t :accepted}:
+            = rfq.accepted ? t(:yes) : t(:no)
+        - if rfq.total_price.present?
+          %tr
+            %td
+              .label #{t :total_price}:
+              = number_to_currency(rfq.total_price)
+        - if rfq.income_payment_to.present?
+          %tr
+            %td
+              .label #{t :income_payment_to}:
+              = rfq.income_payment_to
+        - if rfq.outcome_payment_from.present?
+          %tr
+            %td
+              .label #{t :outcome_payment_from}:
+              = rfq.outcome_payment_from
+        %tr
+          %td
+            .label #{t :denied}:
+            = rfq.denied ? t(:yes) : t(:no)
+        - if rfq.reason.present?
+          %tr
+            %td
+              .label #{t :reason}:
+              = rfq.reason

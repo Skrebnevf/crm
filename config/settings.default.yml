@@ -227,6 +227,11 @@
     :icon: :fa-file-text
     :url:
       :controller: request_for_quatations
+  - :active: true
+    :text: tab_signed_jobs
+    :icon: :fa-file-text
+    :url:
+      :controller: signed_jobs
   - :active: false
     :text: :tab_team
     :icon: :fa-globe
