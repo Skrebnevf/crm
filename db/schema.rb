@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_17_091716) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_17_102613) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -400,6 +400,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_17_091716) do
     t.float "total_price"
     t.string "income_payment_to"
     t.string "outcome_payment_from"
+    t.string "uuid"
+    t.index ["uuid"], name: "index_request_for_quatations_on_uuid"
   end
 
   create_table "research_tools", force: :cascade do |t|
@@ -441,6 +443,12 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_17_091716) do
     t.string "end_of_time_project"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
+    t.integer "request_for_quatation_id"
+    t.string "doc_id"
+    t.index ["doc_id"], name: "index_signed_jobs_on_doc_id"
+    t.index ["request_for_quatation_id"], name: "index_signed_jobs_on_request_for_quatation_id"
+    t.index ["uuid"], name: "index_signed_jobs_on_uuid"
   end
 
   create_table "taggings", force: :cascade do |t|
