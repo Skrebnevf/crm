@@ -1019,7 +1019,7 @@ ru:
   demmurage_rate: Ставка демереджа
   valid_till: Действителен до
   accepted: Принято
-  total_price: Общая стоимость
+  total_price: Общая стоимость (EUR)
   income_payment_to: Получатель платежа (Вход)
   outcome_payment_from: Плательщик (Выход)
   denied: Отклонено

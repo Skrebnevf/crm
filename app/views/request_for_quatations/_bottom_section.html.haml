@@ -43,8 +43,7 @@
       %tr#accepted_details_row
         %td
           .label #{t :total_price}:
-          = f.text_field :total_price
-        %td= spacer
+          = f.text_field :total_price, type: 'number', step: 'any'
         %td= spacer
       %tr#accepted_details_row_2
         %td
