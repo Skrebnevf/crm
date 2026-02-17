@@ -18,8 +18,8 @@ class SignedJob < ActiveRecord::Base
     return unless request_for_quatation&.accepted?
 
     if request_for_quatation
-      payment_from_code = request_for_quatation.outcome_payment_from || 'XX'
-      payment_to_code = request_for_quatation.income_payment_to || 'XX'
+      payment_to_code = request_for_quatation.outcome_payment_from || 'XX'
+      payment_from_code = request_for_quatation.income_payment_to || 'XX'
     else
       payment_from_code = 'XX'
       payment_to_code = 'XX'
