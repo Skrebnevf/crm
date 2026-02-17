@@ -40,6 +40,20 @@
         %td
           .label #{t :accepted}:
           = f.check_box :accepted
+      %tr#accepted_details_row
+        %td
+          .label #{t :total_price}:
+          = f.text_field :total_price
+        %td= spacer
+        %td= spacer
+      %tr#accepted_details_row_2
+        %td
+          .label #{t :income_payment_to}:
+          = f.select :income_payment_to, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }
+        %td= spacer
+        %td
+          .label #{t :outcome_payment_from}:
+          = f.select :outcome_payment_from, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }
       %tr
         %td
           .label #{t :denied}:
@@ -51,8 +65,21 @@
 
 :javascript
   $(document).ready(function() {
+    var acceptedCheckbox = $('#request_for_quatation_accepted');
+    var acceptedDetailsRow = $('#accepted_details_row');
+    var acceptedDetailsRow2 = $('#accepted_details_row_2');
     var deniedCheckbox = $('#request_for_quatation_denied');
     var reasonRow = $('#reason_row');
+
+    function toggleAcceptedDetails() {
+      if (acceptedCheckbox.prop('checked')) {
+        acceptedDetailsRow.show();
+        acceptedDetailsRow2.show();
+      } else {
+        acceptedDetailsRow.hide();
+        acceptedDetailsRow2.hide();
+      }
+    }
 
     function toggleReason() {
       if (deniedCheckbox.prop('checked')) {
@@ -62,6 +89,8 @@
       }
     }
 
+    toggleAcceptedDetails();
     toggleReason();
+    acceptedCheckbox.on('change', toggleAcceptedDetails);
     deniedCheckbox.on('change', toggleReason);
   });

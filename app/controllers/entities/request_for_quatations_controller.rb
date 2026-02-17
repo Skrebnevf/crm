@@ -166,7 +166,10 @@ class RequestForQuatationsController < EntitiesController
       :denied,
       :reason,
       :assign_to_procurement,
-      :assign_to_sales
+      :assign_to_sales,
+      :total_price,
+      :income_payment_to,
+      :outcome_payment_from
     )
   end
 end

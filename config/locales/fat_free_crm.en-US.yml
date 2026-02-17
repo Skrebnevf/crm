@@ -814,6 +814,9 @@ en-US:
   demmurage_rate: Demurage Rate
   valid_till: Valid Till
   accepted: Accepted
+  total_price: Total Price
+  income_payment_to: Income payment to
+  outcome_payment_from: Outcome payment from
   denied: Denied
   reason: Reason
   rfq_from: From
