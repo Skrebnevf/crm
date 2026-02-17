@@ -275,7 +275,9 @@ ru:
   company: Организация
   contact_info: Контактная Информация
   info: Продажи
-  details: Пресекатор
+  details: Procurement
+  assign_to_procurement: Procurement
+  assign_to_sales: Назначить сейлза
   current_password: Текущий пароль
   edit_profile: Изменить Профиль
   first_name: Имя

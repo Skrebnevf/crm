@@ -11,7 +11,7 @@
         %td= spacer
         %td
           .label.top #{t :payment_terms}:
-          = f.select :payment_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" } 
+          = f.select :payment_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }
       %tr
         %td
           .label #{t :transit_time}:
@@ -32,6 +32,10 @@
         %td
           .label #{t :valid_till}:
           = f.date_field :valid_till
+        %td= spacer
+        %td
+          .label #{t :assign_to_sales}:
+          = f.select :assign_to_sales, user_options_for_select(all_users, current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
       %tr
         %td
           .label #{t :accepted}:

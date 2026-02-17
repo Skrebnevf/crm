@@ -164,7 +164,9 @@ class RequestForQuatationsController < EntitiesController
       :valid_till,
       :accepted,
       :denied,
-      :reason
+      :reason,
+      :assign_to_procurement,
+      :assign_to_sales
     )
   end
 end

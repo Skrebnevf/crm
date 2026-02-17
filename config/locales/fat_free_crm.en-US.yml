@@ -24,7 +24,8 @@ en-US:
   tab_accounts: Accounts
   tab_contacts: Contacts
   tab_opportunities: Opportunities
-  tab_request_for_quatations: Request for Quatations
+  tab_request_for_quatations: RFQ
+  subject_requestforquatation: RFQ
   tab_team: Team
   admin_tab_groups: Groups
   admin_tab_users: Users
@@ -289,7 +290,9 @@ en-US:
   company: Company
   contact_info: Contact Information
   info: Sales
-  details: Presecutor
+  details: Procurement
+  assign_to_procurement: Assigned to Procurement
+  assign_to_sales: Assigned to Sales
   current_password: Current password
   edit_profile: Edit Profile
   first_name: First name
@@ -795,6 +798,7 @@ en-US:
   #----------------------------------------------------------------------------
   to_xls: Export to Excel
   create_request_for_quatation: Create Request for Quatation
+  save_request_for_quatation: Save RFQ
   request_for_quatation: Request for Quatation
   request_for_quatations: Request for Quatations
   create_request_for_quatation_small: create a new request for quatation

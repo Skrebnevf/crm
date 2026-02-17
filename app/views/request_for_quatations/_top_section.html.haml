@@ -15,11 +15,11 @@
       %tr
         %td
           .label #{t :rfq_from}:
-          = f.text_field :from
+          = f.country_select :from, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
         %td= spacer
         %td
           .label #{t :rfq_to}:
-          = f.text_field :to
+          = f.country_select :to, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
       %tr
         %td
           .label #{t :readiness_date}:
@@ -28,6 +28,12 @@
         %td
           .label #{t :what}:
           = f.select :what, ["LTL", "LCL", "FTL", "OOG", "AIR", "SEA", "CONTAINER", "PROJECT"], {include_blank: "-- Select --"}
+      %tr
+        %td
+          .label #{t :assign_to_procurement}:
+          = f.select :assign_to_procurement, user_options_for_select(all_users, current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
+        %td= spacer
+        %td= spacer
       %tr
         %td(colspan="3")
           .label #{t :comment}:

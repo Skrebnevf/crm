@@ -26,7 +26,6 @@
 #
 #------------------------------------------------------------------------------
 
-
 # Host
 #------------------------------------------------------------------------------
 # Host for URLs when action mailer generates emails.
@@ -41,7 +40,6 @@
 #
 :host: ""
 
-
 # Base URL
 #------------------------------------------------------------------------------
 # Leave base_url blank if Fat Free CRM has been deployed in root URL, otherwise
@@ -54,59 +52,55 @@
 #
 :base_url: ""
 
-
 # Locale
 #------------------------------------------------------------------------------
 # Default locale is American English.
 #
 :locale: "en-US"
 
-
 # Settings for outgoing email (SMTP)
 # Uncomment to set up for your specific mailer
 #------------------------------------------------------------------------------
 #:smtp:
-  #:address                    : ""        # e.g. smtp.gmail.com
-  #:from                       : ""        # e.g. no-reply@your-domain.com
-  #:enable_starttls_auto       : true
-  #:port                       : "587"
-  #:authentication             : :plain
-  #:user_name                  : ""
-  #:password                   : ""
+#:address                    : ""        # e.g. smtp.gmail.com
+#:from                       : ""        # e.g. no-reply@your-domain.com
+#:enable_starttls_auto       : true
+#:port                       : "587"
+#:authentication             : :plain
+#:user_name                  : ""
+#:password                   : ""
 
 # Settings for the Email dropbox (IMAP)
 # - Connection settings for the IMAP account, server and folders.
 #------------------------------------------------------------------------------
 :email_dropbox:
-  :server                     : ""        # IMAP server name.
-  :port                       : ""        # IMAP server port number.
-  :ssl                        : ""        # True for secure IMAP connection, false otherwise.
-  :address                    : ""        # Dropbox email address.
-  :user                       : ""        # User to login to the IMAP server.
-  :password                   : ""        # Password to login to the IMAP server.
-  :scan_folder                : ""        # Folder to scan for dropbox messages.
-  :attach_to_account          : ""        # Attach emails to contact's account, if any.
-                                          # (The rule above also applies to opportunities.)
+  :server: "" # IMAP server name.
+  :port: "" # IMAP server port number.
+  :ssl: "" # True for secure IMAP connection, false otherwise.
+  :address: "" # Dropbox email address.
+  :user: "" # User to login to the IMAP server.
+  :password: "" # Password to login to the IMAP server.
+  :scan_folder: "" # Folder to scan for dropbox messages.
+  :attach_to_account:
+    "" # Attach emails to contact's account, if any.
+    # (The rule above also applies to opportunities.)
 #  :address_aliases:                      # Optional: List any aliases that you also want to
 #    - example_alias@example.com          #           ignore when scanning recipients
 #  :move_to_folder            : ""        # Optional: folder to move processed messages to.
 #  :move_invalid_to_folder    : ""        # Optional: folder to move invalid messages to.
 
-
-
 # Settings for 'Reply via email' inbox (IMAP)
 #------------------------------------------------------------------------------
 :email_comment_replies:
-  :server                     : ""        # IMAP server name.
-  :port                       : ""        # IMAP server port number.
-  :ssl                        : ""        # True for secure IMAP connection, false otherwise.
-  :address                    : ""        # Comment reply email address.
-  :user                       : ""        # User to login to the IMAP server.
-  :password                   : ""        # Password to login to the IMAP server.
-  :scan_folder                : ""        # Folder to scan for comment replies.
+  :server: "" # IMAP server name.
+  :port: "" # IMAP server port number.
+  :ssl: "" # True for secure IMAP connection, false otherwise.
+  :address: "" # Comment reply email address.
+  :user: "" # User to login to the IMAP server.
+  :password: "" # Password to login to the IMAP server.
+  :scan_folder: "" # Folder to scan for comment replies.
 #  :move_to_folder            : ""        # Optional: folder to move processed messages to.
 #  :move_invalid_to_folder    : ""        # Optional: folder to move invalid messages to.
-
 
 # Individual locales per user
 #------------------------------------------------------------------------------
@@ -115,7 +109,6 @@
 # with the default locale.
 #
 :per_user_locale: false
-
 
 # Default records permissions
 #------------------------------------------------------------------------------
@@ -126,7 +119,6 @@
 #
 :default_access: "Public"
 
-
 # User Signup
 #------------------------------------------------------------------------------
 # The following setting controls user signup. Possible values are:
@@ -136,7 +128,6 @@
 #
 :user_signup: :not_allowed
 
-
 # Address format
 #------------------------------------------------------------------------------
 # Sets the address format for Accounts, Contacts, and Leads.
@@ -144,7 +135,6 @@
 #   false -- use single text area field to enter the entire address.
 #
 :compound_address: true
-
 
 # Dropdown calendar format
 #------------------------------------------------------------------------------
@@ -155,12 +145,11 @@
 #
 :task_calendar_with_time: true
 
-
 # Enable/disable first/last name validations on Leads and Contacts
 #------------------------------------------------------------------------------
 #
 :require_first_names: true
-:require_last_names:  true
+:require_last_names: true
 
 # Enable/disable name validation on Accounts
 :require_unique_account_names: true
@@ -198,84 +187,84 @@
 # Main and Admin Tabs
 #------------------------------------------------------------------------------
 :tabs:
-- :active: true
-  :text: :tab_dashboard
-  :icon: :fa-dashboard
-  :url:
-    :controller: home
-- :active: false
-  :text: :tab_tasks
-  :icon: :fa-check-square-o
-  :url:
-    :controller: tasks
-- :active: false
-  :text: :tab_campaigns
-  :icon: :fa-bar-chart-o
-  :url:
-    :controller: campaigns
-- :active: false
-  :text: :tab_leads
-  :icon: :fa-tasks
-  :url:
-    :controller: leads
-- :active: false
-  :text: :tab_accounts
-  :icon: :fa-users
-  :url:
-    :controller: accounts
-- :active: false
-  :text: :tab_contacts
-  :icon: :fa-user
-  :url:
-    :controller: contacts
-- :active: false
-  :text: :tab_opportunities
-  :icon: :fa-money
-  :url:
-    :controller: opportunities
-- :active: true
-  :text: :tab_request
-  :icon: :fa-money
-  :url:
-      :controller: request_for_quatations 
-- :active: false
-  :text: :tab_team
-  :icon: :fa-globe
-  :url:
-    :controller: users
-    :action: opportunities_overview
+  - :active: true
+    :text: :tab_dashboard
+    :icon: :fa-dashboard
+    :url:
+      :controller: home
+  - :active: false
+    :text: :tab_tasks
+    :icon: :fa-check-square-o
+    :url:
+      :controller: tasks
+  - :active: false
+    :text: :tab_campaigns
+    :icon: :fa-bar-chart-o
+    :url:
+      :controller: campaigns
+  - :active: false
+    :text: :tab_leads
+    :icon: :fa-tasks
+    :url:
+      :controller: leads
+  - :active: false
+    :text: :tab_accounts
+    :icon: :fa-users
+    :url:
+      :controller: accounts
+  - :active: false
+    :text: :tab_contacts
+    :icon: :fa-user
+    :url:
+      :controller: contacts
+  - :active: false
+    :text: :tab_opportunities
+    :icon: :fa-money
+    :url:
+      :controller: opportunities
+  - :active: true
+    :text: tab_request_for_quatations
+    :icon: :fa-file-text
+    :url:
+      :controller: request_for_quatations
+  - :active: false
+    :text: :tab_team
+    :icon: :fa-globe
+    :url:
+      :controller: users
+      :action: opportunities_overview
 
 :admin_tabs:
-- :active: true
-  :text: :admin_tab_users
-  :icon: :fa-user
-  :url:
-    :controller: admin/users
-- :active: true
-  :text: :admin_tab_groups
-  :icon: :fa-users
-  :url:
-    :controller: admin/groups
-- :active: false
-  :text: :admin_tab_fields
-  :icon: :fa-list-alt
-  :url:
-    :controller: admin/fields
-- :active: false
-  :text: :admin_tab_tags
-  :icon: :fa-tags
-  :url:
-    :controller: admin/tags
-- :active: false
-  :text: :admin_tab_research_tools
-  :icon: :fa-search
-  :url:
-    :controller: admin/research_tools
-- :active: false
-  :text: :admin_tab_settings
-  :icon: :fa-cogs
-  :url:
-    :controller: admin/settings
+  - :active: true
+    :text: :admin_tab_users
+    :icon: :fa-user
+    :url:
+      :controller: admin/users
+  - :active: true
+    :text: :admin_tab_groups
+    :icon: :fa-users
+    :url:
+      :controller: admin/groups
+  - :active: false
+    :text: :admin_tab_fields
+    :icon: :fa-list-alt
+    :url:
+      :controller: admin/fields
+  - :active: false
+    :text: :admin_tab_tags
+    :icon: :fa-tags
+    :url:
+      :controller: admin/tags
+  - :active: false
+    :text: :admin_tab_research_tools
+    :icon: :fa-search
+    :url:
+      :controller: admin/research_tools
+  - :active: false
+    :text: :admin_tab_settings
+    :icon: :fa-cogs
+    :url:
+      :controller: admin/settings
 #- :active: false
 #  :text: :admin_tab_plugins
 #  :icon: :fa-plus-circle
@@ -376,7 +365,6 @@ task_completed:
 # to help guide users to enter phone numbers in international format.
 #
 :enforce_international_phone_format: false
-
 
 # AI Prompts
 #------------------------------------------------------------------------------
