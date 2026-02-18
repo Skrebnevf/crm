@@ -1020,6 +1020,7 @@ en-US:
   create_signed_job: Create Signed Job
   save_signed_job: Save Signed Job
   signed_job: Signed Job
+  total: Total
   signed_jobs: Signed Jobs
   doc_id: Document ID
   additional_expenses: Additional Expenses
@@ -1035,4 +1036,6 @@ en-US:
   outcoming_price: "Outcoming Price"
   qty_outcoming: "Qty (Out)"
   add_additional_expense: "+ Add expense"
+  additional_income_total: "Additional Income Total"
+  additional_outcome_total: "Additional Outcome Total"
   remove: "Remove"

@@ -59,6 +59,18 @@ class SignedJob < ActiveRecord::Base
     self.doc_id = "#{payment_from_code}#{payment_to_code}#{year_code}#{sequence_str}"
   end
 
+  def additional_income_total
+    rfq_base = request_for_quatation&.price_netto || 0
+    expenses_total = additional_expenses.sum { |e| (e.qty_incoming || 0) * (e.incoming_price || 0) }
+    rfq_base + expenses_total
+  end
+
+  def additional_outcome_total
+    rfq_base = request_for_quatation&.total_price || 0
+    expenses_total = additional_expenses.sum { |e| (e.qty_outcoming || 0) * (e.outcoming_price || 0) }
+    rfq_base + expenses_total
+  end
+
   private
 
   def build_default_additional_expense

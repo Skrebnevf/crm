@@ -10,11 +10,13 @@
     - else
       = signed_job.id
 
-    %tt
-      - if signed_job.request_for_quatation
-        - if signed_job.request_for_quatation.from.present? || signed_job.request_for_quatation.to.present?
-          &ndash;
-          = [ISO3166::Country[signed_job.request_for_quatation.from]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[signed_job.request_for_quatation.from]&.common_name || signed_job.request_for_quatation.from, ISO3166::Country[signed_job.request_for_quatation.to]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[signed_job.request_for_quatation.to]&.common_name || signed_job.request_for_quatation.to].compact.join(' -> ')
+    %div.totals{style: "margin-top: 5px; font-family: monospace;"}
+      %div.income-total{style: "color: #a3be8c;"}
+        IN:
+        = number_to_currency(signed_job.additional_income_total, unit: '€')
+      %div.outcome-total{style: "color: #bf616a;"}
+        OUT:
+        = number_to_currency(signed_job.additional_outcome_total, unit: '€')
 
       - if signed_job.assign_to_manager.present?
         &ndash;

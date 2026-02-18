@@ -1038,6 +1038,7 @@ ru:
   create_signed_job: Создать подписанное задание
   save_signed_job: Сохранить подписанное задание
   signed_job: Подписанное задание
+  total: Итого
   signed_jobs: Подписанные задания
   doc_id: ID документа
   additional_expenses: Дополнительные расходы
@@ -1053,4 +1054,6 @@ ru:
   outcoming_price: "Выход цена"
   qty_outcoming: "Кол-во (Вых)"
   add_additional_expense: "+ Добавить расход"
+  additional_income_total: "Общий доход (включая дополнительные)"
+  additional_outcome_total: "Общий расход (включая дополнительные)"
   remove: "Удалить"

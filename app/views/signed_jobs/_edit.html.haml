@@ -9,6 +9,8 @@
     - if @signed_job.request_for_quatation
       = render 'request_for_quatation_details'
 
+    = render 'signed_job_totals'
+
     .buttonbar
       = f.submit t(:save_signed_job), class: 'btn btn-primary'
       #{t :or}

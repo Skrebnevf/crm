@@ -1,0 +1,14 @@
+- collapsed = false
+= subtitle :signed_job_totals, collapsed, t(:total)
+
+.section
+  #signed_job_totals{ hidden_if(collapsed) }
+    %table
+      %tr
+        %td
+          .label #{t :additional_income_total}:
+          %b= number_to_currency(@signed_job.additional_income_total, unit: '€')
+        %td= spacer
+        %td
+          .label #{t :additional_outcome_total}:
+          %b= number_to_currency(@signed_job.additional_outcome_total, unit: '€')
