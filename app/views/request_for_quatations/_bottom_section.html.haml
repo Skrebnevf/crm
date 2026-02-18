@@ -30,14 +30,6 @@
           = f.text_field :demmurage_rate
       %tr
         %td
-          .label #{t :valid_till}:
-          = f.date_field :valid_till
-        %td= spacer
-        %td
-          .label #{t :assign_to_sales}:
-          = f.select :assign_to_sales, user_options_for_select(all_users, current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
-      %tr
-        %td
           .label #{t :accepted}:
           = f.check_box :accepted
       %tr#accepted_details_row

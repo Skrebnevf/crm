@@ -25,7 +25,8 @@ class RequestForQuatationsController < EntitiesController
   # GET /request_for_quatations/new
   #----------------------------------------------------------------------------
   def new
-    @request_for_quatation.attributes = { user: current_user }
+    @request_for_quatation.user = current_user
+    @request_for_quatation.author = current_user
     respond_with(@request_for_quatation)
   end
 
@@ -165,8 +166,7 @@ class RequestForQuatationsController < EntitiesController
       :accepted,
       :denied,
       :reason,
-      :assign_to_procurement,
-      :assign_to_sales,
+      :author_id,
       :total_price,
       :income_payment_to,
       :outcome_payment_from

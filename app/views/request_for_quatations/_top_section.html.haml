@@ -6,6 +6,12 @@
     %table
       %tr
         %td
+          .label.top #{t :author}:
+          = f.select :author_id, user_options_for_select(all_users, f.object.author || f.object.user || current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
+        %td= spacer
+        %td= spacer
+      %tr
+        %td
           .label.top.req #{t :client}:
           = f.text_field :client, autofocus: true
         %td= spacer
@@ -28,12 +34,6 @@
         %td
           .label #{t :what}:
           = f.select :what, ["LTL", "LCL", "FTL", "OOG", "AIR", "SEA", "CONTAINER", "PROJECT"], {include_blank: "-- Select --"}
-      %tr
-        %td
-          .label #{t :assign_to_procurement}:
-          = f.select :assign_to_procurement, user_options_for_select(all_users, current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
-        %td= spacer
-        %td= spacer
       %tr
         %td(colspan="3")
           .label #{t :comment}:

@@ -2,6 +2,11 @@
 en-US:
   language: English
 
+  number:
+    currency:
+      format:
+        unit: "€"
+
   # Generic terms.
   #----------------------------------------------------------------------------
   id: Id
@@ -515,7 +520,7 @@ en-US:
   closes_today: expected to close today!
   closing_date: closing date is %{value}
   create_opportunity: Create Opportunity
-  currency: "$"
+  currency: "€"
   days_late: Late by
   days_left: Days left
   discount: Discount

@@ -2,6 +2,11 @@
 ru:
   language: Russian (Русский)
 
+  number:
+    currency:
+      format:
+        unit: "€"
+
   # Generic terms.
   #----------------------------------------------------------------------------
   id: Id
@@ -495,7 +500,7 @@ ru:
   closes_today: завершение ожидается сегодня!
   closing_date: дата завершения %{value}
   create_opportunity: Создать возможность
-  currency: "грн."
+  currency: "€"
   days_late: Задержка
   days_left: Осталось дней
   discount: Скидка

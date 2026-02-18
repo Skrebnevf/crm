@@ -13,17 +13,8 @@
     %dt= ISO3166::Country[@request_for_quatation.to]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[@request_for_quatation.to]&.common_name || @request_for_quatation.to
     %tt #{t :to}
   %li
-    %dt= number_to_currency(@request_for_quatation.price_netto)
+    %dt= number_to_currency(@request_for_quatation.price_netto, unit: '€')
     %tt #{t :price_netto}
-  - if @request_for_quatation.assign_to_procurement.present?
-    %li
-      %dt= User.find_by_id(@request_for_quatation.assign_to_procurement).try(:full_name)
-      %tt #{t :assign_to_procurement}
-  - if @request_for_quatation.assign_to_sales.present?
-    %li
-      %dt= User.find_by_id(@request_for_quatation.assign_to_sales).try(:full_name)
-      %tt #{t :assign_to_sales}
-
   = render "fields/sidebar_show", asset: @request_for_quatation
 
   .caption= t :other

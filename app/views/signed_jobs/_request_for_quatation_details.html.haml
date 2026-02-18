@@ -36,11 +36,11 @@
             %td{colspan: 3}
               .label{style: "font-weight: bold;"} #{t :comment}:
               = rfq.comment
-        - if rfq.assign_to_procurement.present?
+        - if rfq.author.present?
           %tr
             %td{colspan: 3}
-              .label{style: "font-weight: bold;"} #{t :assign_to_procurement}:
-              = User.find_by_id(rfq.assign_to_procurement).try(:full_name)
+              .label{style: "font-weight: bold;"} #{t :author}:
+              = rfq.author.full_name
 
   - collapsed = true
   = subtitle :request_for_quatation_details, collapsed, t(:details)
@@ -51,7 +51,7 @@
         %tr
           %td
             .label.top{style: "font-weight: bold;"} #{t :price_netto}:
-            = number_to_currency(rfq.price_netto)
+            = number_to_currency(rfq.price_netto, unit: '€')
           %td= spacer
           %td
             .label.top{style: "font-weight: bold;"} #{t :payment_terms}:
@@ -102,26 +102,16 @@
             %td
               .label{style: "font-weight: bold;"} #{t :valid_till}:
               = rfq.valid_till
-        - if rfq.assign_to_sales.present?
-          %tr
-            %td
-              .label{style: "font-weight: bold;"} #{t :assign_to_sales}:
-              = User.find_by_id(rfq.assign_to_sales).try(:full_name)
-            %td= spacer
-            %td
-              .label{style: "font-weight: bold;"} #{t :denied}:
-              = rfq.denied ? t(:yes) : t(:no)
-        - else
-          %tr
-            %td
-              .label{style: "font-weight: bold;"} #{t :denied}:
-              = rfq.denied ? t(:yes) : t(:no)
-            %td= spacer
+        %tr
+          %td
+            .label{style: "font-weight: bold;"} #{t :denied}:
+            = rfq.denied ? t(:yes) : t(:no)
+          %td= spacer
         - if rfq.total_price.present? && rfq.income_payment_to.present?
           %tr
             %td
               .label.top{style: "font-weight: bold;"} #{t :total_price}:
-              = number_to_currency(rfq.total_price)
+              = number_to_currency(rfq.total_price, unit: '€')
             %td= spacer
             %td
               .label.top{style: "font-weight: bold;"} #{t :income_payment_to}:
@@ -130,7 +120,7 @@
           %tr
             %td
               .label.top{style: "font-weight: bold;"} #{t :total_price}:
-              = number_to_currency(rfq.total_price)
+              = number_to_currency(rfq.total_price, unit: '€')
         - elsif rfq.income_payment_to.present?
           %tr
             %td

@@ -9,27 +9,30 @@
   .indent
     = link_to_if can?(:update, request_for_quatation), request_for_quatation.client, edit_request_for_quatation_path(request_for_quatation), remote: true
     %tt
-      = request_for_quatation.request_type
-      - if request_for_quatation.what.present?
-        &ndash;
-        = request_for_quatation.what
       - if request_for_quatation.from.present? || request_for_quatation.to.present?
-        &ndash;
         = [ISO3166::Country[request_for_quatation.from]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[request_for_quatation.from]&.common_name || request_for_quatation.from, ISO3166::Country[request_for_quatation.to]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[request_for_quatation.to]&.common_name || request_for_quatation.to].compact.join(' -> ')
       - if request_for_quatation.price_netto.present?
         &ndash;
-        = number_to_currency(request_for_quatation.price_netto)
-      - if request_for_quatation.assign_to_procurement.present?
-        &ndash;
-        %span.procurement
-          = User.find_by_id(request_for_quatation.assign_to_procurement).try(:full_name)
-      - if request_for_quatation.assign_to_sales.present?
-        &ndash;
-        %span.sales
-          = User.find_by_id(request_for_quatation.assign_to_sales).try(:full_name)
+        = number_to_currency(request_for_quatation.price_netto, unit: '€')
+
+    - if request_for_quatation.author.present?
+      %dt{style: "padding: 2px 0px 0px 0px"}
+        %b
+          #{t :author}:
+          = request_for_quatation.author.full_name
+
+    - if request_for_quatation.comment.present?
+      %dt{style: "padding: 2px 0px 0px 0px; color: #666;"}
+        %b #{t :comment}:
+        %i= request_for_quatation.comment
+    - if request_for_quatation.reason.present?
+      %dt{style: "padding: 2px 0px 0px 0px; color: #bf616a;"}
+        %b #{t :reason}:
+        = request_for_quatation.reason
 
     - if request_for_quatation.created_at
       %dt{style: "padding: 2px 0px 0px 0px"}
-        = t(:added_ago, value: time_ago_in_words(request_for_quatation.created_at))
+        %b Date:
+        = l(request_for_quatation.created_at, format: :long)
 
     = hook(:request_for_quatation_bottom, self, request_for_quatation: request_for_quatation)

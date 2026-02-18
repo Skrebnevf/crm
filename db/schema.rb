@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_17_102613) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_18_071305) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -311,7 +311,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_17_102613) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
-    t.string "cf_test"
     t.string "payments_terms"
     t.string "difficulty"
     t.string "country_of_origin"
@@ -391,16 +390,11 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_17_102613) do
     t.string "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "subscribed_users"
-    t.string "access"
-    t.integer "assigned_to"
-    t.datetime "deleted_at"
-    t.integer "assign_to_procurement"
-    t.integer "assign_to_sales"
     t.float "total_price"
     t.string "income_payment_to"
     t.string "outcome_payment_from"
     t.string "uuid"
+    t.integer "author_id"
     t.index ["uuid"], name: "index_request_for_quatations_on_uuid"
   end
 

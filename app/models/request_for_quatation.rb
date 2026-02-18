@@ -2,6 +2,7 @@
 
 class RequestForQuatation < ActiveRecord::Base
   belongs_to :user
+  belongs_to :author, class_name: 'User', optional: true
   has_many :signed_jobs, dependent: :nullify
   scope :my, ->(user) { where(user_id: user.id) }
 
