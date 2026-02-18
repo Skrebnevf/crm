@@ -1,10 +1,22 @@
-%tr.additional-expense-row
-  %td
-    .label #{t :additional_expense_label}:
-    = f.text_field :label
-  %td= spacer
-  %td
-    .label #{t :additional_expense_amount}:
-    = f.text_field :amount, class: 'float-field'
-    = f.hidden_field :_destroy
-    = link_to_function(t(:remove), "$(this).closest('.additional-expense-row').hide(); $(this).prev().val('1');", class: 'remove-expense-link')
+%tbody.additional-expense-row
+  %tr
+    %td
+      .label{style: "margin-top: 2px;"} #{t :additional_expense_label}:
+      = f.text_field :label, style: "width: 250px"
+      .remove-expense-container{style: "margin-top: 2px;"}
+        = f.hidden_field :_destroy
+        = link_to t(:remove), "#", onclick: "$(this).closest('.additional-expense-row').hide(); $(this).prev().val('1'); return false;", class: 'remove-expense-link', style: "color: #bf616a; font-size: 13px; font-weight: bold;"
+    %td
+      .label{style: "margin-top: 2px;"} #{t :qty_incoming}:
+      = f.number_field :qty_incoming, style: "width: 60px"
+    %td
+      .label{style: "margin-top: 2px;"} #{t :incoming_price}:
+      = f.text_field :incoming_price, class: 'float-field', style: "width: 120px"
+  %tr{style: "border-bottom: 2px solid #ddd;"}
+    %td{style: "padding-bottom: 10px;"}
+    %td{style: "padding-bottom: 10px;"}
+      .label{style: "margin-top: -2px;"} #{t :qty_outcoming}:
+      = f.number_field :qty_outcoming, style: "width: 60px"
+    %td{style: "padding-bottom: 10px;"}
+      .label{style: "margin-top: -2px;"} #{t :outcoming_price}:
+      = f.text_field :outcoming_price, class: 'float-field', style: "width: 120px"

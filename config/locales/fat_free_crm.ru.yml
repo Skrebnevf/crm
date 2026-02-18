@@ -1048,6 +1048,9 @@ ru:
   end_of_time_project: Завершение проекта
   signed_job_info: Информация о подписанном задании
   additional_expense_label: "Название расхода"
-  additional_expense_amount: "Сумма"
+  incoming_price: "Вход цена"
+  qty_incoming: "Кол-во (Вх)"
+  outcoming_price: "Выход цена"
+  qty_outcoming: "Кол-во (Вых)"
   add_additional_expense: "+ Добавить расход"
   remove: "Удалить"

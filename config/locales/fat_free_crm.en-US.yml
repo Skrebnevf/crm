@@ -1030,6 +1030,9 @@ en-US:
   end_of_time_project: Project Completion
   signed_job_info: Signed Job Information
   additional_expense_label: "Expense Label"
-  additional_expense_amount: "Amount"
+  incoming_price: "Incoming Price"
+  qty_incoming: "Qty (In)"
+  outcoming_price: "Outcoming Price"
+  qty_outcoming: "Qty (Out)"
   add_additional_expense: "+ Add expense"
   remove: "Remove"

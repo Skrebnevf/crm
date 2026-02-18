@@ -17,18 +17,17 @@
             = f.select :status, [[t(:pending_tab), 'pending'], [t(:completed), 'done']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td{colspan: 3}
-            %table{style: "width: 100%"}
-              %tbody#additional_expenses_container
-                = f.simple_fields_for :additional_expenses do |af|
+            #additional_expenses_container
+              = f.simple_fields_for :additional_expenses do |af|
+                %table.expense-group{style: "width: 100%; border-collapse: collapse; margin-bottom: 25px;"}
                   = render 'additional_expense_fields', f: af
             - if @signed_job.additional_expenses.size < 20
-              = link_to t(:add_additional_expense), "#", onclick: "crm.add_additional_expense(); return false;", class: 'btn btn-secondary', id: 'add_expense_button', style: "display: inline-block; margin-top: 5px;"
+              = link_to t(:add_additional_expense), "#", onclick: "crm.add_additional_expense(); return false;", class: 'btn btn-secondary', id: 'add_expense_button', style: "display: inline-block; margin-top: 10px;"
 
             #additional_expense_template{style: 'display:none'}
-              %table
-                %tbody
-                  = f.simple_fields_for :additional_expenses, AdditionalExpense.new, child_index: 'new_additional_expenses' do |af|
-                    = render 'additional_expense_fields', f: af
+              %table.expense-group{style: "width: 100%; border-collapse: collapse; margin-bottom: 25px;"}
+                = f.simple_fields_for :additional_expenses, AdditionalExpense.new, child_index: 'new_additional_expenses' do |af|
+                  = render 'additional_expense_fields', f: af
         %tr
           %td
             .label #{t :CMR}:
@@ -76,10 +75,22 @@
         - @signed_job.additional_expenses.each do |expense|
           %tr
             %td
-              .label= expense.label
-              = text_field_tag :additional_expense, expense.amount, readonly: true
-            %td= spacer
+              .label #{t :additional_expense_label}
+              = text_field_tag :label, expense.label, readonly: true, style: "width: 250px"
             %td
+              .label #{t :qty_incoming}
+              = text_field_tag :qty_incoming, expense.qty_incoming, readonly: true, style: "width: 60px"
+            %td
+              .label #{t :incoming_price}
+              = text_field_tag :incoming_price, expense.incoming_price, readonly: true, style: "width: 120px"
+          %tr{style: "border-bottom: 1px solid #ddd; padding-bottom: 5px;"}
+            %td
+            %td
+              .label #{t :qty_outcoming}
+              = text_field_tag :qty_outcoming, expense.qty_outcoming, readonly: true, style: "width: 60px"
+            %td
+              .label #{t :outcoming_price}
+              = text_field_tag :outcoming_price, expense.outcoming_price, readonly: true, style: "width: 120px"
         %tr
           %td
             .label #{t :CMR}:

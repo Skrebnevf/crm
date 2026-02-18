@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_18_112302) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_18_125331) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -108,9 +108,12 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_112302) do
   create_table "additional_expenses", force: :cascade do |t|
     t.integer "signed_job_id"
     t.string "label"
-    t.decimal "amount", precision: 10, scale: 2, default: "0.0"
+    t.decimal "incoming_price", precision: 10, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "qty_incoming", default: 1
+    t.decimal "outcoming_price", precision: 10, scale: 2, default: "0.0"
+    t.integer "qty_outcoming", default: 1
     t.index ["signed_job_id"], name: "index_additional_expenses_on_signed_job_id"
   end
 

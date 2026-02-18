@@ -105,7 +105,7 @@ class SignedJobsController < ApplicationController
       :CMR,
       :file,
       :end_of_time_project,
-      additional_expenses_attributes: [:id, :label, :amount, :_destroy]
+      additional_expenses_attributes: [:id, :label, :incoming_price, :qty_incoming, :outcoming_price, :qty_outcoming, :_destroy]
     )
   end
 end
