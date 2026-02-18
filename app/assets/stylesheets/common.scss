@@ -509,6 +509,27 @@ $bg_color9: $nord13;
   color: $dark_strip_text;
 }
 
+.signed_job .preparation {
+  background: $nord13;
+  color: $dark_strip_text;
+}
+.signed_job .in_progress {
+  background: $nord10;
+  color: $light_strip_text;
+}
+.signed_job .completed {
+  background: $nord14;
+  color: $light_strip_text;
+}
+.signed_job .canceled {
+  background: $nord3;
+  color: $light_strip_text;
+}
+.signed_job .new_sj {
+  background: gainsboro;
+  color: #3f3f3f;
+}
+
 .amount {
   background: palegreen;
   color: black;
@@ -535,7 +556,7 @@ $bg_color9: $nord13;
   font-size: 0.85em;
   margin: 0px 6px 0px 0px;
   padding: 1px 4px 1px 3px;
-  text-align: right;
+  text-align: center;
   width: 75px;
   border-radius: 2px;
   &.accepted {

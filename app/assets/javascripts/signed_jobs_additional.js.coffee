@@ -13,3 +13,32 @@ window.crm.add_additional_expense = ->
       $('#add_expense_button').hide()
   else
     alert('Maximum 20 additional expenses allowed')
+
+$(document).ready ->
+  $(document).on 'change', '#signed_job_file_input', (e) ->
+    file = e.target.files[0]
+    errorContainer = $('#file_error_message')
+    submitButton = $(this).closest('form').find('input[type="submit"]')
+
+    if file
+      # Validation
+      allowedExtensions = /(\.pdf|\.doc|\.docx|\.jpg|\.jpeg|\.txt)$/i
+      maxSize = 10 * 1024 * 1024 # 10MB
+
+      errors = []
+
+      if !allowedExtensions.exec(file.name)
+        errors.push "Invalid file type. Allowed: pdf, doc, docx, jpg, jpeg, txt"
+
+      if file.size > maxSize
+        errors.push "File is too large. Max size is 10MB"
+
+      if errors.length > 0
+        errorContainer.text(errors.join('. ')).show()
+        submitButton.prop('disabled', true).css('opacity', '0.5')
+      else
+        errorContainer.hide().text('')
+        submitButton.prop('disabled', false).css('opacity', '1')
+    else
+      errorContainer.hide().text('')
+      submitButton.prop('disabled', false).css('opacity', '1')

@@ -14,7 +14,7 @@
           %td= spacer
           %td
             .label.top #{t :status}:
-            = f.select :status, [[t(:pending_tab), 'pending'], [t(:completed), 'done']], { include_blank: t(:select_blank) }, { class: 'select2' }
+            = f.select :status, [[t(:sj_preparation), 'preparation'], [t(:sj_in_progress), 'in_progress'], [t(:sj_completed), 'completed'], [t(:sj_canceled), 'canceled']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td{colspan: 3}
             #additional_expenses_container
@@ -32,24 +32,26 @@
           %td
             .label #{t :CMR}:
             = f.text_field :CMR
-        %tr
+          %td= spacer
           %td
             .label #{t :file}:
-            = f.file_field :file
+            = f.file_field :file, id: 'signed_job_file_input'
+            .file-info{style: "font-size: 0.9em; color: #666; margin-top: 5px;"}
+              %i.fa.fa-info-circle
+              Max size: 10MB. Allowed types: pdf, doc, docx, jpg, jpeg, txt
+            #file_error_message{style: "color: #d9534f; margin-top: 5px; display: none;"}
             - if @signed_job.file.present?
-              .current-file
+              .current-file{style: "margin-top: 10px;"}
                 #{t :current_file}:
                 = link_to File.basename(@signed_job.file), "/#{@signed_job.file}", target: "_blank"
-          %td= spacer
+        %tr
           %td
             .label #{t :end_of_time_project}:
             = f.text_field :end_of_time_project, class: 'date'
-        %tr
+          %td= spacer
           %td
             .label #{t :created_at}:
             = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
-          %td= spacer
-          %td
         %tr
           %td
             .label #{t :incoming_invoice}:

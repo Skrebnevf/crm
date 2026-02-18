@@ -98,6 +98,12 @@ en-US:
   completed_last_week: Last week
   completed_this_month: This month
   completed_last_month: Last month
+  sj_preparation: Pending
+  sj_in_progress: In Progress
+  sj_completed: Completed
+  sj_canceled: Canceled
+  new_sj: New
+
   research_tools: Research Tools
   research_tool_small: research tool
   create_research_tool: Create Research Tool

@@ -1,8 +1,8 @@
 %li.highlight[signed_job]
-  - if signed_job.doc_id.present?
-    .strip.request_for_quatation= signed_job.doc_id
+  - if signed_job.status.present?
+    .strip{class: signed_job.status}= t("sj_#{signed_job.status}")
   - else
-    .strip.none= t(:none)
+    .strip.new_sj= t(:new_sj)
 
   .indent
     - if signed_job.doc_id.present?
@@ -10,20 +10,21 @@
     - else
       = signed_job.id
 
-    %div.totals{style: "margin-top: 5px; font-family: monospace;"}
-      %div.income-total{style: "color: #a3be8c;"}
-        IN:
+    %dt{style: "padding: 2px 0px 0px 0px"}
+      %span.income-total{style: "color: #a3be8c;"}
+        in:
         = number_to_currency(signed_job.additional_buying_total, unit: '€')
-      %div.outcome-total{style: "color: #bf616a;"}
-        OUT:
+
+    %dt{style: "padding: 0px 0px 0px 0px"}
+      %span.outcome-total{style: "color: #bf616a;"}
+        out:
         = number_to_currency(signed_job.additional_selling_total, unit: '€')
 
       - if signed_job.assign_to_manager.present?
         &ndash;
-        %span.manager
-          = User.find_by_id(signed_job.assign_to_manager).try(:full_name)
-
+        %b Manager:
+        = User.find_by_id(signed_job.assign_to_manager).try(:full_name)
       - if signed_job.assign_to_procurement.present?
         &ndash;
-        %span.procurement
-          = User.find_by_id(signed_job.assign_to_procurement).try(:full_name)
+        %b Procurement:
+        = User.find_by_id(signed_job.assign_to_procurement).try(:full_name)

@@ -88,6 +88,11 @@ ru:
   completed_last_week: На прошлой неделе
   completed_this_month: В этом месяце
   completed_last_month: В прошлом месяце
+  sj_preparation: подготовка
+  sj_in_progress: в процессе
+  sj_completed: завершен
+  sj_canceled: отменен
+  new_sj: не готово
 
   # Models/Activity.
   #----------------------------------------------------------------------------

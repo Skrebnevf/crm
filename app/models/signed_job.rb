@@ -24,6 +24,7 @@ class SignedJob < ActiveRecord::Base
   attr_reader :uploaded_file
 
   validate :validate_file_format
+  validate :validate_file_size
 
   def file=(value)
     if value.is_a?(ActionDispatch::Http::UploadedFile)
@@ -83,6 +84,14 @@ class SignedJob < ActiveRecord::Base
     extension = File.extname(@uploaded_file.original_filename).downcase
     unless %w[.pdf .doc .docx .jpg .jpeg .txt].include?(extension)
       errors.add(:file, "must be one of: pdf, doc, docx, jpg, jpeg, txt")
+    end
+  end
+
+  def validate_file_size
+    return unless @uploaded_file
+
+    if @uploaded_file.size > 10.megabytes
+      errors.add(:file, "size must be less than 10MB")
     end
   end
 
