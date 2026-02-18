@@ -156,7 +156,7 @@ class RequestForQuatationsController < EntitiesController
       :what,
       :request_type,
       :comment,
-      :price_netto,
+      :buying,
       :payment_terms,
       :transit_time,
       :preadvise,
@@ -167,7 +167,7 @@ class RequestForQuatationsController < EntitiesController
       :denied,
       :reason,
       :author_id,
-      :total_price,
+      :selling,
       :income_payment_to,
       :outcome_payment_from
     )

@@ -11,9 +11,9 @@
     %tt
       - if request_for_quatation.from.present? || request_for_quatation.to.present?
         = [ISO3166::Country[request_for_quatation.from]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[request_for_quatation.from]&.common_name || request_for_quatation.from, ISO3166::Country[request_for_quatation.to]&.translations&.fetch(I18n.locale.to_s, nil) || ISO3166::Country[request_for_quatation.to]&.common_name || request_for_quatation.to].compact.join(' -> ')
-      - if request_for_quatation.price_netto.present?
+      - if request_for_quatation.buying.present?
         &ndash;
-        = number_to_currency(request_for_quatation.price_netto, unit: '€')
+        = number_to_currency(request_for_quatation.buying, unit: '€')
 
     - if request_for_quatation.author.present?
       %dt{style: "padding: 2px 0px 0px 0px"}

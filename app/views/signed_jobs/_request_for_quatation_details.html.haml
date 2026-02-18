@@ -50,8 +50,8 @@
       %table
         %tr
           %td
-            .label.top{style: "font-weight: bold;"} #{t :price_netto}:
-            = number_to_currency(rfq.price_netto, unit: '€')
+            .label.top{style: "font-weight: bold;"} #{t :buying}:
+            = number_to_currency(rfq.buying, unit: '€')
           %td= spacer
           %td
             .label.top{style: "font-weight: bold;"} #{t :payment_terms}:
@@ -107,20 +107,20 @@
             .label{style: "font-weight: bold;"} #{t :denied}:
             = rfq.denied ? t(:yes) : t(:no)
           %td= spacer
-        - if rfq.total_price.present? && rfq.income_payment_to.present?
+        - if rfq.selling.present? && rfq.income_payment_to.present?
           %tr
             %td
-              .label.top{style: "font-weight: bold;"} #{t :total_price}:
-              = number_to_currency(rfq.total_price, unit: '€')
+              .label.top{style: "font-weight: bold;"} #{t :selling}:
+              = number_to_currency(rfq.selling, unit: '€')
             %td= spacer
             %td
               .label.top{style: "font-weight: bold;"} #{t :income_payment_to}:
               = rfq.income_payment_to
-        - elsif rfq.total_price.present?
+        - elsif rfq.selling.present?
           %tr
             %td
-              .label.top{style: "font-weight: bold;"} #{t :total_price}:
-              = number_to_currency(rfq.total_price, unit: '€')
+              .label.top{style: "font-weight: bold;"} #{t :selling}:
+              = number_to_currency(rfq.selling, unit: '€')
         - elsif rfq.income_payment_to.present?
           %tr
             %td

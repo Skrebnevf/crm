@@ -811,7 +811,7 @@ en-US:
   request_type: Request Type
   readiness_date: Readiness Date
   what: What
-  price_netto: Price Netto
+  buying: Buying
   payment_terms: Payment Terms
   transit_time: Transit Time
   preadvise: Preadvise
@@ -819,7 +819,7 @@ en-US:
   demmurage_rate: Demurage Rate
   valid_till: Valid Till
   accepted: Accepted
-  total_price: Total Price in EUR
+  selling: Selling
   income_payment_to: Income payment to
   outcome_payment_from: Outcome payment from
   denied: Denied
@@ -1036,6 +1036,6 @@ en-US:
   outcoming_price: "Outcoming Price"
   qty_outcoming: "Qty (Out)"
   add_additional_expense: "+ Add expense"
-  additional_income_total: "Additional Income Total"
-  additional_outcome_total: "Additional Outcome Total"
+  additional_buying_total: "Additional Buying Total"
+  additional_selling_total: "Additional Selling Total"
   remove: "Remove"

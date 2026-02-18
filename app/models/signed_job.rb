@@ -59,14 +59,14 @@ class SignedJob < ActiveRecord::Base
     self.doc_id = "#{payment_from_code}#{payment_to_code}#{year_code}#{sequence_str}"
   end
 
-  def additional_income_total
-    rfq_base = request_for_quatation&.price_netto || 0
+  def additional_buying_total
+    rfq_base = request_for_quatation&.buying || 0
     expenses_total = additional_expenses.sum { |e| (e.qty_incoming || 0) * (e.incoming_price || 0) }
     rfq_base + expenses_total
   end
 
-  def additional_outcome_total
-    rfq_base = request_for_quatation&.total_price || 0
+  def additional_selling_total
+    rfq_base = request_for_quatation&.selling || 0
     expenses_total = additional_expenses.sum { |e| (e.qty_outcoming || 0) * (e.outcoming_price || 0) }
     rfq_base + expenses_total
   end
@@ -79,6 +79,7 @@ class SignedJob < ActiveRecord::Base
 
   def validate_file_format
     return unless @uploaded_file
+
     extension = File.extname(@uploaded_file.original_filename).downcase
     unless %w[.pdf .doc .docx .jpg .jpeg .txt].include?(extension)
       errors.add(:file, "must be one of: pdf, doc, docx, jpg, jpeg, txt")
@@ -99,5 +100,4 @@ class SignedJob < ActiveRecord::Base
 
     update_column(:file, relative_path)
   end
-
 end

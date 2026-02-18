@@ -8,7 +8,7 @@ FactoryBot.define do
     what { "MyString" }
     request_type { "MyString" }
     comment { "MyString" }
-    price_netto { 1 }
+    buying { 1 }
     payment_terms { "MyString" }
     transit_time { "MyString" }
     preadvise { "MyString" }

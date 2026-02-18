@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_18_125331) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_18_141957) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -391,7 +391,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_125331) do
     t.string "what"
     t.string "request_type"
     t.string "comment"
-    t.integer "price_netto"
+    t.integer "buying"
     t.string "payment_terms"
     t.string "transit_time"
     t.string "preadvise"
@@ -407,7 +407,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_125331) do
     t.string "access"
     t.integer "assigned_to"
     t.datetime "deleted_at"
-    t.float "total_price"
+    t.float "selling"
     t.string "income_payment_to"
     t.string "outcome_payment_from"
     t.string "uuid"

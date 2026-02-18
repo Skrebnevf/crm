@@ -6,9 +6,9 @@
     %table
       %tr
         %td
-          .label #{t :additional_income_total}:
-          %b= number_to_currency(@signed_job.additional_income_total, unit: '€')
+          .label #{t :additional_buying_total}:
+          %b= number_to_currency(@signed_job.additional_buying_total, unit: '€')
         %td= spacer
         %td
-          .label #{t :additional_outcome_total}:
-          %b= number_to_currency(@signed_job.additional_outcome_total, unit: '€')
+          .label #{t :additional_selling_total}:
+          %b= number_to_currency(@signed_job.additional_selling_total, unit: '€')
