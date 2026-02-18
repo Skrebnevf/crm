@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class SignedJob < ActiveRecord::Base
   belongs_to :request_for_quatation, optional: true
   belongs_to :user, optional: true
@@ -31,4 +29,7 @@ class SignedJob < ActiveRecord::Base
 
     self.doc_id = "#{payment_from_code}#{payment_to_code}#{year_code}#{sequence_str}"
   end
+
+  private
+
 end

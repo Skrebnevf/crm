@@ -14,39 +14,41 @@
           %td= spacer
           %td
             .label.top #{t :status}:
-            = f.text_field :status
+            = f.select :status, [[t(:pending_tab), 'pending'], [t(:completed), 'done']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td
             .label #{t :additional_expenses}:
             = f.text_field :additional_expenses
           %td= spacer
           %td
-            .label #{t :incoming_invoice}:
-            = f.text_field :incoming_invoice
-        %tr
-          %td
-            .label #{t :incoming_additional_invoice}:
-            = f.text_field :incoming_additional_invoice
-          %td= spacer
-          %td
-            .label #{t :outcoming_invoice}:
-            = f.text_field :outcoming_invoice
-        %tr
-          %td
             .label #{t :CMR}:
             = f.text_field :CMR
-          %td= spacer
+        %tr
           %td
             .label #{t :file}:
             = f.text_field :file
-        %tr
+          %td= spacer
           %td
             .label #{t :end_of_time_project}:
-            = f.text_field :end_of_time_project
-          %td= spacer
+            = f.text_field :end_of_time_project, class: 'date'
+        %tr
           %td
             .label #{t :created_at}:
             = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
+          %td= spacer
+          %td
+        %tr
+          %td
+            .label #{t :incoming_invoice}:
+            = f.select :incoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
+        %tr
+          %td
+            .label #{t :incoming_additional_invoice}:
+            = f.select :incoming_additional_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
+        %tr
+          %td
+            .label #{t :outcoming_invoice}:
+            = f.select :outcoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
     - else
       %table
         %tr
@@ -63,37 +65,39 @@
             = text_field_tag :additional_expenses, @signed_job.additional_expenses, readonly: true
           %td= spacer
           %td
+            .label #{t :CMR}:
+            = text_field_tag :CMR, @signed_job.CMR, readonly: true
+        %tr
+          %td
+            .label #{t :file}:
+            = text_field_tag :file, @signed_job.file, readonly: true
+          %td= spacer
+          %td
+            .label #{t :manager}:
+            = text_field_tag :assign_to_manager, User.find_by_id(@signed_job.assign_to_manager).try(:full_name), readonly: true
+        %tr
+          %td
+            .label #{t :procurement}:
+            = text_field_tag :assign_to_procurement, User.find_by_id(@signed_job.assign_to_procurement).try(:full_name), readonly: true
+          %td= spacer
+          %td
+            .label #{t :end_of_time_project}:
+            = text_field_tag :end_of_time_project, @signed_job.end_of_time_project, readonly: true
+        %tr
+          %td
+            .label #{t :created_at}:
+            = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
+          %td= spacer
+          %td
+        %tr
+          %td
             .label #{t :incoming_invoice}:
             = text_field_tag :incoming_invoice, @signed_job.incoming_invoice, readonly: true
         %tr
           %td
             .label #{t :incoming_additional_invoice}:
             = text_field_tag :incoming_additional_invoice, @signed_job.incoming_additional_invoice, readonly: true
-          %td= spacer
+        %tr
           %td
             .label #{t :outcoming_invoice}:
             = text_field_tag :outcoming_invoice, @signed_job.outcoming_invoice, readonly: true
-        %tr
-          %td
-            .label #{t :CMR}:
-            = text_field_tag :CMR, @signed_job.CMR, readonly: true
-          %td= spacer
-          %td
-            .label #{t :file}:
-            = text_field_tag :file, @signed_job.file, readonly: true
-        %tr
-          %td
-            .label #{t :manager}:
-            = text_field_tag :assign_to_manager, User.find_by_id(@signed_job.assign_to_manager).try(:full_name), readonly: true
-          %td= spacer
-          %td
-            .label #{t :procurement}:
-            = text_field_tag :assign_to_procurement, User.find_by_id(@signed_job.assign_to_procurement).try(:full_name), readonly: true
-        %tr
-          %td
-            .label #{t :end_of_time_project}:
-            = text_field_tag :end_of_time_project, @signed_job.end_of_time_project, readonly: true
-          %td= spacer
-          %td
-            .label #{t :created_at}:
-            = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
