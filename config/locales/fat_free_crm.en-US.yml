@@ -185,6 +185,18 @@ en-US:
           minlength: ^%{field} is too short.
           maxlength: ^%{field} is too long.
           endbeforestart: ^%{field} cannot end before it begins.
+        signed_job:
+          attributes:
+            status:
+              blank: ^Please select a Status.
+            CMR:
+              blank: ^Please fill in the CMR field.
+            incoming_invoice:
+              blank: ^Please select Incoming Invoice.
+            incoming_additional_invoice:
+              blank: ^Please select Incoming Additional Invoice.
+            outcoming_invoice:
+              blank: ^Please select Outcoming Invoice.
     attribute_options:
       opportunity:
         stage:
@@ -1045,3 +1057,5 @@ en-US:
   additional_buying_total: "Additional Buying Total"
   additional_selling_total: "Additional Selling Total"
   remove: "Remove"
+  signed_job_locked: "This job is locked because Project Completion date is set."
+  signed_job_locked_notice: "This job is completed and locked. Fields cannot be edited."

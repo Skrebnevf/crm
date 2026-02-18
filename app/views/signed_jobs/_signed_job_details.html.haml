@@ -6,6 +6,11 @@
   #signed_job_info{ hidden_if(collapsed) }
     - if edit_mode
       - f = local_assigns[:f]
+      - is_locked = @signed_job.completed?
+      - if is_locked
+        .signed-job-locked-notice
+          %i.fa.fa-lock
+          = t(:signed_job_locked_notice)
       %table
         %tr
           %td
@@ -14,14 +19,17 @@
           %td= spacer
           %td
             .label.top #{t :status}:
-            = f.select :status, [[t(:sj_preparation), 'preparation'], [t(:sj_in_progress), 'in_progress'], [t(:sj_completed), 'completed'], [t(:sj_canceled), 'canceled']], { include_blank: t(:select_blank) }, { class: 'select2' }
+            - if is_locked
+              = f.text_field :status, value: t("sj_#{@signed_job.status}"), readonly: true
+            - else
+              = f.select :status, [[t(:sj_preparation), 'preparation'], [t(:sj_in_progress), 'in_progress'], [t(:sj_completed), 'completed'], [t(:sj_canceled), 'canceled']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td{colspan: 3}
             #additional_expenses_container
               = f.simple_fields_for :additional_expenses do |af|
                 %table.expense-group{style: "width: 100%; border-collapse: collapse; margin-bottom: 25px;"}
-                  = render 'additional_expense_fields', f: af
-            - if @signed_job.additional_expenses.size < 20
+                  = render 'additional_expense_fields', f: af, locked: is_locked
+            - if !is_locked && @signed_job.additional_expenses.size < 20
               = link_to t(:add_additional_expense), "#", onclick: "crm.add_additional_expense(); return false;", class: 'btn btn-secondary', id: 'add_expense_button', style: "display: inline-block; margin-top: 10px;"
 
             #additional_expense_template{style: 'display:none'}
@@ -31,23 +39,29 @@
         %tr
           %td
             .label #{t :CMR}:
-            = f.text_field :CMR
+            = f.text_field :CMR, readonly: is_locked
           %td= spacer
           %td
             .label #{t :file}:
-            = f.file_field :file, id: 'signed_job_file_input'
-            .file-info{style: "font-size: 0.9em; color: #666; margin-top: 5px;"}
-              %i.fa.fa-info-circle
-              Max size: 10MB. Allowed types: pdf, doc, docx, jpg, jpeg, txt
-            #file_error_message{style: "color: #d9534f; margin-top: 5px; display: none;"}
-            - if @signed_job.file.present?
-              .current-file{style: "margin-top: 10px;"}
-                #{t :current_file}:
-                = link_to File.basename(@signed_job.file), "/#{@signed_job.file}", target: "_blank"
+            - if is_locked
+              - if @signed_job.file.present?
+                = link_to File.basename(@signed_job.file), "/#{@signed_job.file}", target: "_blank", class: "file-link"
+              - else
+                = f.text_field :file, readonly: true
+            - else
+              = f.file_field :file, id: 'signed_job_file_input'
+              .file-info{style: "font-size: 0.9em; color: #666; margin-top: 5px;"}
+                %i.fa.fa-info-circle
+                Max size: 10MB. Allowed types: pdf, doc, docx, jpg, jpeg, txt
+              #file_error_message{style: "color: #d9534f; margin-top: 5px; display: none;"}
+              - if @signed_job.file.present?
+                .current-file{style: "margin-top: 10px;"}
+                  #{t :current_file}:
+                  = link_to File.basename(@signed_job.file), "/#{@signed_job.file}", target: "_blank"
         %tr
           %td
             .label #{t :end_of_time_project}:
-            = f.text_field :end_of_time_project, class: 'date'
+            = f.text_field :end_of_time_project, class: ('date' unless is_locked), readonly: is_locked
           %td= spacer
           %td
             .label #{t :created_at}:
@@ -55,15 +69,24 @@
         %tr
           %td
             .label #{t :incoming_invoice}:
-            = f.select :incoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
+            - if is_locked
+              = f.text_field :incoming_invoice, readonly: true
+            - else
+              = f.select :incoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td
             .label #{t :incoming_additional_invoice}:
-            = f.select :incoming_additional_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
+            - if is_locked
+              = f.text_field :incoming_additional_invoice, readonly: true
+            - else
+              = f.select :incoming_additional_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td
             .label #{t :outcoming_invoice}:
-            = f.select :outcoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
+            - if is_locked
+              = f.text_field :outcoming_invoice, readonly: true
+            - else
+              = f.select :outcoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
     - else
       %table
         %tr

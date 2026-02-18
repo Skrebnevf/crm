@@ -1143,3 +1143,22 @@ table.asset_attributes {
     padding-left: 6px;
   }
 }
+
+// Signed Job locked notice
+.signed-job-locked-notice {
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-left: 4px solid #ffc107;
+  color: #856404;
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .fa-lock {
+    font-size: 1.1em;
+  }
+}

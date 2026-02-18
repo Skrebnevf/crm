@@ -1,21 +1,23 @@
+- is_locked = local_assigns.fetch(:locked, false)
 %tbody.additional-expense-row
   %tr
     %td{colspan: 5}
       .label{style: "margin-top: 2px;"} #{t :additional_expense_label}:
-      = f.text_field :label, style: "width: 100%; box-sizing: border-box;"
+      = f.text_field :label, style: "width: 100%; box-sizing: border-box;", readonly: is_locked
   %tr{style: "border-bottom: 2px solid #ddd;"}
     %td{style: "padding-bottom: 10px;"}
       .label{style: "margin-top: 2px;"} #{t :qty_incoming}:
-      = f.number_field :qty_incoming, style: "width: 60px"
+      = f.number_field :qty_incoming, style: "width: 60px", readonly: is_locked
     %td{style: "padding-bottom: 10px;"}
       .label{style: "margin-top: 2px;"} #{t :incoming_price}:
-      = f.text_field :incoming_price, class: 'float-field', style: "width: 100px"
+      = f.text_field :incoming_price, class: ('float-field' unless is_locked), style: "width: 100px", readonly: is_locked
     %td{style: "padding-bottom: 10px;"}
       .label{style: "margin-top: 2px;"} #{t :qty_outcoming}:
-      = f.number_field :qty_outcoming, style: "width: 60px"
+      = f.number_field :qty_outcoming, style: "width: 60px", readonly: is_locked
     %td{style: "padding-bottom: 10px;"}
       .label{style: "margin-top: 2px;"} #{t :outcoming_price}:
-      = f.text_field :outcoming_price, class: 'float-field', style: "width: 100px"
+      = f.text_field :outcoming_price, class: ('float-field' unless is_locked), style: "width: 100px", readonly: is_locked
     %td{style: "vertical-align: bottom; padding-bottom: 12px; text-align: right;"}
       = f.hidden_field :_destroy
-      = link_to t(:remove), "#", onclick: "$(this).closest('.additional-expense-row').hide(); $(this).prev().val('1'); return false;", class: 'remove-expense-link', style: "color: #bf616a; font-size: 13px; font-weight: bold;"
+      - unless is_locked
+        = link_to t(:remove), "#", onclick: "$(this).closest('.additional-expense-row').hide(); $(this).prev().val('1'); return false;", class: 'remove-expense-link', style: "color: #bf616a; font-size: 13px; font-weight: bold;"

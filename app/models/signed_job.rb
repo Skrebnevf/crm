@@ -15,7 +15,14 @@ class SignedJob < ActiveRecord::Base
 
   validate :additional_expenses_count_within_limit
 
+  validates :status,                       presence: true, on: :update, unless: :completed?
+  validates :CMR,                          presence: true, on: :update, unless: :completed?
+  validates :incoming_invoice,             presence: true, on: :update, unless: :completed?
+  validates :incoming_additional_invoice,  presence: true, on: :update, unless: :completed?
+  validates :outcoming_invoice,            presence: true, on: :update, unless: :completed?
+
   before_create :generate_uuid, :generate_doc_id
+  before_save :auto_complete_status
 
   def additional_expenses_count_within_limit
     if additional_expenses.reject(&:marked_for_destruction?).size > 20
@@ -66,6 +73,10 @@ class SignedJob < ActiveRecord::Base
     self.doc_id = "#{payment_from_code}#{payment_to_code}#{year_code}#{sequence_str}"
   end
 
+  def completed?
+    end_of_time_project.present?
+  end
+
   def additional_buying_total
     rfq_base = request_for_quatation&.buying || 0
     expenses_total = additional_expenses.sum { |e| (e.qty_incoming || 0) * (e.incoming_price || 0) }
@@ -79,6 +90,10 @@ class SignedJob < ActiveRecord::Base
   end
 
   private
+
+  def auto_complete_status
+    self.status = 'completed' if end_of_time_project.present?
+  end
 
   def build_default_additional_expense
     additional_expenses.build(label: "Additional Expenses") if additional_expenses.empty?

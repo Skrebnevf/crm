@@ -171,6 +171,18 @@ ru:
           minlength: ^%{field} слишком короткое.
           maxlength: ^%{field} слишком длинное.
           endbeforestart: ^%{field} не может закончиться до того, как начинается.
+        signed_job:
+          attributes:
+            status:
+              blank: ^Пожалуйста выберите Статус.
+            CMR:
+              blank: ^Пожалуйста заполните поле CMR.
+            incoming_invoice:
+              blank: ^Пожалуйста выберите Входящий счет.
+            incoming_additional_invoice:
+              blank: ^Пожалуйста выберите Дополнительный входящий счет.
+            outcoming_invoice:
+              blank: ^Пожалуйста выберите Исходящий счет.
     attribute_options:
       opportunity:
         stage:
@@ -1062,3 +1074,5 @@ ru:
   additional_income_total: "Общий доход (включая дополнительные)"
   additional_outcome_total: "Общий расход (включая дополнительные)"
   remove: "Удалить"
+  signed_job_locked: "Задание заблокировано, так как установлена дата завершения проекта."
+  signed_job_locked_notice: "Задание завершено и заблокировано. Поля недоступны для редактирования."

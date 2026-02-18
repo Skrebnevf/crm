@@ -47,6 +47,15 @@ class SignedJobsController < ApplicationController
 
   # PATCH/PUT /signed_jobs/1
   def update
+    if @signed_job.completed?
+      @signed_job.errors.add(:base, t(:signed_job_locked))
+      respond_to do |format|
+        format.js { render :edit }
+        format.html { render :edit }
+      end
+      return
+    end
+
     if @signed_job.update(signed_job_params)
       respond_to do |format|
         format.js

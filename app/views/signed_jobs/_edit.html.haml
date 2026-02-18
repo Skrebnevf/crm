@@ -12,6 +12,6 @@
     = render 'signed_job_totals'
 
     .buttonbar
-      = f.submit t(:save_signed_job), class: 'btn btn-primary'
+      = f.submit t(:save_signed_job), class: 'btn btn-primary', disabled: @signed_job.completed?
       #{t :or}
       = link_to_cancel edit_signed_job_path(@signed_job)
