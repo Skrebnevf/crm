@@ -26,7 +26,11 @@
         %tr
           %td
             .label #{t :file}:
-            = f.text_field :file
+            = f.file_field :file
+            - if @signed_job.file.present?
+              .current-file
+                #{t :current_file}:
+                = link_to File.basename(@signed_job.file), "/#{@signed_job.file}", target: "_blank"
           %td= spacer
           %td
             .label #{t :end_of_time_project}:
@@ -70,7 +74,10 @@
         %tr
           %td
             .label #{t :file}:
-            = text_field_tag :file, @signed_job.file, readonly: true
+            - if @signed_job.file.present?
+              = link_to @signed_job.file.split('/').last, "/#{@signed_job.file}", target: "_blank", class: "file-link"
+            - else
+              = text_field_tag :file, @signed_job.file, readonly: true
           %td= spacer
           %td
             .label #{t :manager}:

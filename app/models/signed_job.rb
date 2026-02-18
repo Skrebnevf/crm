@@ -1,3 +1,5 @@
+require 'fileutils'
+
 class SignedJob < ActiveRecord::Base
   belongs_to :request_for_quatation, optional: true
   belongs_to :user, optional: true
@@ -6,6 +8,21 @@ class SignedJob < ActiveRecord::Base
   def self.per_page
     20
   end
+
+  attr_reader :uploaded_file
+
+  validate :validate_file_format
+
+  def file=(value)
+    if value.is_a?(ActionDispatch::Http::UploadedFile)
+      @uploaded_file = value
+      self[:file] = value.original_filename
+    else
+      self[:file] = value
+    end
+  end
+
+  after_save :handle_file_upload
 
   def generate_uuid
     self.uuid = SecureRandom.uuid if uuid.blank?
@@ -31,5 +48,28 @@ class SignedJob < ActiveRecord::Base
   end
 
   private
+
+  def validate_file_format
+    return unless @uploaded_file
+    extension = File.extname(@uploaded_file.original_filename).downcase
+    unless %w[.pdf .doc .docx .jpg .jpeg .txt].include?(extension)
+      errors.add(:file, "must be one of: pdf, doc, docx, jpg, jpeg, txt")
+    end
+  end
+
+  def handle_file_upload
+    return unless @uploaded_file && doc_id.present?
+
+    filename = @uploaded_file.original_filename
+    relative_path = "files/#{doc_id}/#{filename}"
+    directory = Rails.root.join('public', 'files', doc_id.to_s)
+    FileUtils.mkdir_p(directory) unless Dir.exist?(directory)
+
+    File.open(directory.join(filename), 'wb') do |file|
+      file.write(@uploaded_file.read)
+    end
+
+    update_column(:file, relative_path)
+  end
 
 end

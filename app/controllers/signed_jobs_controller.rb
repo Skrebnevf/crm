@@ -46,15 +46,23 @@ class SignedJobsController < ApplicationController
 
   # PATCH/PUT /signed_jobs/1
   def update
-    respond_with(@signed_job) do |_format|
-      @signed_job.update(signed_job_params)
+    if @signed_job.update(signed_job_params)
+      respond_to do |format|
+        format.js
+        format.html { redirect_to signed_jobs_path }
+      end
+    else
+      respond_to do |format|
+        format.js { render :edit }
+        format.html { render :edit }
+      end
     end
   end
 
   private
 
   def get_signed_jobs(options = {})
-    @signed_jobs ||=
+    @signed_jobs =
       SignedJob.includes(:request_for_quatation)
                .order(created_at: :desc)
                .paginate(page: options[:page], per_page: options[:per_page])
@@ -88,12 +96,14 @@ class SignedJobsController < ApplicationController
     return {} unless params[:signed_job]
 
     params.require(:signed_job).permit(
+      :doc_id,
       :status,
       :additional_expenses,
       :incoming_invoice,
       :incoming_additional_invoice,
       :outcoming_invoice,
       :CMR,
+      :file,
       :end_of_time_project
     )
   end
