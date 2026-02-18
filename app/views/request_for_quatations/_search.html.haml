@@ -1,0 +1,26 @@
+#search
+  .tabs
+    %ul
+      %li.active
+        = link_to t('basic_search'), '#', :"data-search-form" => "basic_search"
+      -# %li
+      -#   = link_to t('advanced_search'), '#', :"data-search-form" => "advanced_search", class: (!params[:q] ? "" : " active")
+
+    #search_results_count
+      = t('search_results_count', count: @search_results_count)
+
+  .search_form#basic_search
+    %div{ style: "margin: 0px 0px 6px 0px" }
+      = text_field_tag('query', @current_query, size: 32, autofocus: true, placeholder: "Search RFQ")
+
+    :javascript
+      var searchTimeout;
+      $('#query').on('keydown', function(event) {
+        var $el = $(event.target);
+        if (searchTimeout) clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(function () { crm.search($el.val(), 'request_for_quatations'); }, 500);
+      });
+
+
+  -# .search_form#advanced_search{ style: (!params[:q] ? 'display: none;' : '') }
+  -#   = ransack_ui_search remote: true

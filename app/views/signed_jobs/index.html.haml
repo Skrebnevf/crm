@@ -2,6 +2,8 @@
 
 = render 'title_bar'
 
+= render 'search'
+
 .list#signed_jobs
   - if @signed_jobs.any?
     = render @signed_jobs
@@ -10,4 +12,3 @@
 
 #paginate= render "shared/paginate_with_per_page"
 #export= render "shared/export"
-

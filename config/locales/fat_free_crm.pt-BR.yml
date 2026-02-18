@@ -15,7 +15,6 @@ pt-BR:
   select_none: -- Nenhum --
   yes_button: Sim
 
-
   # Settings.
   #----------------------------------------------------------------------------
   tab_dashboard: Dashboard
@@ -30,8 +29,6 @@ pt-BR:
   admin_tab_settings: Configurações
   admin_tab_plugins: Plugins
   admin_tab_tags: Tags
-  admin_tab_settings: Configurações
-  admin_tab_plugins: Plugins
   affiliate: Afiliar
   competitor: Concorrente
   customer: Cliente
@@ -133,14 +130,16 @@ pt-BR:
             last_name:
               missing_last_name: ^Por favor, informe o último nome.
             access:
-              share_lead: ^Por favor, informe usuários com quem desejas compartilhar
+              share_lead:
+                ^Por favor, informe usuários com quem desejas compartilhar
                 este lead.
         opportunity:
           attributes:
             name:
               missing_opportunity_name: ^Por favor, informe um nome para a oportunidade.
             access:
-              share_opportunity: ^Por favor, informe usuários com quem desejas compartilhar
+              share_opportunity:
+                ^Por favor, informe usuários com quem desejas compartilhar
                 esta oportunidade.
         task:
           attributes:
@@ -186,19 +185,23 @@ pt-BR:
 
   # Controllers.
   #----------------------------------------------------------------------------
-  msg_account_created: Sua conta foi criada e está aguardando a aprovação do administrador
+  msg_account_created:
+    Sua conta foi criada e está aguardando a aprovação do administrador
     do sistema.
   msg_account_not_approved: Sua conta ainda não foi aprovada.
-  msg_asset_deleted: ! '%{value} foi removido.'
+  msg_asset_deleted: ! "%{value} foi removido."
   msg_asset_not_available: Este(a) %{value} não está mais disponível.
   msg_asset_not_authorized: Você não está autorizado para ver isso %{value}.
   msg_assets_not_available: Estes(as) %{value} não estão mais disponíveis.
-  msg_asset_rejected: ! '%{value} foi rejeitado.'
-  msg_bad_image_file: ^Não foi possível enviar ou redimensionar a imagem que você
+  msg_asset_rejected: ! "%{value} foi rejeitado."
+  msg_bad_image_file:
+    ^Não foi possível enviar ou redimensionar a imagem que você
     escolheu.
-  msg_cant_create_related: Impossível criar %{asset} já que %{related} não está mais
+  msg_cant_create_related:
+    Impossível criar %{asset} já que %{related} não está mais
     disponível.
-  msg_cant_delete_user: ^Não foi possível remover o usuário já que %{value} tem relacionamentos
+  msg_cant_delete_user:
+    ^Não foi possível remover o usuário já que %{value} tem relacionamentos
     ativos.
   msg_cant_do: Impossível %{action} o %{asset} já que não está mais disponível.
   msg_email_not_found: Nenhum usuário encontrado com este e-mail.
@@ -212,7 +215,8 @@ pt-BR:
   msg_password_changed: Sua senha mudou.
   msg_password_not_changed: Sua senha não mudou.
   msg_password_updated: A senha foi atualizada com sucesso.
-  msg_pwd_instructions_sent: Instruções para redefinir a sua senha foram enviadas
+  msg_pwd_instructions_sent:
+    Instruções para redefinir a sua senha foram enviadas
     a você. Por favor, verifique seu e-mail.
   msg_require_admin: É preciso ser um administrador para acessar esta página.
   msg_successful_signup: Cadastrado com sucesso, bem vindo(a) ao Fat Free CRM!
@@ -221,7 +225,8 @@ pt-BR:
   # Options.
   #----------------------------------------------------------------------------
   option_amount*probability: weighted amount
-  activity_options: Exibir atividades em %{models} feitas por %{user} no(s) último(s)
+  activity_options:
+    Exibir atividades em %{models} feitas por %{user} no(s) último(s)
     %{period}.
   all_users: todos os usuários
   option_after: depois
@@ -248,9 +253,10 @@ pt-BR:
   option_updated_at: data de atualização
   show_per_page: Exibir %{number} %{models} por página usando o formato %{fmt}.
   sort_by: Sort by %{field}.
-  sort_by_displaying: Ordenar %{models} por %{field} exibindo o primeiro nome %{position}
+  sort_by_displaying:
+    Ordenar %{models} por %{field} exibindo o primeiro nome %{position}
     do último nome.
-  entities_per_page: ! '%{entity} por página:'
+  entities_per_page: ! "%{entity} por página:"
   contacts_index_long: Formato longo
   contacts_index_brief: Formato breve
   contacts_index_full: Formato total
@@ -274,7 +280,8 @@ pt-BR:
   google: Google IM
   gravatar_help: Não conhece o Gravatar? Saiba mais sobre
   image_file: Arquivo de imagem
-  image_help: A imagem que você enviar será automaticamente redimensionada para 75
+  image_help:
+    A imagem que você enviar será automaticamente redimensionada para 75
     x 75 pixels. Os formatos suportados são GIF, JPG, and PNG.
   job_title: Título
   last_name: Último nome
@@ -339,8 +346,8 @@ pt-BR:
   shipping_address: Endereço de entrega
   total_accounts: Total de contas
   website: Website
-  account_with_title_department: ! '%{title}, %{department} em %{account}'
-  account_with_title: ! '%{title} em %{account}'
+  account_with_title_department: ! "%{title}, %{department} em %{account}"
+  account_with_title: ! "%{title} em %{account}"
 
   # Views -> Campaigns.
   #----------------------------------------------------------------------------
@@ -358,7 +365,7 @@ pt-BR:
   campaigns_small: campanhas
   conversion: Conversão
   conversion_label: Conversão (%)
-  conversion_number: ! '%{value} convertidos'
+  conversion_number: ! "%{value} convertidos"
   create_campaign: Nova campanha
   end_date: Data de término
   finished_on: finalizado em %{value}
@@ -366,13 +373,14 @@ pt-BR:
   no_start_date: data de início não informada
   number_of_leads: Número de leads
   objectives: Objetivos
-  objectives_help: Please specify target number of leads, expected leads-to-opportunities
+  objectives_help:
+    Please specify target number of leads, expected leads-to-opportunities
     conversion ratio, target revenue, and campaign budget. These numbers will let
     you track actual campaign performance.
   objectives_small: objetivos da campanha
   revenue: Receita
   revenue_label: Receita (%{currency})
-  revenue_number: ! '%{value} em receita'
+  revenue_number: ! "%{value} em receita"
   save_campaign: Salvar campanha
   start_date: Data de início
   started_ago: iniciou há %{value} atrás
@@ -391,18 +399,21 @@ pt-BR:
   contacts_small: contatos
   create_contact: Novo contato
   department: Departamento
-  department_small: ! '%{value} departamento'
+  department_small: ! "%{value} departamento"
   do_not_call: Não ligar
   extra_info: Informações extra
   extra_info_small: informação extra
   facebook: Facebook
   linked_in: LinkedIn
   myself: Eu
-  permissions_intro_private: Por padrão, somente você terá acesso em %{value}. Você
+  permissions_intro_private:
+    Por padrão, somente você terá acesso em %{value}. Você
     pode mudar as permissões depois.
-  permissions_intro_public: Por padrão, todos os usuários terão acesso em %{value}.
+  permissions_intro_public:
+    Por padrão, todos os usuários terão acesso em %{value}.
     Você pode mudar as permissões depois..
-  permissions_intro_shared: Por padrão, somente os usuários selecionados terão acesso
+  permissions_intro_shared:
+    Por padrão, somente os usuários selecionados terão acesso
     em %{value}. Você pode mudar as permissões depois..
   referred_by: Indicado Por
   referred_by_small: indicado por
@@ -410,24 +421,29 @@ pt-BR:
   twitter: Twitter
   web_presence: Presença na Web
   web_presence_small: presença na web
-  works_at: ! '%{job_title} na %{company}'
+  works_at: ! "%{job_title} na %{company}"
   convert: Converter
   convert_lead: Converter lead
   convert_lead_permissions_intro: Permissões de contato vão ser copiados do lead sendo convertido. Você pode mudar as permissões de contato depois.
-  convert_lead_text: By converting the lead %{value} will become a contact associated
+  convert_lead_text:
+    By converting the lead %{value} will become a contact associated
     with the existing or newly created account. Lead status will be automatically
     set to converted.
   create_lead: Novo lead
-  create_opp_for_contact: Você pode opcionalmente criar uma oportunidade para o contato
+  create_opp_for_contact:
+    Você pode opcionalmente criar uma oportunidade para o contato
     %{value}  especificando o nome, fase atual, data estimada de fechamento, probabilidade
     de venda, valor do acordo, e o desconto oferecido.
   lead: Lead
   lead_info_small: contato do lead
-  lead_permissions_intro_private: Por padrão, as permissões seráo copiadas da campanha
+  lead_permissions_intro_private:
+    Por padrão, as permissões seráo copiadas da campanha
     ou ficarão privadas. Você pode mudar as permissões do 'lead' depois.
-  lead_permissions_intro_public: Por padrão, as permissões sérão copiadas do campanha
+  lead_permissions_intro_public:
+    Por padrão, as permissões sérão copiadas do campanha
     ou ficarão públicas. Você pode mudar as permissões do 'lead' depois.
-  lead_permissions_intro_shared: Por padrão, as permissões serão compiadas da campanha
+  lead_permissions_intro_shared:
+    Por padrão, as permissões serão compiadas da campanha
     ou serão compartilhadas com os usuários especificados. Você pode mudar as permissões
     do 'lead' depois.
   lead_small: lead
@@ -465,8 +481,9 @@ pt-BR:
   opportunity: Oportunidade
   opportunity_small: oportunidade
   opportunity_summary: Oportunidade At a Glance
-  opportunity_summary_text: ! '%{amount} com desconto de %{discount} e probabilidade
-    de %{probability}'
+  opportunity_summary_text:
+    ! "%{amount} com desconto de %{discount} e probabilidade
+    de %{probability}"
   past_due: past due, was expected to close %{value} ago
   probability: Probabilidade
   probability_number: e probabilidade de %{value}
@@ -491,7 +508,7 @@ pt-BR:
   no_tasks_completed: terminada
   pending_tab: Pendente
   pending_tasks: Tarefas pendentes
-  related: ! 're:'
+  related: ! "re:"
   save_task: Salvar atividade
   task_assigned: As tarefas foram atribuídas para %{value}
   task_assigned_to: e artibuída para %{value}
@@ -542,14 +559,14 @@ pt-BR:
   close_form: Fechar formulário
   confirm_delete: Tem certeza que deseja remover este %{value}?
   copy_permissions: Copiar permissão %{value}
-  could_not_find: ! '%{value} não encontrado. Sinta-se livre para'
+  could_not_find: ! "%{value} não encontrado. Sinta-se livre para"
   could_not_find_matching: Couldn't find %{value} matching
   create_new: cria um(a) novo(a)
   select_existing: selecione existentes
   delete: Remover
   discard: Discard
   edit: Editar
-  items_total: ! '%{count} total.'
+  items_total: ! "%{count} total."
   less: Menos...
   me: mim
   more: Mais...
@@ -577,7 +594,8 @@ pt-BR:
   about_ffc_version: Fat Free CRM versão
   about_home_page: Home page
   about_project_page: Página do projeto
-  about_thank_you: Obrigado(a) por usar o Fat Free CRM! Nós apreciamos o seu negócio
+  about_thank_you:
+    Obrigado(a) por usar o Fat Free CRM! Nós apreciamos o seu negócio
     e esperamos que você goste de usar nosso software.
   about_twitter: Twitter
   about_user_group: Grupo de discussão para usuários
@@ -589,7 +607,8 @@ pt-BR:
   show: Exibir
   update: Atualizar
   confirm_password_intro: Por favor, digite sua nova senha e então confirme-a.
-  password_intro: Por favor, informe seu e-mail, e as instruções para redefinir a
+  password_intro:
+    Por favor, informe seu e-mail, e as instruções para redefinir a
     sua senha serão enviadas a você.
   reset_password: Redefnir senha
   update_password_and_login: Atualizar senha e entrar.
@@ -616,7 +635,8 @@ pt-BR:
   users: Usuários
   users_small: usuários
   dropbox_notification_subject: dropbox - E-mail Added - %{subject}
-  dropbox_notification_intro: Adicionado com sucesso o e-mail que você enviou para
+  dropbox_notification_intro:
+    Adicionado com sucesso o e-mail que você enviou para
     dropbox
   dropbox_notification_to: Adicionado a
   subject: Assunto
@@ -624,27 +644,27 @@ pt-BR:
   pluralize:
     comment:
       one: 1 comment
-      other: ! '%{count} comments'
+      other: ! "%{count} comments"
     contact:
       one: 1 contato
-      other: ! '%{count} contatos'
+      other: ! "%{count} contatos"
     opportunity:
       one: 1 oportunidade
-      other: ! '%{count} oportunidades'
+      other: ! "%{count} oportunidades"
     lead:
       one: 1 lead
-      other: ! '%{count} leads'
+      other: ! "%{count} leads"
     day:
       one: 1 dia
-      other: ! '%{count} dias'
+      other: ! "%{count} dias"
     login:
       one: 1 login
-      other: ! '%{count} logins'
+      other: ! "%{count} logins"
   date:
     formats:
-      mmddyyyy: ! '%m/%d/%Y'
-      mmdd: ! '%b %e'
-      mmddyy: ! '%b %e, %Y'
+      mmddyyyy: ! "%m/%d/%Y"
+      mmdd: ! "%b %e"
+      mmddyy: ! "%b %e, %Y"
   time:
     formats:
-      mmddhhss: ! '%b %e at %l:%M%p'
+      mmddhhss: ! "%b %e at %l:%M%p"

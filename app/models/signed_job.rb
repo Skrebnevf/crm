@@ -7,6 +7,12 @@ class SignedJob < ActiveRecord::Base
   has_many :additional_expenses, dependent: :destroy
   accepts_nested_attributes_for :additional_expenses, allow_destroy: true, reject_if: :all_blank
 
+  scope :text_search, ->(query) {
+    q = "%#{query}%"
+    joins(:request_for_quatation)
+      .where("signed_jobs.doc_id LIKE :q OR signed_jobs.status LIKE :q OR request_for_quatations.client LIKE :q", q: q)
+  }
+
   validate :additional_expenses_count_within_limit
 
   before_create :generate_uuid, :generate_doc_id

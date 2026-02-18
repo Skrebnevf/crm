@@ -5,6 +5,7 @@ class RequestForQuatation < ActiveRecord::Base
   belongs_to :author, class_name: 'User', optional: true
   has_many :signed_jobs, dependent: :nullify
   scope :my, ->(user) { where(user_id: user.id) }
+  scope :text_search, ->(query) { ransack('client_or_from_or_to_or_comment_cont' => query).result }
   validates :client, presence: true
 
   acts_as_commentable

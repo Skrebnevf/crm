@@ -9,6 +9,7 @@ class SignedJobsController < ApplicationController
   def index
     respond_with @signed_jobs do |format|
       format.html { @signed_jobs = get_signed_jobs(page: page_param, per_page: per_page_param) }
+      format.js   { @signed_jobs = get_signed_jobs(page: page_param, per_page: per_page_param); render :index }
     end
   end
 
@@ -62,17 +63,21 @@ class SignedJobsController < ApplicationController
   private
 
   def get_signed_jobs(options = {})
-    @signed_jobs =
-      SignedJob.includes(:request_for_quatation)
-               .order(created_at: :desc)
-               .paginate(page: options[:page], per_page: options[:per_page])
+    query = options[:query] || params[:query]
+    @current_query = query
 
-    @search_results_count = SignedJob.count
-    @signed_jobs
+    scope = SignedJob.includes(:request_for_quatation, :additional_expenses)
+    scope = scope.text_search(query) if query.present?
+    scope = scope.order(created_at: :desc)
+                 .paginate(page: options[:page], per_page: options[:per_page])
+
+    @search_results_count = scope.except(:offset, :limit).count
+    scope
   end
 
   def load_signed_jobs
     @signed_jobs = get_signed_jobs(page: page_param, per_page: per_page_param)
+    @current_query = params[:query]
   end
 
   def load_signed_job
