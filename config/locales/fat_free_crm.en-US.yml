@@ -1013,3 +1013,23 @@ en-US:
     from_to: From %{from} to %{to}
     from_only: From %{from}
     to_only: Until %{to}
+
+  # Signed Jobs
+  #----------------------------------------------------------------------------
+  tab_signed_jobs: Signed Job
+  create_signed_job: Create Signed Job
+  save_signed_job: Save Signed Job
+  signed_job: Signed Job
+  signed_jobs: Signed Jobs
+  doc_id: Document ID
+  additional_expenses: Additional Expenses
+  incoming_invoice: Incoming Invoice
+  incoming_additional_invoice: Incoming Additional Invoice
+  outcoming_invoice: Outcoming Invoice
+  CMR: CMR
+  end_of_time_project: Project Completion
+  signed_job_info: Signed Job Information
+  additional_expense_label: "Expense Label"
+  additional_expense_amount: "Amount"
+  add_additional_expense: "+ Add expense"
+  remove: "Remove"

@@ -229,7 +229,7 @@
       :controller: request_for_quatations
   - :active: true
     :text: tab_signed_jobs
-    :icon: :fa-file-text
+    :icon: :fa-rocket
     :url:
       :controller: signed_jobs
   - :active: false

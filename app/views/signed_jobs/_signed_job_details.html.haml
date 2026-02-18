@@ -16,10 +16,20 @@
             .label.top #{t :status}:
             = f.select :status, [[t(:pending_tab), 'pending'], [t(:completed), 'done']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
-          %td
-            .label #{t :additional_expenses}:
-            = f.text_field :additional_expenses
-          %td= spacer
+          %td{colspan: 3}
+            %table{style: "width: 100%"}
+              %tbody#additional_expenses_container
+                = f.simple_fields_for :additional_expenses do |af|
+                  = render 'additional_expense_fields', f: af
+            - if @signed_job.additional_expenses.size < 20
+              = link_to t(:add_additional_expense), "#", onclick: "crm.add_additional_expense(); return false;", class: 'btn btn-secondary', id: 'add_expense_button', style: "display: inline-block; margin-top: 5px;"
+
+            #additional_expense_template{style: 'display:none'}
+              %table
+                %tbody
+                  = f.simple_fields_for :additional_expenses, AdditionalExpense.new, child_index: 'new_additional_expenses' do |af|
+                    = render 'additional_expense_fields', f: af
+        %tr
           %td
             .label #{t :CMR}:
             = f.text_field :CMR
@@ -63,11 +73,14 @@
           %td
             .label.top #{t :status}:
             = text_field_tag :status, @signed_job.status, readonly: true
+        - @signed_job.additional_expenses.each do |expense|
+          %tr
+            %td
+              .label= expense.label
+              = text_field_tag :additional_expense, expense.amount, readonly: true
+            %td= spacer
+            %td
         %tr
-          %td
-            .label #{t :additional_expenses}:
-            = text_field_tag :additional_expenses, @signed_job.additional_expenses, readonly: true
-          %td= spacer
           %td
             .label #{t :CMR}:
             = text_field_tag :CMR, @signed_job.CMR, readonly: true

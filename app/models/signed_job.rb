@@ -1,9 +1,21 @@
 require 'fileutils'
 
 class SignedJob < ActiveRecord::Base
+  after_initialize :build_default_additional_expense
   belongs_to :request_for_quatation, optional: true
   belongs_to :user, optional: true
+  has_many :additional_expenses, dependent: :destroy
+  accepts_nested_attributes_for :additional_expenses, allow_destroy: true, reject_if: :all_blank
+
+  validate :additional_expenses_count_within_limit
+
   before_create :generate_uuid, :generate_doc_id
+
+  def additional_expenses_count_within_limit
+    if additional_expenses.reject(&:marked_for_destruction?).size > 20
+      errors.add(:base, "Maximum 20 additional expenses allowed")
+    end
+  end
 
   def self.per_page
     20
@@ -48,6 +60,10 @@ class SignedJob < ActiveRecord::Base
   end
 
   private
+
+  def build_default_additional_expense
+    additional_expenses.build(label: "Additional Expenses") if additional_expenses.empty?
+  end
 
   def validate_file_format
     return unless @uploaded_file

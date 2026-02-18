@@ -1047,3 +1047,7 @@ ru:
   CMR: CMR
   end_of_time_project: Завершение проекта
   signed_job_info: Информация о подписанном задании
+  additional_expense_label: "Название расхода"
+  additional_expense_amount: "Сумма"
+  add_additional_expense: "+ Добавить расход"
+  remove: "Удалить"

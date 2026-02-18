@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_18_071305) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_18_112302) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -103,6 +103,15 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_071305) do
     t.datetime "updated_at", precision: nil
     t.index ["created_at"], name: "index_activities_on_created_at"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "additional_expenses", force: :cascade do |t|
+    t.integer "signed_job_id"
+    t.string "label"
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["signed_job_id"], name: "index_additional_expenses_on_signed_job_id"
   end
 
   create_table "addresses", force: :cascade do |t|
@@ -311,6 +320,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_071305) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
+    t.string "cf_test"
     t.string "payments_terms"
     t.string "difficulty"
     t.string "country_of_origin"
@@ -390,6 +400,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_071305) do
     t.string "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "subscribed_users"
+    t.string "access"
+    t.integer "assigned_to"
+    t.datetime "deleted_at"
     t.float "total_price"
     t.string "income_payment_to"
     t.string "outcome_payment_from"

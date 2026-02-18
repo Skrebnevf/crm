@@ -76,7 +76,7 @@ class SignedJobsController < ApplicationController
   end
 
   def load_signed_job
-    @signed_job = SignedJob.includes(:request_for_quatation).find(params[:id])
+    @signed_job = SignedJob.includes(:request_for_quatation, :additional_expenses).find(params[:id])
   end
 
   def set_current_tab
@@ -104,7 +104,8 @@ class SignedJobsController < ApplicationController
       :outcoming_invoice,
       :CMR,
       :file,
-      :end_of_time_project
+      :end_of_time_project,
+      additional_expenses_attributes: [:id, :label, :amount, :_destroy]
     )
   end
 end
