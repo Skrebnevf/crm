@@ -17,4 +17,5 @@
   crm.flick('empty', 'remove');
 - else
   $('##{create_id}').html('#{ j render(partial: "new") }');
+  $('##{create_id}').effect("shake", { distance: 5 }, 250);
   $('#new_#{entity_name} input[type!=hidden]').first().focus();

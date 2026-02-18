@@ -20,7 +20,8 @@
 
 - else
   $('##{id}').html('#{ j render(partial: "edit") }');
-  - if @entity.errors[:first_name].blank? and entity.errors[:last_name].present?
+  $('##{id}').effect("shake", { distance: 5 }, 250);
+  - if @entity.errors[:first_name].blank? and @entity.errors[:last_name].present?
     $('#lead_last_name').focus();
   - else
     $('##{dom_id(@entity, :edit)} input[type!=hidden]').first().focus();

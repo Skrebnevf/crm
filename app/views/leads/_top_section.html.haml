@@ -5,17 +5,17 @@
       %tr
         %td
           .label.top.req #{t :company}:
-          = f.autocomplete_field :company, autocomplete_account_name_leads_path, required: true, autofocus: true
+          = f.autocomplete_field :company, autocomplete_account_name_leads_path, autofocus: true
         %td= spacer
         %td
           .label.top #{t :country_of_origin}:
           = f.country_select :country_of_origin, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
       %tr
-        %td{ class: (@lead.errors['first_name'].present? ? 'fieldWithErrors' : nil)}
+        %td
           .label.top #{t :first_name}:
           = f.text_field :first_name
         %td= spacer
-        %td{ class: (@lead.errors['last_name'].present? ? 'fieldWithErrors' : nil)}
+        %td
           .label.top #{t :last_name}:
           = f.text_field :last_name
       %tr
@@ -33,7 +33,7 @@
         %td= spacer
         %td
           .label.req #{t :difficulty}:
-          = f.select :difficulty, ["I'm Too Young to Die/Child's Play", "Hurt Me Plenty", "Ultra-Violence", "Nightmare"], { include_blank: "-- Select --" }, { required: true }
+          = f.select :difficulty, ["I'm Too Young to Die/Child's Play", "Hurt Me Plenty", "Ultra-Violence", "Nightmare"], { include_blank: "-- Select --" }
       - if Setting.background_info && Setting.background_info.include?(:lead)
         %tr
           %td(colspan="3")
