@@ -3,8 +3,7 @@ FROM ruby:3.3
 LABEL author="Steve Kenworthy"
 
 ENV HOME /home/app
-ENV RAILS_ENV production
-ENV RAILS_SERVE_STATIC_FILES true
+ENV RAILS_ENV development
 ENV RAILS_LOG_TO_STDOUT true
 # Use sqlite adapter (no external DB needed)
 ENV DB sqlite
@@ -27,8 +26,6 @@ RUN gem install bundler && \
     bundle config set --local deployment 'true' && \
     bundle install
 
-# Precompile assets
-RUN bundle exec rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy
 
 # Entrypoint: init DB on first run, then start server
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
