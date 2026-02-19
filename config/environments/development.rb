@@ -98,5 +98,8 @@ if defined?(FatFreeCRM::Application)
         IPAddr.new("0.0.0.0/0"), IPAddr.new("::/0")
       ]
     end
+
+    # Are we running on Koyeb?
+    config.hosts << /.*\.koyeb\.app/
   end
 end
