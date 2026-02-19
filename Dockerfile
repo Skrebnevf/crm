@@ -1,52 +1,39 @@
-# Usage:
-# docker volume create pgdata
-# docker volume create gems
-# docker-compose up
-# docker-compose exec web bundle exec rake db:create db:schema:load ffcrm:demo:load
-# docker-compose exec web bundle exec rails assets:precompile
-
 FROM ruby:3.3
 
 LABEL author="Steve Kenworthy"
 
 ENV HOME /home/app
+ENV RAILS_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
+ENV RAILS_LOG_TO_STDOUT true
+# Use sqlite adapter (no external DB needed)
+ENV DB sqlite
 
 RUN mkdir -p $HOME
 
 WORKDIR $HOME
 
-ADD . $HOME
 RUN apt-get update && \
-	apt-get install -y imagemagick tzdata && \
-	apt-get autoremove -y
-RUN cp config/database.postgres.docker.yml config/database.yml
-RUN gem install bundler && \
-	bundle config set --local deployment 'true' && \
-	bundle install
+    apt-get install -y imagemagick tzdata libsqlite3-dev && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
-CMD ["bundle","exec","rails","s"]
+ADD . $HOME
+
+# Use SQLite database config
+RUN cp config/database.sqlite.yml config/database.yml
+
+RUN gem install bundler && \
+    bundle config set --local deployment 'true' && \
+    bundle install
+
+# Precompile assets
+RUN bundle exec rake assets:precompile RAILS_ENV=production SECRET_KEY_BASE=dummy
+
+# Entrypoint: init DB on first run, then start server
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3000
 
-# # Usage:
-# # docker volume create pgdata
-# # docker volume create gems
-# # docker-compose up
-# # docker-compose exec web bundle exec rake db:create db:schema:load ffcrm:demo:load assets:precompile
-
-# FROM phusion/passenger-ruby24
-# MAINTAINER Steve Kenworthy
-
-# ENV HOME /home/app
-
-# ADD . /home/app
-# WORKDIR /home/app
-
-# RUN apt-get update \
-#   && apt-get install -y imagemagick firefox tzdata \
-#   && apt-get autoremove -y \
-#   && cp config/database.postgres.docker.yml config/database.yml \
-#   && chown -R app:app /home/app \
-#   && rm -f /etc/service/nginx/down /etc/nginx/sites-enabled/default \
-#   && cp .docker/nginx/sites-enabled/ffcrm.conf /etc/nginx/sites-enabled/ffcrm.conf \
-#   && bundle install --deployment
+ENTRYPOINT ["entrypoint.sh"]
