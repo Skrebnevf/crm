@@ -5,14 +5,15 @@ source 'https://rubygems.org'
 # Uncomment the database that you have configured in config/database.yml
 # ----------------------------------------------------------------------
 
-case ENV['DB']
+case ENV['CI'] && ENV['DB']
+when 'sqlite'
+  gem 'sqlite3', '~> 1.6.8'
 when 'mysql'
   gem 'mysql2'
 when 'postgres'
   gem 'pg'
 else
-  # Default: SQLite (local DB, no external server needed)
-  gem 'sqlite3', '~> 1.6.8'
+  gem 'pg'
 end
 
 # Removes a gem dependency
