@@ -410,28 +410,29 @@ module ApplicationHelper
 
   # Helper to display links to supported data export formats.
   #----------------------------------------------------------------------------
-  def links_to_export(action = :index)
-    token = current_user.authentication_token
-    url_params = { action: action }
-    url_params[:id] = params[:id] unless params[:id].blank?
-    url_params[:query] = params[:query] unless params[:query].blank?
-    url_params[:q] = params[:q] unless params[:q].blank?
-    url_params[:view] = @view unless @view.blank? # tasks
-    url_params[:id] = params[:id] unless params[:id].blank?
+  def links_to_export(_action = :index)
+    # token = current_user.authentication_token
+    # url_params = { action: action }
+    # url_params[:id] = params[:id] unless params[:id].blank?
+    # url_params[:query] = params[:query] unless params[:query].blank?
+    # url_params[:q] = params[:q] unless params[:q].blank?
+    # url_params[:view] = @view unless @view.blank? # tasks
+    # url_params[:id] = params[:id] unless params[:id].blank?
 
-    exports = %w[xls csv].map do |format|
-      link_to(format.upcase, url_params.merge(format: format), title: I18n.t(:"to_#{format}")) unless action.to_s == "show"
-    end
+    # exports = %w[xls csv].map do |format|
+    #   link_to(format.upcase, url_params.merge(format: format), title: I18n.t(:"to_#{format}")) unless action.to_s == "show"
+    # end
 
-    feeds = %w[rss atom].map do |format|
-      link_to(format.upcase, url_params.merge(format: format, authentication_credentials: token), title: I18n.t(:"to_#{format}"))
-    end
+    # feeds = %w[rss atom].map do |format|
+    #   link_to(format.upcase, url_params.merge(format: format, authentication_credentials: token), title: I18n.t(:"to_#{format}"))
+    # end
 
-    links = ['perm'].map do |format|
-      link_to(format.upcase, url_params, title: I18n.t(:"to_#{format}"))
-    end
+    # links = ['perm'].map do |format|
+    #   link_to(format.upcase, url_params, title: I18n.t(:"to_#{format}"))
+    # end
 
-    (exports + feeds + links).compact.join(' | ')
+    # (exports + feeds + links).compact.join(' | ')
+    ""
   end
 
   def user_options
@@ -456,7 +457,7 @@ module ApplicationHelper
         values.push(this.value);
       });
       $('#loading').show();
-      $.post('#{url}', {#{h name}: values.join(','), query: query}, function () {
+      $.post('#{url}', {#{h name}: values.join(',') || 'none', query: query}, function () {
         $('#loading').hide();
       });
     }.html_safe
@@ -479,7 +480,7 @@ module ApplicationHelper
       fmt_value = if email
                     link_to_email(fmt_value)
                   else
-                    fmt_value.gsub(%r{((http|ftp|https)://[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/\+#]*[\w\-\@?^=%&amp;/\+#])?)}, "<a href=\"\\1\">\\1</a>")
+                    fmt_value.gsub(%r{((http|ftp|https)://[\w\-_]+(\.[\w\-_]+)+([\w\-.,@?^=%&amp;:/+#]*[\w\-@?^=%&amp;/+#])?)}, "<a href=\"\\1\">\\1</a>")
                   end
       out << content_tag(:td, fmt_value, class: last_class)
     end

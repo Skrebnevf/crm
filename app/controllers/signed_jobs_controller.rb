@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SignedJobsController < EntitiesController
+  before_action :get_data_for_sidebar, only: :index
+
   # GET /signed_jobs
   def index
     @signed_jobs = get_signed_jobs(page: page_param, per_page: per_page_param)
@@ -10,6 +12,16 @@ class SignedJobsController < EntitiesController
   # GET /signed_jobs/1
   def show
     respond_with(@signed_job)
+  end
+
+  # POST /signed_jobs/filter
+  def filter
+    session[:signed_jobs_filter] = params[:status]
+    @signed_jobs = get_signed_jobs(page: 1, per_page: per_page_param) # Start one the first page.
+
+    respond_with(@signed_jobs) do |format|
+      format.js { render :index }
+    end
   end
 
   # GET /signed_jobs/1/edit
@@ -25,6 +37,8 @@ class SignedJobsController < EntitiesController
       @signed_job.update(resource_params)
     end
 
+    get_data_for_sidebar if @signed_job.errors.empty?
+
     respond_to do |format|
       if @signed_job.errors.empty?
         format.js
@@ -39,16 +53,24 @@ class SignedJobsController < EntitiesController
   private
 
   #----------------------------------------------------------------------------
+  def get_data_for_sidebar
+    jobs = SignedJob.my(current_user)
+    @signed_job_status_total = ActiveSupport::HashWithIndifferentAccess[
+      all: jobs.count,
+      new: jobs.where(status: 'new').count,
+      preparation: jobs.where(status: 'preparation').count,
+      in_progress: jobs.where(status: 'in_progress').count,
+      completed: jobs.where(status: 'completed').count,
+      canceled: jobs.where(status: 'canceled').count
+    ]
+  end
+
+  #----------------------------------------------------------------------------
   alias get_signed_jobs get_list_of_records
 
   #----------------------------------------------------------------------------
   def list_includes
     %i[request_for_quatation additional_expenses tags].freeze
-  end
-
-  #----------------------------------------------------------------------------
-  def set_current_tab
-    @current_tab = 'Signed Jobs'
   end
 
   #----------------------------------------------------------------------------

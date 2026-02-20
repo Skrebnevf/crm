@@ -192,16 +192,16 @@
     :icon: :fa-dashboard
     :url:
       :controller: home
-  - :active: false
-    :text: :tab_tasks
-    :icon: :fa-check-square-o
-    :url:
-      :controller: tasks
-  - :active: false
-    :text: :tab_campaigns
-    :icon: :fa-bar-chart-o
-    :url:
-      :controller: campaigns
+  # - :active: false
+  #   :text: :tab_tasks
+  #   :icon: :fa-check-square-o
+  #   :url:
+  #     :controller: tasks
+  # - :active: false
+  #   :text: :tab_campaigns
+  #   :icon: :fa-bar-chart-o
+  #   :url:
+  #     :controller: campaigns
   - :active: false
     :text: :tab_leads
     :icon: :fa-tasks

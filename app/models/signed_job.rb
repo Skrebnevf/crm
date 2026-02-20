@@ -13,6 +13,7 @@ class SignedJob < ActiveRecord::Base
     joins(:request_for_quatation)
       .where("signed_jobs.doc_id LIKE :q OR signed_jobs.status LIKE :q OR request_for_quatations.client LIKE :q", q: q)
   }
+  scope :state, ->(filters) { filters.include?('none') ? none : where(status: filters) }
 
   acts_as_taggable_on :tags
   acts_as_commentable
@@ -105,6 +106,7 @@ class SignedJob < ActiveRecord::Base
 
   def build_default_additional_expense
     additional_expenses.build(label: "Additional Expenses") if additional_expenses.empty?
+    self.status ||= 'new' if new_record?
   end
 
   def validate_file_format

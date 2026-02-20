@@ -6,6 +6,19 @@ class RequestForQuatation < ActiveRecord::Base
   has_many :signed_jobs, dependent: :nullify
   scope :my, ->(_user) { all }
   scope :text_search, ->(query) { ransack('client_or_from_or_to_or_comment_cont' => query).result }
+
+  scope :state, lambda { |filters|
+    conditions = []
+    conditions << 'accepted = true' if filters.include?('accepted')
+    conditions << 'denied = true' if filters.include?('denied')
+    conditions << '(accepted IS NOT TRUE AND denied IS NOT TRUE)' if filters.include?('rfq_new')
+
+    if conditions.any?
+      where(conditions.join(' OR '))
+    else
+      none
+    end
+  }
   validates :client, presence: true
 
   acts_as_commentable

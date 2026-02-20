@@ -135,9 +135,12 @@ class RequestForQuatationsController < EntitiesController
 
   #----------------------------------------------------------------------------
   def get_data_for_sidebar
+    rfqs = RequestForQuatation.my(current_user)
     @request_for_quatation_status_total = ActiveSupport::HashWithIndifferentAccess[
-                                          all: RequestForQuatation.my(current_user).count,
-                                          other: 0
+      all: rfqs.count,
+      accepted: rfqs.where(accepted: true).count,
+      denied: rfqs.where(denied: true).count,
+      rfq_new: rfqs.where('accepted IS NOT TRUE AND denied IS NOT TRUE').count
     ]
   end
 

@@ -1,0 +1,13 @@
+.filters#filters
+  .caption= t :signed_job_statuses
+  .check_box
+    %div{style: "float:right;"}
+      %b= @signed_job_status_total[:all]
+    %b #{t :total_signed_jobs}
+
+  - [:new, :preparation, :in_progress, :completed, :canceled].each do |status|
+    .check_box
+      %div{style: "float:right;"}
+        = @signed_job_status_total[status]
+      = entity_filter_checkbox(:status, status, @signed_job_status_total[status])
+      = label_tag(status, t(:"sj_#{status}"))

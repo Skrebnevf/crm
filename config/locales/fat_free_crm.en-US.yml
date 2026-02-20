@@ -821,6 +821,8 @@ en-US:
   #----------------------------------------------------------------------------
   to_xls: Export to Excel
   create_request_for_quatation: Create Request for Quatation
+  request_for_quatation_statuses: Request for Quatation Statuses
+  total_request_for_quatations: Total Request for Quatations
   save_request_for_quatation: Save RFQ
   request_for_quatation: Request for Quatation
   request_for_quatations: Request for Quatations
@@ -1042,6 +1044,10 @@ en-US:
   signed_job: Signed Job
   total: Total
   signed_jobs: Signed Jobs
+  signed_job_statuses: Signed Job Statuses
+  total_signed_jobs: Total Signed Jobs
+  sj_new: New
+
   doc_id: Document ID
   additional_expenses: Additional Expenses
   incoming_invoice: Incoming Invoice

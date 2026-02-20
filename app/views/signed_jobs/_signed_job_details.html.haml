@@ -31,7 +31,7 @@
             - if is_locked
               = f.text_field :status, value: t("sj_#{@signed_job.status}"), readonly: true
             - else
-              = f.select :status, [[t(:sj_preparation), 'preparation'], [t(:sj_in_progress), 'in_progress'], [t(:sj_completed), 'completed'], [t(:sj_canceled), 'canceled']], { include_blank: t(:select_blank) }, { class: 'select2' }
+              = f.select :status, [[t(:sj_new), 'new'], [t(:sj_preparation), 'preparation'], [t(:sj_in_progress), 'in_progress'], [t(:sj_completed), 'completed'], [t(:sj_canceled), 'canceled']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td{colspan: 3}
             #additional_expenses_container

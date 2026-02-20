@@ -9,6 +9,6 @@
     = render "request_for_quatations/bottom_section", f: f, edit: true
 
     .buttonbar
-      = f.submit t(:save_request_for_quatation), class: 'btn btn-primary'
+      = f.submit t(:save_request_for_quatation), class: 'btn btn-primary', disabled: f.object.locked?
       #{t :or}
       = link_to_cancel edit_request_for_quatation_path(@request_for_quatation)
