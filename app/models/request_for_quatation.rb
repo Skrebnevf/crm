@@ -4,7 +4,7 @@ class RequestForQuatation < ActiveRecord::Base
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
   has_many :signed_jobs, dependent: :nullify
-  scope :my, ->(user) { where(user_id: user.id) }
+  scope :my, ->(_user) { all }
   scope :text_search, ->(query) { ransack('client_or_from_or_to_or_comment_cont' => query).result }
   validates :client, presence: true
 
@@ -26,6 +26,11 @@ class RequestForQuatation < ActiveRecord::Base
   def self.per_page
     20
   end
+
+  def locked?
+    accepted? || denied?
+  end
+
   sortable by: ["created_at DESC", "updated_at DESC"], default: "created_at DESC"
 
   private
@@ -36,22 +41,28 @@ class RequestForQuatation < ActiveRecord::Base
 
   def create_signed_job_if_accepted
     return unless accepted?
-    return if signed_jobs.any?
 
-    SignedJob.create!(
-      request_for_quatation_id: id,
-      user_id: user_id
-    )
+    with_lock do
+      return if signed_jobs.any?
+
+      SignedJob.create!(
+        request_for_quatation_id: id,
+        user_id: user_id
+      )
+    end
   end
 
   def create_signed_job_on_becoming_accepted
     return unless saved_change_to_accepted?
     return unless accepted?
-    return if signed_jobs.any?
 
-    SignedJob.create!(
-      request_for_quatation_id: id,
-      user_id: user_id
-    )
+    with_lock do
+      return if signed_jobs.any?
+
+      SignedJob.create!(
+        request_for_quatation_id: id,
+        user_id: user_id
+      )
+    end
   end
 end

@@ -1,22 +1,17 @@
 FactoryBot.define do
   factory :request_for_quatation do
-    user_id { "MyString" }
-    client { "MyString" }
-    from { "MyString" }
-    to { "MyString" }
-    readiness_date { "MyString" }
-    what { "MyString" }
-    request_type { "MyString" }
-    comment { "MyString" }
-    buying { 1 }
-    payment_terms { "MyString" }
-    transit_time { "MyString" }
-    preadvise { "MyString" }
-    free_time { "MyString" }
-    demmurage_rate { "MyString" }
-    valid_till { "MyString" }
+    user { create(:user) }
+    author { create(:user) }
+    client { FFaker::Company.name }
+    from { "LV" }
+    to { "TR" }
+    readiness_date { "2026-03-01" }
+    what { "FTL" }
+    request_type { "Spot" }
+    comment { "Test comment" }
+    buying { 1000 }
+    payment_terms { "30 days" }
     accepted { false }
     denied { false }
-    reason { "MyString" }
   end
 end

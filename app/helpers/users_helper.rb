@@ -30,6 +30,6 @@ module UsersHelper
   end
 
   def user_options_for_select(users, myself)
-    (users - [myself]).map { |u| [u.full_name, u.id] }.prepend([t(:myself), myself.id])
+    (users - [myself]).map { |u| [u.full_name, u.id] }.prepend([myself.full_name, myself.id])
   end
 end

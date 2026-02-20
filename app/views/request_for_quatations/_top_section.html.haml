@@ -1,40 +1,54 @@
 - collapsed = false
+- is_locked = f.object.locked?
 = subtitle :request_for_quatation_info, collapsed, t(:info)
 
 .section
   #request_for_quatation_info{ hidden_if(collapsed) }
+    - if is_locked
+      .signed-job-locked-notice
+        %i.fa.fa-lock
+        = t(:request_for_quatation_locked_notice)
+    - else
+      .rfq-lock-warning{ style: "background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 10px; margin-bottom: 15px; border-radius: 4px;" }
+        %i.fa.fa-exclamation-triangle
+        = t(:request_for_quatation_lock_warning)
+
     %table
       %tr
         %td
           .label.top #{t :author}:
-          = f.select :author_id, user_options_for_select(all_users, f.object.author || f.object.user || current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
+          - if is_locked
+            .value{ style: "padding: 5px 0; font-weight: bold;" }
+              = f.object.author.try(:full_name) || f.object.user.try(:full_name) || t(:unassigned)
+          - else
+            = f.select :author_id, user_options_for_select(all_users, f.object.author || f.object.user || current_user), { include_blank: t(:unassigned) }, { class: 'select2' }
         %td= spacer
         %td= spacer
       %tr
         %td
           .label.top.req #{t :client}:
-          = f.text_field :client, autofocus: true
+          = f.text_field :client, autofocus: true, readonly: is_locked
         %td= spacer
         %td
           .label.top #{t :request_type}:
-          = f.select :request_type, ["Budget", "Bidding", "Spot", "Firm job"], { include_blank: "-- Select --" }
+          = f.select :request_type, ["Budget", "Bidding", "Spot", "Firm job"], { include_blank: "-- Select --" }, { disabled: is_locked }
       %tr
         %td
           .label #{t :rfq_from}:
-          = f.country_select :from, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
+          = f.country_select :from, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2', disabled: is_locked }
         %td= spacer
         %td
           .label #{t :rfq_to}:
-          = f.country_select :to, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2' }
+          = f.country_select :to, { priority_countries: priority_countries, include_blank: true }, { data: { placeholder: t(:select_a_country) }, class: 'select2', disabled: is_locked }
       %tr
         %td
           .label #{t :readiness_date}:
-          = f.date_field :readiness_date
+          = f.text_field :readiness_date, class: ('date' unless is_locked), readonly: is_locked
         %td= spacer
         %td
           .label #{t :what}:
-          = f.select :what, ["LTL", "LCL", "FTL", "OOG", "AIR", "SEA", "CONTAINER", "PROJECT"], {include_blank: "-- Select --"}
+          = f.select :what, ["LTL", "LCL", "FTL", "OOG", "AIR", "SEA", "CONTAINER", "PROJECT"], {include_blank: "-- Select --"}, { disabled: is_locked }
       %tr
         %td(colspan="3")
           .label #{t :comment}:
-          = f.text_area :comment, rows: 2
+          = f.text_area :comment, rows: 2, readonly: is_locked

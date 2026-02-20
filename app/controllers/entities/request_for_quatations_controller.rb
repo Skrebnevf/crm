@@ -52,13 +52,18 @@ class RequestForQuatationsController < EntitiesController
     end
   end
 
-  # PUT /request_for_quatations/1
-  #----------------------------------------------------------------------------
   def update
-    respond_with(@request_for_quatation) do |_format|
-      if @request_for_quatation.update(resource_params)
-        update_sidebar
+    if @request_for_quatation.locked?
+      @request_for_quatation.errors.add(:base, t(:request_for_quatation_locked))
+      respond_with(@request_for_quatation) do |format|
+        format.js { render :edit }
+        format.html { render :edit }
       end
+      return
+    end
+
+    respond_with(@request_for_quatation) do |_format|
+      update_sidebar if @request_for_quatation.update(resource_params)
     end
   end
 
@@ -79,12 +84,8 @@ class RequestForQuatationsController < EntitiesController
     current_user.pref[:request_for_quatations_per_page] = per_page_param if per_page_param
 
     # Sorting and naming only: set the same option for Contacts if the hasn't been set yet.
-    if params[:sort_by]
-      current_user.pref[:request_for_quatations_sort_by] = RequestForQuatation.sort_by_map[params[:sort_by]]
-    end
-    if params[:naming]
-      current_user.pref[:request_for_quatations_naming] = params[:naming]
-    end
+    current_user.pref[:request_for_quatations_sort_by] = RequestForQuatation.sort_by_map[params[:sort_by]] if params[:sort_by]
+    current_user.pref[:request_for_quatations_naming] = params[:naming] if params[:naming]
 
     @request_for_quatations = get_request_for_quatations(page: 1, per_page: per_page_param) # Start one the first page.
     set_options # Refresh options
@@ -134,7 +135,7 @@ class RequestForQuatationsController < EntitiesController
 
   #----------------------------------------------------------------------------
   def get_data_for_sidebar
-    @request_for_quatation_status_total = HashWithIndifferentAccess[
+    @request_for_quatation_status_total = ActiveSupport::HashWithIndifferentAccess[
                                           all: RequestForQuatation.my(current_user).count,
                                           other: 0
     ]

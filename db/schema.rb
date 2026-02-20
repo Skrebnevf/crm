@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_18_141957) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_20_100341) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -412,7 +412,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_141957) do
     t.string "outcome_payment_from"
     t.string "uuid"
     t.integer "author_id"
-    t.index ["uuid"], name: "index_request_for_quatations_on_uuid"
+    t.index ["uuid"], name: "index_request_for_quatations_on_uuid", unique: true
   end
 
   create_table "research_tools", force: :cascade do |t|
@@ -458,8 +458,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_18_141957) do
     t.integer "request_for_quatation_id"
     t.string "doc_id"
     t.index ["doc_id"], name: "index_signed_jobs_on_doc_id"
-    t.index ["request_for_quatation_id"], name: "index_signed_jobs_on_request_for_quatation_id"
-    t.index ["uuid"], name: "index_signed_jobs_on_uuid"
+    t.index ["request_for_quatation_id"], name: "index_signed_jobs_on_request_for_quatation_id", unique: true
+    t.index ["uuid"], name: "index_signed_jobs_on_uuid", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|

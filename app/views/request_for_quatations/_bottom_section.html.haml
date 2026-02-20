@@ -1,4 +1,5 @@
 - collapsed = false
+- is_locked = f.object.locked?
 = subtitle :request_for_quatation_details, collapsed, t(:details)
 
 .section
@@ -7,52 +8,57 @@
       %tr
         %td
           .label.top #{t :buying}:
-          = f.text_field :buying
+          = f.text_field :buying, readonly: is_locked
         %td= spacer
         %td
           .label.top #{t :payment_terms}:
-          = f.select :payment_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }
+          = f.select :payment_terms, ["no terms", "7 days", "14 days", "30 days", "90 days"], { include_blank: "-- Select --" }, { disabled: is_locked }
       %tr
         %td
           .label #{t :transit_time}:
-          = f.text_field :transit_time
+          = f.text_field :transit_time, readonly: is_locked
         %td= spacer
         %td
           .label #{t :preadvise}:
-          = f.text_field :preadvise
+          = f.text_field :preadvise, readonly: is_locked
       %tr
         %td
           .label #{t :free_time}:
-          = f.text_field :free_time
+          = f.text_field :free_time, readonly: is_locked
         %td= spacer
+      %tr
         %td
           .label #{t :demmurage_rate}:
-          = f.text_field :demmurage_rate
+          = f.text_field :demmurage_rate, readonly: is_locked
+        %td= spacer
+        %td
+          .label #{t :valid_till}:
+          = f.text_field :valid_till, class: ('date' unless is_locked), readonly: is_locked
       %tr
         %td
           .label #{t :accepted}:
-          = f.check_box :accepted
+          = f.check_box :accepted, disabled: is_locked
       %tr#accepted_details_row
         %td
           .label #{t :selling}:
-          = f.text_field :selling, type: 'number', step: 'any'
+          = f.text_field :selling, type: 'number', step: 'any', readonly: is_locked
         %td= spacer
       %tr#accepted_details_row_2
         %td
           .label #{t :income_payment_to}:
-          = f.select :income_payment_to, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }
+          = f.select :income_payment_to, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }, { disabled: is_locked }
         %td= spacer
         %td
           .label #{t :outcome_payment_from}:
-          = f.select :outcome_payment_from, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }
+          = f.select :outcome_payment_from, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }, { disabled: is_locked }
       %tr
         %td
           .label #{t :denied}:
-          = f.check_box :denied
+          = f.check_box :denied, disabled: is_locked
       %tr#reason_row
         %td(colspan="3")
           .label #{t :reason}:
-          = f.text_field :reason, style: "width:100%"
+          = f.text_field :reason, style: "width:100%", readonly: is_locked
 
 :javascript
   $(document).ready(function() {
@@ -61,7 +67,6 @@
     var acceptedDetailsRow2 = $('#accepted_details_row_2');
     var deniedCheckbox = $('#request_for_quatation_denied');
     var reasonRow = $('#reason_row');
-
     function toggleAcceptedDetails() {
       if (acceptedCheckbox.prop('checked')) {
         acceptedDetailsRow.show();

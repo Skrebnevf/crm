@@ -4,7 +4,7 @@
   - elsif request_for_quatation.denied
     .strip.denied= t(:denied)
   - else
-    .strip.other= t(:other)
+    .strip.new= t(:rfq_new)
 
   .indent
     = link_to_if can?(:update, request_for_quatation), request_for_quatation.client, edit_request_for_quatation_path(request_for_quatation), remote: true

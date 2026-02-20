@@ -11,13 +11,22 @@
         .signed-job-locked-notice
           %i.fa.fa-lock
           = t(:signed_job_locked_notice)
+      - else
+        .signed-job-lock-warning{ style: "background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 10px; margin-bottom: 15px; border-radius: 4px;" }
+          %i.fa.fa-exclamation-triangle
+          = t(:signed_job_lock_warning)
       %table
+        %tr
+          %td
+            .label.top #{t :rfq_author}:
+            .value{ style: "padding: 5px 0; font-weight: bold;" }
+              = @signed_job.request_for_quatation.try(:author).try(:full_name) || @signed_job.request_for_quatation.try(:user).try(:full_name) || t(:unassigned)
+          %td= spacer
+          %td
         %tr
           %td
             .label.top #{t :doc_id}:
             = f.text_field :doc_id, readonly: true
-          %td= spacer
-          %td
             .label.top #{t :status}:
             - if is_locked
               = f.text_field :status, value: t("sj_#{@signed_job.status}"), readonly: true

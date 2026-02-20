@@ -7,11 +7,17 @@ class SignedJob < ActiveRecord::Base
   has_many :additional_expenses, dependent: :destroy
   accepts_nested_attributes_for :additional_expenses, allow_destroy: true, reject_if: :all_blank
 
-  scope :text_search, ->(query) {
+  scope :my, ->(_user) { all }
+  scope :text_search, lambda { |query|
     q = "%#{query}%"
     joins(:request_for_quatation)
       .where("signed_jobs.doc_id LIKE :q OR signed_jobs.status LIKE :q OR request_for_quatations.client LIKE :q", q: q)
   }
+
+  acts_as_taggable_on :tags
+  acts_as_commentable
+  has_paper_trail versions: { class_name: 'Version' }, ignore: [:subscribed_users]
+  sortable by: ["created_at DESC", "doc_id DESC"], default: "created_at DESC"
 
   validate :additional_expenses_count_within_limit
 
@@ -21,13 +27,15 @@ class SignedJob < ActiveRecord::Base
   validates :incoming_additional_invoice,  presence: true, on: :update, unless: :completed?
   validates :outcoming_invoice,            presence: true, on: :update, unless: :completed?
 
-  before_create :generate_uuid, :generate_doc_id
+  def name
+    doc_id || "Job ##{id}"
+  end
+
   before_save :auto_complete_status
+  before_create :generate_uuid, :generate_doc_id
 
   def additional_expenses_count_within_limit
-    if additional_expenses.reject(&:marked_for_destruction?).size > 20
-      errors.add(:base, "Maximum 20 additional expenses allowed")
-    end
+    errors.add(:base, "Maximum 20 additional expenses allowed") if additional_expenses.reject(&:marked_for_destruction?).size > 20
   end
 
   def self.per_page
@@ -103,17 +111,13 @@ class SignedJob < ActiveRecord::Base
     return unless @uploaded_file
 
     extension = File.extname(@uploaded_file.original_filename).downcase
-    unless %w[.pdf .doc .docx .jpg .jpeg .txt].include?(extension)
-      errors.add(:file, "must be one of: pdf, doc, docx, jpg, jpeg, txt")
-    end
+    errors.add(:file, "must be one of: pdf, doc, docx, jpg, jpeg, txt") unless %w[.pdf .doc .docx .jpg .jpeg .txt].include?(extension)
   end
 
   def validate_file_size
     return unless @uploaded_file
 
-    if @uploaded_file.size > 10.megabytes
-      errors.add(:file, "size must be less than 10MB")
-    end
+    errors.add(:file, "size must be less than 10MB") if @uploaded_file.size > 10.megabytes
   end
 
   def handle_file_upload
@@ -121,12 +125,10 @@ class SignedJob < ActiveRecord::Base
 
     filename = @uploaded_file.original_filename
     relative_path = "files/#{doc_id}/#{filename}"
-    directory = Rails.root.join('public', 'files', doc_id.to_s)
+    directory = Rails.public_path.join('files', doc_id.to_s)
     FileUtils.mkdir_p(directory) unless Dir.exist?(directory)
 
-    File.open(directory.join(filename), 'wb') do |file|
-      file.write(@uploaded_file.read)
-    end
+    File.binwrite(directory.join(filename), @uploaded_file.read)
 
     update_column(:file, relative_path)
   end

@@ -828,6 +828,8 @@ en-US:
   client: Client
   request_type: Request Type
   readiness_date: Readiness Date
+  rfq_author: Form accepted by
+  rfq_new: "Created"
   what: What
   buying: Buying
   payment_terms: Payment Terms
@@ -1059,3 +1061,7 @@ en-US:
   remove: "Remove"
   signed_job_locked: "This job is locked because Project Completion date is set."
   signed_job_locked_notice: "This job is completed and locked. Fields cannot be edited."
+  signed_job_lock_warning: "Warning: setting and saving with a 'Project Completion' date will make this job read-only."
+  request_for_quatation_locked: "This RFQ is locked because it has been Accepted or Denied."
+  request_for_quatation_locked_notice: "This RFQ is completed and locked. Fields cannot be edited."
+  request_for_quatation_lock_warning: "Warning: saving with 'Accepted' or 'Denied' status will make this RFQ read-only."
