@@ -26,6 +26,7 @@ class SignedJobsController < EntitiesController
 
   # GET /signed_jobs/1/edit
   def edit
+    @signed_job.additional_expenses.build(label: "Additional Expenses") if @signed_job.additional_expenses.empty?
     @previous = SignedJob.my(current_user).find_by_id(detect_previous_id) || detect_previous_id if detect_previous_id
     respond_with(@signed_job)
   end
@@ -80,7 +81,6 @@ class SignedJobsController < EntitiesController
     params.require(:signed_job).permit(
       :doc_id,
       :status,
-      :additional_expenses,
       :incoming_invoice,
       :incoming_additional_invoice,
       :outcoming_invoice,

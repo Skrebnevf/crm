@@ -105,7 +105,6 @@ class SignedJob < ActiveRecord::Base
   end
 
   def build_default_additional_expense
-    additional_expenses.build(label: "Additional Expenses") if additional_expenses.empty?
     self.status ||= 'new' if new_record?
   end
 
@@ -128,7 +127,7 @@ class SignedJob < ActiveRecord::Base
     filename = @uploaded_file.original_filename
     relative_path = "files/#{doc_id}/#{filename}"
     directory = Rails.public_path.join('files', doc_id.to_s)
-    FileUtils.mkdir_p(directory) unless Dir.exist?(directory)
+    FileUtils.mkdir_p(directory)
 
     File.binwrite(directory.join(filename), @uploaded_file.read)
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       get :redraw
       post :filter
+      get :autocomplete_lead_company
     end
   end
   resources :signed_jobs do

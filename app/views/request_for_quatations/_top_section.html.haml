@@ -27,7 +27,7 @@
       %tr
         %td
           .label.top.req #{t :client}:
-          = f.text_field :client, autofocus: true, readonly: is_locked
+          = f.autocomplete_field :client, autocomplete_lead_company_request_for_quatations_path, autofocus: true, readonly: is_locked, class: 'autocomplete'
         %td= spacer
         %td
           .label.top #{t :request_type}:

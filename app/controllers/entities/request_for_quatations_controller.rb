@@ -2,6 +2,7 @@
 
 class RequestForQuatationsController < EntitiesController
   before_action :get_data_for_sidebar, only: :index
+  autocomplete :lead, :company, full: true
 
   # GET /request_for_quatations
   #----------------------------------------------------------------------------

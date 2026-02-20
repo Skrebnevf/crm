@@ -18,15 +18,10 @@
       %table
         %tr
           %td
-            .label.top #{t :rfq_author}:
-            .value{ style: "padding: 5px 0; font-weight: bold;" }
-              = @signed_job.request_for_quatation.try(:author).try(:full_name) || @signed_job.request_for_quatation.try(:user).try(:full_name) || t(:unassigned)
-          %td= spacer
-          %td
-        %tr
-          %td
             .label.top #{t :doc_id}:
             = f.text_field :doc_id, readonly: true
+          %td= spacer
+          %td
             .label.top.req #{t :status}:
             - if is_locked
               = f.text_field :status, value: t("sj_#{@signed_job.status}"), readonly: true
@@ -136,14 +131,6 @@
               = link_to @signed_job.file.split('/').last, "/#{@signed_job.file}", target: "_blank", class: "file-link"
             - else
               = text_field_tag :file, @signed_job.file, readonly: true
-          %td= spacer
-          %td
-            .label #{t :manager}:
-            = text_field_tag :assign_to_manager, User.find_by_id(@signed_job.assign_to_manager).try(:full_name), readonly: true
-        %tr
-          %td
-            .label #{t :procurement}:
-            = text_field_tag :assign_to_procurement, User.find_by_id(@signed_job.assign_to_procurement).try(:full_name), readonly: true
           %td= spacer
           %td
             .label #{t :end_of_time_project}:
