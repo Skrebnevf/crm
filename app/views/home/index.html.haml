@@ -28,6 +28,22 @@
   - else
     #{t :no_account_records}
 
+.title
+  %span#title #{t :recent_rfqs}
+%ul.list#recent_rfqs
+  - if @recent_rfqs.any?
+    = render partial: "home/rfq", collection: @recent_rfqs
+  - else
+    #{t :no_rfq_records}
+
+.title
+  %span#title #{t :recent_signed_jobs}
+%ul.list#recent_signed_jobs
+  - if @recent_signed_jobs.any?
+    = render partial: "home/signed_job", collection: @recent_signed_jobs
+  - else
+    #{t :no_signed_job_records}
+
 .title_tools
   = link_to_inline(:options, url_for(action: :options), text: t(:options))
 

@@ -651,6 +651,11 @@ en-US:
   no_opportunity_records: You have no opportunities.
   my_accounts: My Accounts
   no_account_records: You have no accounts
+  recent_rfqs: Recent RFQs
+  no_rfq_records: No request for quotations found.
+  recent_signed_jobs: Recent Signed Jobs
+  no_signed_job_records: No signed jobs found.
+  signedjob: Signed Job
   not_showing_hidden_entities: Not showing %{count} hidden %{entity}.
 
   # Views -> Common.
@@ -825,6 +830,7 @@ en-US:
   total_request_for_quatations: Total Request for Quatations
   save_request_for_quatation: Save RFQ
   request_for_quatation: Request for Quatation
+  requestforquatation: RFQ
   request_for_quatations: Request for Quatations
   create_request_for_quatation_small: create a new request for quatation
   client: Client

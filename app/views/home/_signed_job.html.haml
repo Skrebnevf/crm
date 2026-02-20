@@ -1,0 +1,15 @@
+%li.highlight[signed_job]
+  - status_class = case signed_job.status
+    - when 'new'       then 'prospecting'
+    - when 'in_work'   then 'analysis'
+    - when 'completed' then 'won'
+    - else                  'other'
+  .strip{class: status_class}= signed_job.status ? t(signed_job.status.to_sym, default: signed_job.status) : t(:rfq_new)
+
+  .indent
+    = link_to(h(signed_job.name), signed_job_path(signed_job))
+    - if signed_job.request_for_quatation&.client.present?
+      %span.mar &mdash;
+      = h(signed_job.request_for_quatation.client)
+    %br
+    = t(:added_by, time_ago: time_ago_in_words(signed_job.created_at), user: h(signed_job.request_for_quatation&.user&.full_name || t(:unassigned)))

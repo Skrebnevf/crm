@@ -1,0 +1,15 @@
+%li.highlight[rfq]
+  - if rfq.accepted?
+    .strip.won= t(:accepted)
+  - elsif rfq.denied?
+    .strip.lost= t(:denied)
+  - else
+    .strip.prospecting= t(:rfq_new)
+
+  .indent
+    = link_to(h(rfq.client), request_for_quatation_path(rfq))
+    - if rfq.from.present? || rfq.to.present?
+      %span.mar &mdash;
+      = [rfq.from, rfq.to].compact.join(" → ")
+    %br
+    = t(:added_by, time_ago: time_ago_in_words(rfq.created_at), user: h(rfq.user&.full_name || t(:unassigned)))

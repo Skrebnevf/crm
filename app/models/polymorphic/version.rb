@@ -11,6 +11,7 @@ class Version < PaperTrail::Version
   ASSETS = %w[all tasks campaigns leads accounts contacts opportunities comments emails]
   EVENTS = %w[all_events create view update destroy]
   DURATION = %w[one_hour one_day two_days one_week two_weeks one_month]
+  RECENT_ITEM_TYPES = %w[Account Campaign Contact Lead Opportunity RequestForQuatation SignedJob].freeze
 
   belongs_to :related, polymorphic: true, optional: true # TODO: Is this really optional?
   belongs_to :user, foreign_key: :whodunnit, optional: true # TODO: Is this really optional?
@@ -21,7 +22,7 @@ class Version < PaperTrail::Version
   scope :for,            ->(user) { where(whodunnit: user.id.to_s) }
 
   class << self
-    def recent_for_user(user, limit = 10)
+    def recent_for_user(user, limit = 5)
       # Hybrid SQL/Ruby to build a unique list of the most recent entities that the
       # user has interacted with
       versions = []
@@ -29,7 +30,7 @@ class Version < PaperTrail::Version
       while versions.size < limit
         query = includes(:item)
                 .where(whodunnit: user.id.to_s)
-                .where(item_type: ENTITIES)
+                .where(item_type: RECENT_ITEM_TYPES)
                 .limit(limit * 2)
                 .offset(offset)
                 .default_order
@@ -40,7 +41,7 @@ class Version < PaperTrail::Version
         versions.uniq! { |v| [v.item_id, v.item_type] }
         offset += limit * 2
       end
-      versions[0...10]
+      versions[0...limit]
     end
 
     def latest(options = {})
