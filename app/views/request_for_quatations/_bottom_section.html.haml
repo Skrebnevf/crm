@@ -38,6 +38,10 @@
         %td
           .label #{t :accepted}:
           = f.check_box :accepted, disabled: is_locked
+        %td= spacer
+        %td
+          .label #{t :denied}:
+          = f.check_box :denied, disabled: is_locked
       %tr#accepted_details_row
         %td
           .label #{t :selling}:
@@ -51,10 +55,6 @@
         %td
           .label #{t :outcome_payment_from}:
           = f.select :outcome_payment_from, ["LV", "KZ", "TR"], { include_blank: "-- Select --" }, { disabled: is_locked }
-      %tr
-        %td
-          .label #{t :denied}:
-          = f.check_box :denied, disabled: is_locked
       %tr#reason_row
         %td(colspan="3")
           .label #{t :reason}:
@@ -62,11 +62,25 @@
 
 :javascript
   $(document).ready(function() {
+    var isLocked = #{is_locked ? 'true' : 'false'};
     var acceptedCheckbox = $('#request_for_quatation_accepted');
     var acceptedDetailsRow = $('#accepted_details_row');
     var acceptedDetailsRow2 = $('#accepted_details_row_2');
     var deniedCheckbox = $('#request_for_quatation_denied');
     var reasonRow = $('#reason_row');
+
+    function updateCheckboxes() {
+      if (isLocked) return;
+      if (acceptedCheckbox.prop('checked')) {
+        deniedCheckbox.prop('disabled', true);
+      } else if (deniedCheckbox.prop('checked')) {
+        acceptedCheckbox.prop('disabled', true);
+      } else {
+        acceptedCheckbox.prop('disabled', false);
+        deniedCheckbox.prop('disabled', false);
+      }
+    }
+
     function toggleAcceptedDetails() {
       if (acceptedCheckbox.prop('checked')) {
         acceptedDetailsRow.show();
@@ -75,6 +89,7 @@
         acceptedDetailsRow.hide();
         acceptedDetailsRow2.hide();
       }
+      updateCheckboxes();
     }
 
     function toggleReason() {
@@ -83,6 +98,7 @@
       } else {
         reasonRow.hide();
       }
+      updateCheckboxes();
     }
 
     toggleAcceptedDetails();

@@ -3,8 +3,6 @@
   = f.hidden_field :user_id
   = hidden_field_tag "campaign", "#{@campaign.id if @campaign}"
 
-  = f.error_messages object_name: t('lead')
-
   = render "leads/top_section",    f: f
   = render "fields/edit_custom_field_group", f: f
   = render "leads/status",         f: f
@@ -14,6 +12,8 @@
   = render "fields/groups",        f: f
   = render "entities/permissions", f: f, entity: @lead
   = hook(:entity_form, self, {f: f, entity: @lead})
+
+  = f.error_messages object_name: t('lead')
 
   .buttonbar
     - if Setting.compound_address

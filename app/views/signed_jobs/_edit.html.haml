@@ -2,14 +2,14 @@
   = link_to_close edit_signed_job_path(@signed_job)
 
   = simple_form_for(@signed_job, html: one_submit_only.merge(multipart: true), remote: true, authenticity_token: true) do |f|
-    = f.error_messages object_name: t('signed_job')
-
     = render 'signed_job_details', edit: true, f: f
 
     - if @signed_job.request_for_quatation
       = render 'request_for_quatation_details'
 
     = render 'signed_job_totals'
+
+    = f.error_messages object_name: t('signed_job')
 
     .buttonbar
       = f.submit t(:save_signed_job), class: 'btn btn-primary', disabled: @signed_job.completed?

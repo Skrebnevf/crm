@@ -5,7 +5,7 @@
       %tr
         %td
           .label.top.req #{t :company}:
-          = f.autocomplete_field :company, autocomplete_account_name_leads_path, autofocus: true
+          = f.autocomplete_field :company, autocomplete_account_name_leads_path, autofocus: f.object.errors.empty?
         %td= spacer
         %td
           .label.top #{t :country_of_origin}:

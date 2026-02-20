@@ -1059,6 +1059,10 @@ ru:
   signed_job: Подписанное задание
   total: Итого
   signed_jobs: Подписанные задания
+  author: Автор
+  file: Файл
+  current_file: Текущий файл
+
   doc_id: ID документа
   additional_expenses: Дополнительные расходы
   incoming_invoice: Входящий счет

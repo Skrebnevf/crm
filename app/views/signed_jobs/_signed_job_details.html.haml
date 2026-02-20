@@ -27,7 +27,7 @@
           %td
             .label.top #{t :doc_id}:
             = f.text_field :doc_id, readonly: true
-            .label.top #{t :status}:
+            .label.top.req #{t :status}:
             - if is_locked
               = f.text_field :status, value: t("sj_#{@signed_job.status}"), readonly: true
             - else
@@ -47,7 +47,7 @@
                   = render 'additional_expense_fields', f: af
         %tr
           %td
-            .label #{t :CMR}:
+            .label.req #{t :CMR}:
             = f.text_field :CMR, readonly: is_locked
           %td= spacer
           %td
@@ -77,21 +77,21 @@
             = text_field_tag :created_at, l(@signed_job.created_at, format: :long), readonly: true
         %tr
           %td
-            .label #{t :incoming_invoice}:
+            .label.req #{t :incoming_invoice}:
             - if is_locked
               = f.text_field :incoming_invoice, readonly: true
             - else
               = f.select :incoming_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td
-            .label #{t :incoming_additional_invoice}:
+            .label.req #{t :incoming_additional_invoice}:
             - if is_locked
               = f.text_field :incoming_additional_invoice, readonly: true
             - else
               = f.select :incoming_additional_invoice, [[t(:yes_button), 'yes'], [t(:no_button), 'no']], { include_blank: t(:select_blank) }, { class: 'select2' }
         %tr
           %td
-            .label #{t :outcoming_invoice}:
+            .label.req #{t :outcoming_invoice}:
             - if is_locked
               = f.text_field :outcoming_invoice, readonly: true
             - else

@@ -1048,6 +1048,10 @@ en-US:
   total_signed_jobs: Total Signed Jobs
   sj_new: New
 
+  author: Author
+  file: File
+  current_file: Current File
+
   doc_id: Document ID
   additional_expenses: Additional Expenses
   incoming_invoice: Incoming Invoice
