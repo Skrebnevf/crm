@@ -14,6 +14,7 @@ FactoryBot.define do
     last_name           { FFaker::Name.last_name }
     access              { "Public" }
     company             { FFaker::Company.name }
+    difficulty          { %w[Easy Medium Hard].sample }
     title               { FactoryBot.generate(:title) }
     source              { %w[campaign cold_call conference online referral self web word_of_mouth other].sample }
     status              { %w[new contacted converted rejected].sample }
@@ -22,8 +23,6 @@ FactoryBot.define do
     do_not_call         { false }
     blog                { FactoryBot.generate(:website) }
     linkedin            { FactoryBot.generate(:website) }
-    facebook            { FactoryBot.generate(:website) }
-    twitter             { FactoryBot.generate(:website) }
     email               { FFaker::Internet.email }
     alt_email           { FFaker::Internet.email }
     phone               { FFaker::PhoneNumber.phone_number }

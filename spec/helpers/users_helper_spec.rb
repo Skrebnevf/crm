@@ -13,8 +13,8 @@ describe UsersHelper do
   let(:user2) { create(:user,  id: 75, first_name: 'Billy', last_name: "Joel") }
 
   describe "user_options_for_select" do
-    it "includes 'myself'" do
-      expect(user_options_for_select([user1, user2], myself)).to include(["Myself", 54])
+    it "includes myself" do
+      expect(user_options_for_select([user1, user2], myself)).to include([myself.full_name, 54])
     end
 
     it "includes other users" do
@@ -28,7 +28,7 @@ describe UsersHelper do
     end
 
     it "includes myself" do
-      expect(user_select(:lead, [user1, user2], myself)).to match(%r{<option value="54">Myself</option>})
+      expect(user_select(:lead, [user1, user2], myself)).to match(%r{<option value="54">#{myself.full_name}</option>})
     end
 
     it "includes other users" do

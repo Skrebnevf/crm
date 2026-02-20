@@ -16,6 +16,8 @@ describe FatFreeCRM::MailProcessor::Dropbox do
   before(:each) do
     @mock_address = "dropbox@example.com"
     @crawler = FatFreeCRM::MailProcessor::Dropbox.new
+    allow_any_instance_of(Lead).to receive(:company).and_return("Unknown")
+    allow_any_instance_of(Lead).to receive(:difficulty).and_return("Easy")
   end
 
   #------------------------------------------------------------------------------

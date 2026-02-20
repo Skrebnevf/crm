@@ -17,15 +17,15 @@ describe "leads/_sidebar_show" do
     assign(:lead, build_stubbed(:lead,
                                 blog: 'http://www.blogger.com/home',
                                 linkedin: 'www.linkedin.com',
-                                twitter: 'twitter.com/account',
-                                facebook: ''))
+                                whatsapp: 'whatsapp.com/123',
+                                telegram: ''))
   end
 
   it "should render working web presence links whether a protocol is provided or not" do
     render
     expect(rendered).to have_tag("a[href='http://www.blogger.com/home']")
     expect(rendered).to have_tag("a[href='http://www.linkedin.com']")
-    expect(rendered).to have_tag("a[href='http://twitter.com/account']")
-    expect(rendered).not_to have_tag("a[href='http://www.facebook/profile']")
+    expect(rendered).to have_tag("a[href='http://whatsapp.com/123']")
+    expect(rendered).not_to have_tag("a[href='http://telegram.com/123']")
   end
 end

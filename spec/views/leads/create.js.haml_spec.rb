@@ -56,7 +56,7 @@ describe "leads/create" do
 
   describe "create failure" do
     it "should re-render [create] template in :create_lead div" do
-      assign(:lead, build(:lead, first_name: nil)) # make it invalid
+      assign(:lead, build(:lead, company: nil)) # make it invalid
       assign(:users, [build_stubbed(:user)])
 
       render

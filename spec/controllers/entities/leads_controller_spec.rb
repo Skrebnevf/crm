@@ -368,7 +368,7 @@ describe LeadsController do
         @lead = build(:lead, user: current_user, campaign: @campaign)
 
         request.env["HTTP_REFERER"] = "http://localhost/campaigns/#{@campaign.id}"
-        put :create, params: { lead: { first_name: "Billy", last_name: "Bones" }, campaign: @campaign.id }, xhr: true
+        post :create, params: { lead: { first_name: "Billy", last_name: "Bones", company: "Treasure Island", difficulty: "Hard" }, campaign: @campaign.id }, xhr: true
         expect(assigns[:campaign]).to eq(@campaign)
       end
 
@@ -515,7 +515,7 @@ describe LeadsController do
         @lead = create(:lead, id: 42, user: current_user, campaign: nil)
         @campaigns = [create(:campaign, user: current_user)]
 
-        put :update, params: { id: 42, lead: { first_name: nil } }, xhr: true
+        put :update, params: { id: 42, lead: { company: "" } }, xhr: true
         expect(assigns[:lead]).to eq(@lead)
         expect(assigns[:campaigns]).to eq(@campaigns)
         expect(response).to render_template("leads/update")

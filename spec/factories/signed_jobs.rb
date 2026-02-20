@@ -3,15 +3,12 @@
 FactoryBot.define do
   factory :signed_job do
     status { "pending" }
-    additional_expenses { "" }
     incoming_invoice { "" }
     incoming_additional_invoice { "" }
     outcoming_invoice { "" }
     CMR { "" }
     file { "" }
-    assign_to_manager { "" }
-    assign_to_procurement { "" }
-    end_of_time_project { "" }
+    end_of_time_project { nil }
     uuid { SecureRandom.uuid }
 
     user

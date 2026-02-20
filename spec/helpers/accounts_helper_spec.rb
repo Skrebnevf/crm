@@ -21,8 +21,8 @@ describe AccountsHelper do
       end
     end
     context 'when the pipeline is has 300' do
-      it 'returns "$300"' do
-        expect(display_value(300)).to eq('$300')
+      it 'returns "€300"' do
+        expect(display_value(300)).to eq('€300')
       end
     end
   end
@@ -33,8 +33,8 @@ describe AccountsHelper do
       end
     end
     context 'when the won is has 300' do
-      it 'returns "$300"' do
-        expect(display_value(300)).to eq('$300')
+      it 'returns "€300"' do
+        expect(display_value(300)).to eq('€300')
       end
     end
   end
@@ -45,8 +45,8 @@ describe AccountsHelper do
       end
     end
     context 'when the lost is has 300' do
-      it 'returns "$300"' do
-        expect(display_value(300)).to eq('$300')
+      it 'returns "€300"' do
+        expect(display_value(300)).to eq('€300')
       end
     end
   end

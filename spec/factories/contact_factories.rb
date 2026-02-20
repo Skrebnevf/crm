@@ -23,9 +23,7 @@ FactoryBot.define do
     mobile              { FFaker::PhoneNumber.phone_number }
     fax                 { FFaker::PhoneNumber.phone_number }
     blog                { FactoryBot.generate(:website) }
-    facebook            { FactoryBot.generate(:website) }
     linkedin            { FactoryBot.generate(:website) }
-    twitter             { FactoryBot.generate(:website) }
     do_not_call         { false }
     born_on             { "1992-10-10" }
     background_info     { FFaker::Lorem.paragraph[0, 255] }

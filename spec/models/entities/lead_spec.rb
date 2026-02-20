@@ -27,8 +27,7 @@
 #  mobile          :string(32)
 #  blog            :string(128)
 #  linkedin        :string(128)
-#  facebook        :string(128)
-#  twitter         :string(128)
+#  whatsapp        :string(128)
 #  rating          :integer         default(0), not null
 #  do_not_call     :boolean         default(FALSE), not null
 #  deleted_at      :datetime
@@ -42,7 +41,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Lead do
   it "should create a new instance given valid attributes" do
-    Lead.create!(first_name: "Billy", last_name: "Bones")
+    Lead.create!(first_name: "Billy", last_name: "Bones", company: "Treasure Island", difficulty: "Hard")
   end
 
   describe "Attach" do
