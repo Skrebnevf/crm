@@ -1,0 +1,18 @@
+.card.mb-3
+  .card-body
+    %h5.card-title= test.title
+    %p.card-text= test.body
+    %p
+      %strong Answer:
+      = test.question
+
+    .d-flex.gap-2
+      = link_to "Delete", test_path(test),
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        class: "btn btn-danger btn-sm"
+
+      = link_to "Edit", "#",
+        class: "btn btn-warning btn-sm",
+        onclick: "document.getElementById('edit-#{test.id}').style.display='block'; return false;"
+= render "edit_form", test: test

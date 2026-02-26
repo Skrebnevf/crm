@@ -6,6 +6,8 @@
 # See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
+  resources :tests, only: %i[index create update destroy]
+
   resources :request_for_quatations do
     collection do
       get :redraw

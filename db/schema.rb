@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_20_125030) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_23_160929) do
   create_table "account_contacts", force: :cascade do |t|
     t.integer "account_id"
     t.integer "contact_id"
@@ -499,6 +499,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_20_125030) do
     t.text "subscribed_users"
     t.index ["assigned_to"], name: "index_tasks_on_assigned_to"
     t.index ["user_id", "name", "deleted_at"], name: "index_tasks_on_user_id_and_name_and_deleted_at", unique: true
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.string "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,39 @@
+- show_style = (@edit_id == test.id) ? "" : "display:none;"
+
+%div{ id: "edit-#{test.id}", style: show_style }
+  .card.mb-3.border-warning
+    .card-body
+      %h6 Edit Test ##{test.id}
+
+      - model_for_form = (@edit_id == test.id && defined?(@edited_test)) ? @edited_test : test
+
+      = form_with model: model_for_form, method: :patch, local: true do |f|
+
+        - if model_for_form.errors.any?
+          .alert.alert-danger
+            %ul.mb-0
+              - model_for_form.errors.full_messages.each do |msg|
+                %li= msg
+
+        .mb-2
+          = f.label :title
+          = f.text_field :title,
+            class: "form-control #{'is-invalid' if model_for_form.errors[:title].any?}"
+
+        .mb-2
+          = f.label :body
+          = f.text_area :body,
+            class: "form-control #{'is-invalid' if model_for_form.errors[:body].any?}"
+
+        .mb-2
+          %p Change answer:
+          - Test::QUESTIONANSWER.each do |label, value|
+            .form-check
+              = f.radio_button :question, value
+              = f.label :question, label, value: value
+
+        .d-flex.gap-2.mt-2
+          = f.submit "Update", class: "btn btn-success btn-sm"
+          = link_to "Cancel", "#",
+            class: "btn btn-secondary btn-sm",
+            onclick: "document.getElementById('edit-#{test.id}').style.display='none'; return false;"

@@ -1,0 +1,12 @@
+%h2 New
+
+= render "form", test: @test
+
+%hr
+
+%h3 All
+
+- if @tests.any?
+  = render @tests
+- else
+  %p No tests created yet.
